@@ -1,0 +1,40 @@
+LimosDispatch — validation, 8 November 2026
+
+Core: 17 automated checks passed.
+Live API: read-only authentication, profiles, trips, expenses, driver directory,
+payroll statements and empty tracking list parsed using both provided roles.
+Company currency/settings and category lookup verified for administrator.
+Deployed web JavaScript confirmed the nested tracking location contract;
+a corresponding fixture is covered by the automated checks.
+No trip, assignment, expense or trip status was changed on production.
+
+Android: final Debug build succeeded with 0 warnings and 0 errors.
+APK contains embedded assembly stores and native libraries for arm64-v8a and
+x86_64, with minimum Android API 26. Signing verified using APK v2 and v3.
+The APK uses a development certificate, not a store publishing certificate.
+The final APK was installed successfully on the available Android emulator.
+The native UI was not visually verified because computer-use could not read
+the minimized emulator window.
+
+The final iOS target compiled to a simulator DLL with 0 warnings and 0 errors.
+An iPhone runtime test and signed IPA were not produced. Use a configured Mac,
+Xcode and Apple signing identity for device installation and distribution.
+
+Not validated end-to-end: receipt camera/upload, write requests, live GPS,
+background tracking, new SignalR assignments, Google Maps with a real SDK key.
+See Guide-AR.html for release prerequisites and financial estimate limits.
+
+2026-11-08 follow-up (supersedes earlier read-only/write statements)
+Core: 19 automated checks passed, including server-generated record IDs and
+idempotent create retry. CreateTrip now navigates using the server record ID.
+Authorized lux MOBILE QA workflow passed: create/read trip, assignment to the
+provided chauffeur, Enroute/Arrived/Onboard/Completed, driver expense with a
+synthetic receipt, admin visibility and driver earnings. Only the exact test
+records created by this workflow were removed afterwards; existing trips and
+expenses were not changed. Synthetic GPS batches, route history and live
+tracking API parsing passed; this is not a physical background-GPS test.
+Credentials are supplied through temporary process environment variables and
+are not stored in project configuration.
+VS Code tasks use CMD to avoid the empty System32 dotnet file being selected
+by PowerShell. Android build succeeded; Run/debug validation is separate from
+the earlier standalone APK validation above.

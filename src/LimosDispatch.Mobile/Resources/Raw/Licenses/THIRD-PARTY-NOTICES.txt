@@ -1,0 +1,11 @@
+Bundled font notices
+====================
+El Messiri: Copyright 2015 The El Messiri Project Authors
+https://github.com/Gue3bara/El-Messiri
+SIL Open Font License 1.1: see ElMessiri-OFL.txt.
+
+Open Sans: Digitized data copyright 2010-2011 Google Corporation.
+Apache License 2.0: see OpenSans-Apache-2.0.txt.
+
+These licenses apply to the bundled fonts. They do not define a license for
+LimosDispatch application code or grant rights to its company branding.

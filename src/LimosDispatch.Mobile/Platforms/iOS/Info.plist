@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+ <key>CFBundleDevelopmentRegion</key><string>en</string>
+ <key>CFBundleLocalizations</key><array><string>en</string><string>ar</string><string>es</string></array>
+ <key>CFBundleURLTypes</key><array><dict><key>CFBundleURLName</key><string>com.limosdispatch.mobile.ride</string><key>CFBundleURLSchemes</key><array><string>limosdispatch</string></array></dict></array>
+ <key>NSLocationWhenInUseUsageDescription</key><string>Your location is shared with company dispatch during an active journey.</string>
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key><string>Keep dispatch updated during your active journey while the app is in the background.</string>
+ <key>NSCameraUsageDescription</key><string>Photograph a receipt to document each expense.</string>
+ <key>NSPhotoLibraryAddUsageDescription</key><string>Save captured expense receipts when requested.</string>
+ <key>NSPhotoLibraryUsageDescription</key><string>Select a receipt photo to attach to an expense.</string>
+ <key>UIBackgroundModes</key><array><string>location</string></array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/appicon.appiconset</string>
+</dict>
+</plist>

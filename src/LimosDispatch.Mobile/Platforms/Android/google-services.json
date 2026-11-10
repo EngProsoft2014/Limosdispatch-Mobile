@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "535993429975",
+    "project_id": "limosdispatch",
+    "storage_bucket": "limosdispatch.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535993429975:android:a63a49c22281dff0f52592",
+        "android_client_info": {
+          "package_name": "com.limosdispatch.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBsdyJI2gaiAg2z2vAXah4ixYn1_JJgvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

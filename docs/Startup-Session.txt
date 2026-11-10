@@ -1,0 +1,17 @@
+Startup session routing
+=======================
+The initial window uses StartupPage.xaml and StartupViewModel, not LoginPage.
+SessionRestoreService renews expired tokens and validates the current profile
+and company before opening the role-specific tab workspace. LoginPage is
+created only when a session is absent/rejected or password change is required.
+Temporary network/server failures preserve the saved session and offer Retry.
+
+Remember me still controls persistence across app restarts. Explicit sign-out
+clears session tokens, so remembering credentials does not undo a sign-out.
+Startup does not submit or rewrite the saved password.
+
+46 automated core checks passed. New checks cover valid/expired sessions,
+administrator/chauffeur restoration, explicit sign-out, rejected renewal,
+company mismatch and retaining sessions during temporary failures.
+Android build/run and iOS managed compilation passed. The Android emulator
+reopened directly into Rides using the existing saved session.

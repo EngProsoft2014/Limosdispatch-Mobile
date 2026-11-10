@@ -1,0 +1,21 @@
+Google Maps
+===========
+Android: the supplied Maps SDK key is configured in AndroidManifest.xml.
+Application ID: com.limosdispatch.mobile
+Current Debug SHA-1:
+6D:72:47:3A:9A:79:D6:56:3A:03:D3:32:E7:FB:CA:11:E8:47:D6:A1
+
+iOS: FleetMapView uses the native Google Maps SDK through the iOS-only
+AdamE.Google.iOS.Maps 9.2.0.8 binding and GoogleMapsHandler. The supplied iOS
+key is initialized in AppDelegate before creating a map. MapKit is not used
+by the tracking map on iOS. The standard Android MAUI Google Maps handler
+continues to serve Android.
+
+Native iOS packaging/runtime validation needs a Mac, Xcode and Apple signing.
+Windows managed compilation was checked against the Google binding. Its
+native framework downloader requires 7zip on Windows; the local managed-only
+check skipped that download target. No native iPhone execution is claimed.
+
+Android Google map tiles and full-screen enter/exit were visually verified.
+The tenant had no active chauffeurs at that time, so real live-driver markers
+could not be visually validated during this UI pass.

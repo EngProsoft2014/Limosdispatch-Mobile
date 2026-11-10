@@ -1,0 +1,1 @@
+using LimosDispatch.Mobile.ViewModels;namespace LimosDispatch.Mobile.Pages;public partial class DriverBalancesPage:ContentPage{readonly DriverBalancesViewModel model;public DriverBalancesPage(DriverBalancesViewModel model){InitializeComponent();BindingContext=this.model=model;}protected override async void OnAppearing(){base.OnAppearing();await model.LoadAsync();}}

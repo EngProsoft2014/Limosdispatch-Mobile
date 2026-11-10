@@ -1,0 +1,1 @@
+using LimosDispatch.Mobile.ViewModels;namespace LimosDispatch.Mobile.Pages;public partial class ExtraReviewPage:ContentPage{public ExtraReviewPage(ExtraReviewViewModel model){InitializeComponent();BindingContext=model;}}

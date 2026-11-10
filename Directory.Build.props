@@ -1,0 +1,1 @@
+<Project><PropertyGroup><DefaultItemExcludes>$(DefaultItemExcludes);**/obj/**;**/bin/**</DefaultItemExcludes></PropertyGroup><PropertyGroup Condition="'$(LimosBuildRoot)' != ''"><BaseIntermediateOutputPath>$(LimosBuildRoot)/$(MSBuildProjectName)/obj/</BaseIntermediateOutputPath><BaseOutputPath>$(LimosBuildRoot)/$(MSBuildProjectName)/bin/</BaseOutputPath></PropertyGroup></Project>

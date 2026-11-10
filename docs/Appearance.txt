@@ -1,0 +1,23 @@
+Appearance
+==========
+Account > Appearance > App theme offers Light, Dark and Ocean. The choice is
+saved on the device and restored at startup, including the sign-in screen.
+ThemeService updates dynamic resources without recreating the workspace or
+interrupting an active journey. The navy brand header retains the original logo.
+
+App.xaml defines the shared 44-unit field/button height, 22-unit page titles,
+compact spacing, theme surfaces and separate tab-bar background. Shell uses
+the same selected color for the tab label and icon. Platform handler mappings
+remove native underlines from entries, pickers, date/time inputs, editors and
+search. PasswordField is a reusable two-way-bound masked input with an eye
+button. Showing the password only changes its display on the current screen.
+
+SVG action arrows render at 24 units, with separate assets for primary and
+secondary buttons. Sign in retains its arrow-free label.
+
+Validation: Android build/run and iOS simulator-target build completed with
+zero warnings/errors. Visually checked Android rides, expenses, earnings and
+account in Dark, and account/sign-in in Ocean. Dark survived app restart.
+The eye displayed and re-masked a local test value; saved credentials were
+restored afterwards without changing their stored value. All 24 core checks
+passed. This does not constitute an iPhone runtime verification.

@@ -1,0 +1,21 @@
+Brand assets
+============
+The logo is the original image served by the existing LimosDispatch website:
+https://lux.limosdispatch.com/assets/limosdispatch-logo.png
+It is copied without redrawing into brand_logo.png, brand_splash.png and the
+adaptive launcher foreground brand.png. The launcher background is navy.
+
+The shared visual system is in App.xaml. LoginPage.xaml supplies the branded
+header and rounded sign-in panel. TripCard.xaml supplies the journey timeline,
+status badge and chauffeur row. Forms use the shared Field style. Navigation
+icons are a consistent 24px vector family, rendered by MAUI and referenced by
+their generated .png resource names.
+
+Pixel 5 emulator graphics
+=======================
+On this machine, the API 30 AVD in automatic GPU mode produced native
+SkiaOpenGLPipeline GL errors in both the app and another Android process.
+Its config.ini now uses hw.gpu.mode=swiftshader_indirect. This is an emulator
+setting, not a change to hardware acceleration on production Android devices.
+The previous AVD config was backed up in the development work directory.
+Android reference: https://developer.android.com/studio/run/emulator-acceleration

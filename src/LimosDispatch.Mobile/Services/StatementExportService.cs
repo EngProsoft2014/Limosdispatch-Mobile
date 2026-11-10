@@ -1,0 +1,23 @@
+using System.Globalization;
+using System.Net;
+using System.Text;
+namespace LimosDispatch.Mobile.Services;
+public sealed class StatementExportService
+{
+ static string T(string s)=>LocalizationService.Text(s);static string N(decimal? n)=>n?.ToString("0.##",LocalizationService.NumericCulture)??"—";
+ static string[] Headers=>["Date","Time","Trip ID","Passenger","Pickup","Drop-off","Trip type","Miles","Booked hours","Extra minutes","Total hours","Hourly rate","Fare","Amount","Pay rule","External source","External reference","Source kind","Review issue"];
+ static string[] Values(EarningRow r)=>[r.Date,r.Time,r.Id,r.Name,r.From,r.To,T(r.TripType),N(r.Miles),N(r.BaseHours),N(r.ExtraMinutes),N(r.Hours),N(r.HourlyRate),N(r.Fare),r.Amount is null?T("Needs review"):N(r.Amount),SystemRuleText.Translate(r.Rule),r.ExternalSource??"",r.ExternalReference??"",r.SourceKind??"",T(r.Error)];
+ static string Cell(string value){if(value.TrimStart().StartsWith('=')||value.TrimStart().StartsWith('+')||value.TrimStart().StartsWith('-')||value.TrimStart().StartsWith('@'))value="'"+value;return "\""+value.Replace("\"","\"\"")+"\"";}
+ public async Task CsvAsync(Statement s,CompanyInfo company){var lines=new List<string>{string.Join(",",new[]{company.Name,s.DriverName,s.Month,T(s.State),s.Contract,company.Currency}.Select(Cell)),string.Join(",",Headers.Select(x=>Cell(T(x))))};lines.AddRange(s.Rows.Select(r=>string.Join(",",Values(r).Select(Cell))));lines.Add(string.Join(",",new[]{T("Total"),N(s.Total),company.Currency}.Select(Cell)));var path=Path.Combine(FileSystem.CacheDirectory,"statement-"+Guid.NewGuid().ToString("N")+".csv");await File.WriteAllTextAsync(path,string.Join("\r\n",lines),new UTF8Encoding(true));await Share.Default.RequestAsync(new ShareFileRequest(T("Driver statement"),new ShareFile(path,"text/csv")));}
+ public async Task PdfAsync(Statement s,CompanyInfo company)
+ {
+ static string H(string? value)=>WebUtility.HtmlEncode(value??"");
+ var arabic=LocalizationService.Instance.Code=="ar";
+ var html=new StringBuilder("<!doctype html><html dir='"+(arabic?"rtl":"ltr")+"'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><style>@page{size:A4;margin:14mm}body{margin:18px;font:13px ReportFont,sans-serif;color:#172934;line-height:1.6}h1{font-size:22px;margin:0}h2{font-size:18px;color:#94773d}header{border-bottom:3px solid #b79a5e;padding-bottom:14px}article{border:1px solid #dce3e8;border-radius:12px;margin:14px 0;padding:14px;break-inside:avoid}table{width:100%;border-collapse:collapse;table-layout:fixed}th,td{text-align:start;vertical-align:top;padding:5px 7px;border-bottom:1px solid #edf1f4;overflow-wrap:break-word}th{width:32%;font-weight:normal;color:#647580}.amount{font-size:20px;font-weight:bold}footer{margin-top:20px;color:#647580}@media print{body{margin:0}article{border-radius:0}}</style></head><body>");
+ using var font=await FileSystem.OpenAppPackageFileAsync(arabic?"report-arabic.ttf":"report-latin.ttf");using var bytes=new MemoryStream();await font.CopyToAsync(bytes);html.Replace("</head>","<style>@font-face{font-family:ReportFont;src:url(data:font/ttf;base64,"+Convert.ToBase64String(bytes.ToArray())+")}</style></head>");
+ html.Append("<header>");var logo=company.Logo.ValueKind==System.Text.Json.JsonValueKind.String?company.Logo.GetString():null;if(logo?.StartsWith("data:image/",StringComparison.OrdinalIgnoreCase)==true&&logo.Length<3000000)html.Append("<img style='max-width:180px;max-height:70px' src='").Append(H(logo)).Append("'>");
+ html.Append("<h1>").Append(H(company.Name)).Append("</h1><div>").Append(H(company.Address)).Append("</div><div>").Append(H(string.Join(" · ",new[]{company.Phone,company.Email,company.Website}.Where(x=>!string.IsNullOrWhiteSpace(x))))).Append("</div></header><h2>").Append(H(T("Driver statement"))).Append("</h2><div>").Append(H(s.DriverName+" · "+s.Month)).Append("</div><div>").Append(H(T(s.State)+" · "+s.Contract)).Append("</div><p class='amount'>").Append(H(T("Total")+": "+N(s.Total)+" "+company.Currency)).Append("</p>");
+ foreach(var row in s.Rows){html.Append("<article><table>");var values=Values(row);for(var i=0;i<Headers.Length;i++){if(string.IsNullOrWhiteSpace(values[i])||values[i]=="—")continue;html.Append("<tr><th>").Append(H(T(Headers[i]))).Append("</th><td>").Append(H(values[i])).Append(Headers[i]=="Amount"?" "+H(company.Currency):"").Append("</td></tr>");}html.Append("</table></article>");}
+ html.Append("<footer>").Append(H(T("Only completed journeys count. Finalized statements retain their original rules."))).Append("</footer></body></html>");await Application.Current!.Windows[0].Page!.Navigation.PushAsync(new Pages.StatementReportPage(html.ToString()));
+ }
+}

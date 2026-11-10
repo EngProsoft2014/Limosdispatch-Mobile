@@ -1,0 +1,55 @@
+Rides uses Upcoming and Past, with a compact header and independently measured
+cards. Past contains completed/cancelled and earlier non-active journeys;
+active journeys stay in Upcoming even after their scheduled pickup time.
+
+ChoicePicker supplies a themed popup and shows search when a list exceeds six
+options. DateChoicePicker supplies a themed calendar; TimeChoicePicker supplies
+hour/minute choices using the same searchable picker. Expense entry and date
+range filters cannot select future expense dates. Saving also validates dates
+before making an API write.
+
+Expense fields use white surfaces in Light/Ocean, and a contrasting dark field
+surface with light text in Dark. Camera permission is explicitly checked and
+requested before capture. Android legacy storage permissions are capped at
+API 32 for MediaPicker compatibility.
+
+Account centers the existing toolbar logo and removes the extra in-page logo.
+Action-button arrows were removed. Details keeps a slightly larger arrow.
+Ocean tab selection uses gold. Earnings amounts use stronger, bold text.
+Tracking has List/Map icon controls and an exit-capable full-screen map mode.
+
+31 core checks passed, including ride grouping and future-expense rejection.
+
+Receipt input now offers Camera and Photos. Both paths share format/size
+validation and preview handling. Photos uses .NET 10 PickPhotosAsync with a
+single-image limit. iOS includes the photo-library usage description.
+Camera capture/preview was observed on the API 30 emulator after the user
+granted its legacy photos/media permission. No expense was submitted in this
+UI pass. Dark expense fields were visually checked with light text.
+
+Follow-up: receipt actions now use icon tiles for Camera, Photos and Files.
+Files accepts PDF, JPG, PNG and WebP, matching the deployed web receipt input.
+The receipt reader validates content signatures, MIME agreement and the
+1.5 MB size limit. PDF attachments show their name and document icon and can
+be opened with a system document viewer. Expense receipt viewing supports
+both images and PDFs. 38 core checks passed, including the PDF API payload,
+unsupported formats, MIME mismatch and oversized files.
+
+Final Android UI pass: a local MOBILE_QA_Receipt.pdf was selected through Files
+and its filename/document icon appeared in the expense draft. Camera image
+preview and the three icon tiles were also observed. No Save expense action
+was taken during this pass. Only the exact QA fixture files copied into the
+emulator's Pictures/Download folders were removed after the test.
+
+Compact tab layout: Rides, Expenses and Earnings titles now appear in their
+toolbar. Rides uses an account icon and a 56-unit floating add button at the
+bottom right. Expenses follows the same floating-add pattern, with a compact
+total row and shorter expense cards; receipt actions are hidden when there is
+no attachment. List footers leave space to scroll the final item clear of the
+floating buttons. Android layouts and opening Create ride from the floating
+button were visually verified. Android build/run and iOS managed compilation
+completed without warnings or errors.
+
+Toolbar branding uses CenteredBrandHeader. It centers the logo against the
+window, compensating for the native toolbar space taken by back/account
+buttons. Rides, Expenses and Earnings retain their page title on the left.

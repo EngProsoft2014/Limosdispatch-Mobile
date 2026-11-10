@@ -1,0 +1,1691 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Ui_24_hour_time_f91025" xml:space="preserve">
+    <value>24-hour time</value>
+  </data>
+  <data name="Ui_ASSIGN_CHAUFFEUR_d92785" xml:space="preserve">
+    <value>ASSIGN CHAUFFEUR</value>
+  </data>
+  <data name="Ui_Access_is_unavailable_Please_check_your_app_permissions_b26d78" xml:space="preserve">
+    <value>Access is unavailable. Please check your app permissions.</value>
+  </data>
+  <data name="Ui_Accessibility_announcements_while_the_app_is_open_745b86" xml:space="preserve">
+    <value>Accessibility announcements while the app is open</value>
+  </data>
+  <data name="Ui_Account_85dfa3" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Ui_Add_an_expense_528520" xml:space="preserve">
+    <value>Add an expense</value>
+  </data>
+  <data name="Ui_Add_expense_d83567" xml:space="preserve">
+    <value>Add expense</value>
+  </data>
+  <data name="Ui_Add_new_passenger_8e1551" xml:space="preserve">
+    <value>Add new passenger</value>
+  </data>
+  <data name="Ui_Admin_4e7afe" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="Ui_After_discount_34c7d4" xml:space="preserve">
+    <value>After discount</value>
+  </data>
+  <data name="Ui_Amount_43dc85" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Ui_Announce_assignments_c54608" xml:space="preserve">
+    <value>Announce assignments</value>
+  </data>
+  <data name="Ui_App_theme_3d0ba3" xml:space="preserve">
+    <value>App theme</value>
+  </data>
+  <data name="Ui_Apply_cfea41" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Ui_Arrived_a22d66" xml:space="preserve">
+    <value>Arrived</value>
+  </data>
+  <data name="Ui_Assign_journey_01b0e4" xml:space="preserve">
+    <value>Assign journey</value>
+  </data>
+  <data name="Ui_Attach_a_receipt_from_Camera_Photos_or_Files_07d100" xml:space="preserve">
+    <value>Attach a receipt from Camera, Photos or Files.</value>
+  </data>
+  <data name="Ui_Back_to_passenger_search_9f181d" xml:space="preserve">
+    <value>Back to passenger search</value>
+  </data>
+  <data name="Ui_Base_fare_0778fa" xml:space="preserve">
+    <value>Base fare</value>
+  </data>
+  <data name="Ui_Booster_seat_833ddb" xml:space="preserve">
+    <value>Booster seat</value>
+  </data>
+  <data name="Ui_CHAUFFEUR_VEHICLE_6c01f5" xml:space="preserve">
+    <value>CHAUFFEUR &amp; VEHICLE</value>
+  </data>
+  <data name="Ui_Calculate_a_valid_Google_driving_route_before_saving_2b3a22" xml:space="preserve">
+    <value>Calculate a valid Google driving route before saving.</value>
+  </data>
+  <data name="Ui_Calculating_Google_driving_distance_12a8c9" xml:space="preserve">
+    <value>Calculating Google driving distance…</value>
+  </data>
+  <data name="Ui_Camera_4da9c9" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="Ui_Cancel_77dfd2" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Ui_Cancelled_a1bf92" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Ui_Can_t_find_them_Save_a_new_contact_cb7a0e" xml:space="preserve">
+    <value>Can’t find them? Save a new contact.</value>
+  </data>
+  <data name="Ui_Card_collection_is_not_enabled_in_this_mobile_build_Complete_card_chec_6b5232" xml:space="preserve">
+    <value>Card collection is not enabled in this mobile build. Complete card checkout on the web or select another payment method.</value>
+  </data>
+  <data name="Ui_Card_fees_can_be_previewed_here_Card_collection_must_be_completed_thro_ddc454" xml:space="preserve">
+    <value>Card fees can be previewed here. Card collection must be completed through the web checkout; mobile card collection is not enabled.</value>
+  </data>
+  <data name="Ui_Cash_758ec5" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="Ui_Category_a3c686" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Ui_Category_name_ed3dc4" xml:space="preserve">
+    <value>Category name</value>
+  </data>
+  <data name="Ui_Change_the_dates_or_pull_down_to_refresh_c140e6" xml:space="preserve">
+    <value>Change the dates or pull down to refresh.</value>
+  </data>
+  <data name="Ui_Check_4b5e84" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Ui_Check_coupon_9f7f71" xml:space="preserve">
+    <value>Check coupon</value>
+  </data>
+  <data name="Ui_Checking_the_customer_s_price_92064c" xml:space="preserve">
+    <value>Checking the customer’s price…</value>
+  </data>
+  <data name="Ui_Child_seats_e24fb3" xml:space="preserve">
+    <value>Child seats</value>
+  </data>
+  <data name="Ui_Choose_a_vehicle_type_and_a_distance_or_duration_covered_by_company_pr_3f9e03" xml:space="preserve">
+    <value>Choose a vehicle type and a distance or duration covered by company pricing.</value>
+  </data>
+  <data name="Ui_Choose_chauffeur_578753" xml:space="preserve">
+    <value>Choose chauffeur</value>
+  </data>
+  <data name="Ui_Choose_expense_receipt_03b0da" xml:space="preserve">
+    <value>Choose expense receipt</value>
+  </data>
+  <data name="Ui_Choose_pickup_and_drop_off_to_calculate_the_road_distance_87a05d" xml:space="preserve">
+    <value>Choose pickup and drop-off to calculate the road distance.</value>
+  </data>
+  <data name="Ui_Choose_the_appearance_that_suits_you_83d8a2" xml:space="preserve">
+    <value>Choose the appearance that suits you</value>
+  </data>
+  <data name="Ui_Choose_the_correct_address_below_bc99c8" xml:space="preserve">
+    <value>Choose the correct address below.</value>
+  </data>
+  <data name="Ui_Choose_the_quantity_of_each_type_Use_0_when_not_required_c1b08a" xml:space="preserve">
+    <value>Choose the quantity of each type. Use 0 when not required.</value>
+  </data>
+  <data name="Ui_Choose_your_passenger_bef2a1" xml:space="preserve">
+    <value>Choose your passenger</value>
+  </data>
+  <data name="Ui_Choose_your_preferred_language_f9d875" xml:space="preserve">
+    <value>Choose your preferred language</value>
+  </data>
+  <data name="Ui_Close_bbfa77" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Ui_Close_address_search_fd3177" xml:space="preserve">
+    <value>Close address search</value>
+  </data>
+  <data name="Ui_Close_passenger_search_152481" xml:space="preserve">
+    <value>Close passenger search</value>
+  </data>
+  <data name="Ui_Company_code_e9eebb" xml:space="preserve">
+    <value>Company code</value>
+  </data>
+  <data name="Ui_Company_0_09ee5c" xml:space="preserve">
+    <value>Company: {0}</value>
+  </data>
+  <data name="Ui_Complete_journey_3abb7c" xml:space="preserve">
+    <value>Complete journey</value>
+  </data>
+  <data name="Ui_Completed_1798b3" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Ui_Completed_fares_e41dcb" xml:space="preserve">
+    <value>Completed fares</value>
+  </data>
+  <data name="Ui_Confirm_04a212" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Ui_Confirmed_8cc7ac" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Ui_Confirmed_Enroute_Arrived_Onboard_Completed_2a53d9" xml:space="preserve">
+    <value>Confirmed → Enroute → Arrived → Onboard → Completed</value>
+  </data>
+  <data name="Ui_Coupon_applied_Review_the_final_total_below_5ee77a" xml:space="preserve">
+    <value>Coupon applied. Review the final total below.</value>
+  </data>
+  <data name="Ui_Coupon_code_optional_e310f7" xml:space="preserve">
+    <value>Coupon code (optional)</value>
+  </data>
+  <data name="Ui_Coupon_discount_bdb1a1" xml:space="preserve">
+    <value>Coupon discount</value>
+  </data>
+  <data name="Ui_Create_a_ride_20846b" xml:space="preserve">
+    <value>Create a ride</value>
+  </data>
+  <data name="Ui_Create_journey_2a2a53" xml:space="preserve">
+    <value>Create journey</value>
+  </data>
+  <data name="Ui_Create_the_journey_for_0_on_1_Total_2_3_e018ed" xml:space="preserve">
+    <value>Create the journey for {0} on {1}? Total: {2} {3}.</value>
+  </data>
+  <data name="Ui_Credit_Card_69ed5a" xml:space="preserve">
+    <value>Credit Card</value>
+  </data>
+  <data name="Ui_Credit_card_fees_0de7d4" xml:space="preserve">
+    <value>Credit card fees</value>
+  </data>
+  <data name="Ui_Current_temporary_password_6ae11b" xml:space="preserve">
+    <value>Current temporary password</value>
+  </data>
+  <data name="Ui_Customer_discount_3851df" xml:space="preserve">
+    <value>Customer discount</value>
+  </data>
+  <data name="Ui_DRIVER_STATEMENT_36ac96" xml:space="preserve">
+    <value>DRIVER STATEMENT</value>
+  </data>
+  <data name="Ui_DROP_OFF_37ea34" xml:space="preserve">
+    <value>DROP-OFF</value>
+  </data>
+  <data name="Ui_Dark_ae1ef0" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Ui_Data_has_changed_on_the_server_Refresh_and_review_it_before_saving_9845d1" xml:space="preserve">
+    <value>Data has changed on the server. Refresh and review it before saving.</value>
+  </data>
+  <data name="Ui_Description_55f8eb" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Ui_Details_dc3dec" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Ui_Dispatch_notifications_c345c8" xml:space="preserve">
+    <value>Dispatch notifications</value>
+  </data>
+  <data name="Ui_Distance_423208" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="Ui_Distance_company_mileage_band_Hourly_booked_hours_hourly_rate_dee40c" xml:space="preserve">
+    <value>Distance: company mileage band. Hourly: booked hours × hourly rate.</value>
+  </data>
+  <data name="Ui_Driver_b5c7d8" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Ui_Drivers_sharing_their_location_during_a_ride_will_appear_here_4d93d7" xml:space="preserve">
+    <value>Drivers sharing their location during a ride will appear here.</value>
+  </data>
+  <data name="Ui_Drop_off_6aa76e" xml:space="preserve">
+    <value>Drop-off</value>
+  </data>
+  <data name="Ui_Duration_in_hours_df9534" xml:space="preserve">
+    <value>Duration in hours</value>
+  </data>
+  <data name="Ui_Each_child_seat_quantity_must_be_a_whole_number_from_0_to_20_e1eab6" xml:space="preserve">
+    <value>Each child seat quantity must be a whole number from 0 to 20.</value>
+  </data>
+  <data name="Ui_Earned_wages_1620df" xml:space="preserve">
+    <value>Earned wages</value>
+  </data>
+  <data name="Ui_Earnings_ad772f" xml:space="preserve">
+    <value>Earnings</value>
+  </data>
+  <data name="Ui_Email_84add5" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Ui_Email_optional_5c10b5" xml:space="preserve">
+    <value>Email (optional)</value>
+  </data>
+  <data name="Ui_Email_address_c94d31" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Ui_Enroute_825715" xml:space="preserve">
+    <value>Enroute</value>
+  </data>
+  <data name="Ui_Enter_a_phone_number_fd7290" xml:space="preserve">
+    <value>Enter a phone number.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_email_address_such_as_name_example_com_245fe1" xml:space="preserve">
+    <value>Enter a valid email address, such as name@example.com.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_phone_number_with_7_to_15_digits_A_leading_is_allowed_092512" xml:space="preserve">
+    <value>Enter a valid phone number with 7 to 15 digits. A leading + is allowed.</value>
+  </data>
+  <data name="Ui_Enter_at_least_3_characters_to_search_Google_addresses_c2d11b" xml:space="preserve">
+    <value>Enter at least 3 characters to search Google addresses.</value>
+  </data>
+  <data name="Ui_Enter_the_passenger_name_f349f9" xml:space="preserve">
+    <value>Enter the passenger name.</value>
+  </data>
+  <data name="Ui_Enter_your_company_code_5dd900" xml:space="preserve">
+    <value>Enter your company code.</value>
+  </data>
+  <data name="Ui_Enter_your_email_address_14864a" xml:space="preserve">
+    <value>Enter your email address.</value>
+  </data>
+  <data name="Ui_Enter_your_password_137816" xml:space="preserve">
+    <value>Enter your password</value>
+  </data>
+  <data name="Ui_Enter_your_password_46affb" xml:space="preserve">
+    <value>Enter your password.</value>
+  </data>
+  <data name="Ui_Exit_f83b6f" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Ui_Expense_type_9e3802" xml:space="preserve">
+    <value>Expense type</value>
+  </data>
+  <data name="Ui_Expenses_8d437d" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="Ui_Expenses_from_date_d8ae82" xml:space="preserve">
+    <value>Expenses from date</value>
+  </data>
+  <data name="Ui_Expenses_to_date_614032" xml:space="preserve">
+    <value>Expenses to date</value>
+  </data>
+  <data name="Ui_Extra_request_awaiting_review_21913b" xml:space="preserve">
+    <value>Extra request awaiting review</value>
+  </data>
+  <data name="Ui_Extra_0_847bea" xml:space="preserve">
+    <value>Extra {0}</value>
+  </data>
+  <data name="Ui_Files_6ce6c5" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Ui_Final_total_2d5825" xml:space="preserve">
+    <value>Final total</value>
+  </data>
+  <data name="Ui_Find_the_right_place_d00bb3" xml:space="preserve">
+    <value>Find the right place</value>
+  </data>
+  <data name="Ui_Fixed_ab98f5" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="Ui_Flight_number_optional_3e7f05" xml:space="preserve">
+    <value>Flight number (optional)</value>
+  </data>
+  <data name="Ui_Flight_0_9ded66" xml:space="preserve">
+    <value>Flight: {0}</value>
+  </data>
+  <data name="Ui_Full_name_eeb692" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="Ui_Full_screen_map_a50ec0" xml:space="preserve">
+    <value>Full screen map</value>
+  </data>
+  <data name="Ui_General_9239ee" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Ui_Hide_password_e40123" xml:space="preserve">
+    <value>Hide password</value>
+  </data>
+  <data name="Ui_Hour_c37cf8" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="Ui_Hour_00_23_d65a7a" xml:space="preserve">
+    <value>Hour (00–23)</value>
+  </data>
+  <data name="Ui_Hourly_d93625" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="Ui_Hourly_journey_as_directed_No_drop_off_or_road_distance_required_76ef8a" xml:space="preserve">
+    <value>Hourly journey · as directed. No drop-off or road distance required.</value>
+  </data>
+  <data name="Ui_I_have_arrived_5e4327" xml:space="preserve">
+    <value>I have arrived</value>
+  </data>
+  <data name="Ui_Infant_seat_d23b71" xml:space="preserve">
+    <value>Infant seat</value>
+  </data>
+  <data name="Ui_JOURNEY_PRICING_96bc87" xml:space="preserve">
+    <value>JOURNEY &amp; PRICING</value>
+  </data>
+  <data name="Ui_JOURNEY_DETAILS_7d797c" xml:space="preserve">
+    <value>JOURNEY DETAILS</value>
+  </data>
+  <data name="Ui_Journey_e40c09" xml:space="preserve">
+    <value>Journey</value>
+  </data>
+  <data name="Ui_Journey_type_a1242d" xml:space="preserve">
+    <value>Journey type</value>
+  </data>
+  <data name="Ui_Keep_screen_awake_e46566" xml:space="preserve">
+    <value>Keep screen awake</value>
+  </data>
+  <data name="Ui_Language_89b86a" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Ui_Light_a36ef8" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Ui_LimosDispatch_97de9d" xml:space="preserve">
+    <value>LimosDispatch</value>
+  </data>
+  <data name="Ui_Linked_chauffeur_243edb" xml:space="preserve">
+    <value>Linked chauffeur</value>
+  </data>
+  <data name="Ui_Linked_vehicle_required_for_vehicle_costs_4b280f" xml:space="preserve">
+    <value>Linked vehicle (required for vehicle costs)</value>
+  </data>
+  <data name="Ui_List_a1fffa" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="Ui_Live_tracking_17d2f3" xml:space="preserve">
+    <value>Live tracking</value>
+  </data>
+  <data name="Ui_Location_is_shared_during_an_active_journey_Keep_device_location_enabl_fd7b4c" xml:space="preserve">
+    <value>Location is shared during an active journey. Keep device location enabled; background access is controlled by your phone settings.</value>
+  </data>
+  <data name="Ui_Location_sharing_3546e9" xml:space="preserve">
+    <value>Location sharing</value>
+  </data>
+  <data name="Ui_Location_sharing_active_1fc85f" xml:space="preserve">
+    <value>Location sharing active</value>
+  </data>
+  <data name="Ui_Location_sharing_is_off_ac3e7d" xml:space="preserve">
+    <value>Location sharing is off</value>
+  </data>
+  <data name="Ui_Location_upload_pending_check_connection_and_permissions_dbf36d" xml:space="preserve">
+    <value>Location upload pending · check connection and permissions</value>
+  </data>
+  <data name="Ui_Map_ab478f" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="Ui_Mileage_f67a05" xml:space="preserve">
+    <value>Mileage</value>
+  </data>
+  <data name="Ui_Minute_c1335d" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="Ui_Minute_00_59_d7006e" xml:space="preserve">
+    <value>Minute (00–59)</value>
+  </data>
+  <data name="Ui_More_4bab2d" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Ui_NEW_EXPENSE_3f5b47" xml:space="preserve">
+    <value>NEW EXPENSE</value>
+  </data>
+  <data name="Ui_New_journey_7d861d" xml:space="preserve">
+    <value>New journey</value>
+  </data>
+  <data name="Ui_New_passenger_789c53" xml:space="preserve">
+    <value>New passenger</value>
+  </data>
+  <data name="Ui_New_password_12_characters_0c7436" xml:space="preserve">
+    <value>New password (12+ characters)</value>
+  </data>
+  <data name="Ui_No_active_chauffeurs_4cacb6" xml:space="preserve">
+    <value>No active chauffeurs</value>
+  </data>
+  <data name="Ui_No_expenses_in_this_date_range_2ea3b6" xml:space="preserve">
+    <value>No expenses in this date range</value>
+  </data>
+  <data name="Ui_No_further_action_8c5ee6" xml:space="preserve">
+    <value>No further action</value>
+  </data>
+  <data name="Ui_No_matching_options_0f909d" xml:space="preserve">
+    <value>No matching options</value>
+  </data>
+  <data name="Ui_No_matching_passengers_41158e" xml:space="preserve">
+    <value>No matching passengers</value>
+  </data>
+  <data name="Ui_No_receipt_2da2a0" xml:space="preserve">
+    <value>No receipt</value>
+  </data>
+  <data name="Ui_No_rides_here_38c01d" xml:space="preserve">
+    <value>No rides here</value>
+  </data>
+  <data name="Ui_No_suggestions_Try_a_more_complete_address_a7c3f3" xml:space="preserve">
+    <value>No suggestions. Try a more complete address.</value>
+  </data>
+  <data name="Ui_Not_required_45240f" xml:space="preserve">
+    <value>Not required</value>
+  </data>
+  <data name="Ui_Notes_704400" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Ui_Notes_special_requirements_759587" xml:space="preserve">
+    <value>Notes / special requirements</value>
+  </data>
+  <data name="Ui_Notifications_753a22" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Ui_OPERATING_ESTIMATE_8f262d" xml:space="preserve">
+    <value>OPERATING ESTIMATE</value>
+  </data>
+  <data name="Ui_Ocean_76022a" xml:space="preserve">
+    <value>Ocean</value>
+  </data>
+  <data name="Ui_Onboard_3a883b" xml:space="preserve">
+    <value>Onboard</value>
+  </data>
+  <data name="Ui_Only_completed_journeys_count_Finalized_statements_retain_their_origin_fdf986" xml:space="preserve">
+    <value>Only completed journeys count. Finalized statements retain their original contract rules. Earnings are not proof of payment.</value>
+  </data>
+  <data name="Ui_Only_during_an_active_journey_dd9f13" xml:space="preserve">
+    <value>Only during an active journey</value>
+  </data>
+  <data name="Ui_Only_my_rides_68016c" xml:space="preserve">
+    <value>Only my rides</value>
+  </data>
+  <data name="Ui_Open_attached_document_ba6f40" xml:space="preserve">
+    <value>Open attached document</value>
+  </data>
+  <data name="Ui_Open_company_website_bdb3bc" xml:space="preserve">
+    <value>Open company website</value>
+  </data>
+  <data name="Ui_Open_document_5fc7f2" xml:space="preserve">
+    <value>Open document</value>
+  </data>
+  <data name="Ui_Open_navigation_0f53b3" xml:space="preserve">
+    <value>Open navigation</value>
+  </data>
+  <data name="Ui_Opening_your_workspace_786d09" xml:space="preserve">
+    <value>Opening your workspace…</value>
+  </data>
+  <data name="Ui_Operating_estimate_completed_fares_minus_earned_wages_and_operating_ex_37b090" xml:space="preserve">
+    <value>Operating estimate: completed fares minus earned wages and operating expenses. Payroll payments are excluded to avoid counting wages twice.</value>
+  </data>
+  <data name="Ui_Optional_Leave_the_chauffeur_empty_to_create_an_unassigned_ride_1ceabd" xml:space="preserve">
+    <value>Optional. Leave the chauffeur empty to create an unassigned ride.</value>
+  </data>
+  <data name="Ui_PASSENGER_ef3b57" xml:space="preserve">
+    <value>PASSENGER</value>
+  </data>
+  <data name="Ui_PASSENGER_SERVICE_fb45ad" xml:space="preserve">
+    <value>PASSENGER &amp; SERVICE</value>
+  </data>
+  <data name="Ui_PASSENGER_DIRECTORY_eb4bb7" xml:space="preserve">
+    <value>PASSENGER DIRECTORY</value>
+  </data>
+  <data name="Ui_PDF_receipt_6c9ff2" xml:space="preserve">
+    <value>PDF receipt</value>
+  </data>
+  <data name="Ui_PDF_JPG_PNG_or_WebP_maximum_1_5_MB_cffc03" xml:space="preserve">
+    <value>PDF, JPG, PNG or WebP · maximum 1.5 MB</value>
+  </data>
+  <data name="Ui_PICKUP_9478ed" xml:space="preserve">
+    <value>PICKUP</value>
+  </data>
+  <data name="Ui_PLAN_YOUR_ROUTE_f5ddcf" xml:space="preserve">
+    <value>PLAN YOUR ROUTE</value>
+  </data>
+  <data name="Ui_PREFERENCES_f6d44b" xml:space="preserve">
+    <value>PREFERENCES</value>
+  </data>
+  <data name="Ui_Paid_dc9d45" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Ui_Passenger_count_eb2b61" xml:space="preserve">
+    <value>Passenger count</value>
+  </data>
+  <data name="Ui_Passenger_name_834778" xml:space="preserve">
+    <value>Passenger name</value>
+  </data>
+  <data name="Ui_Passenger_onboard_3aa89c" xml:space="preserve">
+    <value>Passenger onboard</value>
+  </data>
+  <data name="Ui_Passengers_0_c1b3dd" xml:space="preserve">
+    <value>Passengers: {0}</value>
+  </data>
+  <data name="Ui_Password_8be3c9" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Ui_Past_405c12" xml:space="preserve">
+    <value>Past</value>
+  </data>
+  <data name="Ui_Payment_b41a92" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Ui_Payment_method_0e55fb" xml:space="preserve">
+    <value>Payment method</value>
+  </data>
+  <data name="Ui_Payment_status_9dfea4" xml:space="preserve">
+    <value>Payment status</value>
+  </data>
+  <data name="Ui_Pending_96f608" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Ui_Phone_77064d" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Ui_Phone_number_8961d3" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Ui_Photograph_expense_receipt_612f71" xml:space="preserve">
+    <value>Photograph expense receipt</value>
+  </data>
+  <data name="Ui_Photos_c8b2e8" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="Ui_Pickup_a51122" xml:space="preserve">
+    <value>Pickup</value>
+  </data>
+  <data name="Ui_Powered_by_Google_2068cc" xml:space="preserve">
+    <value>Powered by Google</value>
+  </data>
+  <data name="Ui_Price_checked_with_the_company_server_34c0da" xml:space="preserve">
+    <value>Price checked with the company server.</value>
+  </data>
+  <data name="Ui_Quantity_0_44a8c1" xml:space="preserve">
+    <value>Quantity: {0}</value>
+  </data>
+  <data name="Ui_RECEIPT_REQUIRED_8ed95d" xml:space="preserve">
+    <value>RECEIPT REQUIRED</value>
+  </data>
+  <data name="Ui_ROUTE_SCHEDULE_1f8848" xml:space="preserve">
+    <value>ROUTE &amp; SCHEDULE</value>
+  </data>
+  <data name="Ui_Recalculate_route_3aa225" xml:space="preserve">
+    <value>Recalculate route</value>
+  </data>
+  <data name="Ui_Receipt_f6ce3b" xml:space="preserve">
+    <value>Receipt</value>
+  </data>
+  <data name="Ui_Refresh_journey_1eb50c" xml:space="preserve">
+    <value>Refresh journey</value>
+  </data>
+  <data name="Ui_Remember_me_ced7b3" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Ui_Retry_9f5cd8" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Ui_Retry_assignment_16f4a8" xml:space="preserve">
+    <value>Retry assignment</value>
+  </data>
+  <data name="Ui_Rides_ae8496" xml:space="preserve">
+    <value>Rides</value>
+  </data>
+  <data name="Ui_Rides_people_and_every_mile_in_between_afdbce" xml:space="preserve">
+    <value>Rides, people and every mile in between.</value>
+  </data>
+  <data name="Ui_Save_select_passenger_9cf575" xml:space="preserve">
+    <value>Save &amp; select passenger</value>
+  </data>
+  <data name="Ui_Save_expense_0402d1" xml:space="preserve">
+    <value>Save expense</value>
+  </data>
+  <data name="Ui_Save_their_details_in_Customers_and_select_them_for_this_journey_012e3a" xml:space="preserve">
+    <value>Save their details in Customers and select them for this journey.</value>
+  </data>
+  <data name="Ui_Search_a_street_address_airport_or_hotel_Choose_a_Google_suggestion_fo_392b65" xml:space="preserve">
+    <value>Search a street address, airport or hotel. Choose a Google suggestion for an accurate route.</value>
+  </data>
+  <data name="Ui_Search_chauffeur_or_expense_8f3ca8" xml:space="preserve">
+    <value>Search chauffeur or expense</value>
+  </data>
+  <data name="Ui_Search_drop_off_address_2899d9" xml:space="preserve">
+    <value>Search drop-off address</value>
+  </data>
+  <data name="Ui_Search_dropoff_address_f10749" xml:space="preserve">
+    <value>Search dropoff address</value>
+  </data>
+  <data name="Ui_Search_name_phone_or_email_face38" xml:space="preserve">
+    <value>Search name, phone or email</value>
+  </data>
+  <data name="Ui_Search_options_5616c8" xml:space="preserve">
+    <value>Search options</value>
+  </data>
+  <data name="Ui_Search_passenger_route_or_chauffeur_eb37a5" xml:space="preserve">
+    <value>Search passenger, route or chauffeur</value>
+  </data>
+  <data name="Ui_Search_pickup_address_84ae4e" xml:space="preserve">
+    <value>Search pickup address</value>
+  </data>
+  <data name="Ui_Searching_Google_addresses_6db770" xml:space="preserve">
+    <value>Searching Google addresses…</value>
+  </data>
+  <data name="Ui_Select_a_passenger_and_complete_pricing_before_checking_a_coupon_05488b" xml:space="preserve">
+    <value>Select a passenger and complete pricing before checking a coupon.</value>
+  </data>
+  <data name="Ui_Select_a_passenger_and_complete_the_route_or_hours_to_see_the_final_to_77e613" xml:space="preserve">
+    <value>Select a passenger and complete the route or hours to see the final total.</value>
+  </data>
+  <data name="Ui_Select_an_active_vehicle_for_the_assigned_chauffeur_ea01ce" xml:space="preserve">
+    <value>Select an active vehicle for the assigned chauffeur.</value>
+  </data>
+  <data name="Ui_Select_chauffeur_26c2ab" xml:space="preserve">
+    <value>Select chauffeur</value>
+  </data>
+  <data name="Ui_Select_date_b84a6e" xml:space="preserve">
+    <value>Select date</value>
+  </data>
+  <data name="Ui_Select_or_save_a_passenger_before_creating_the_journey_6ebd78" xml:space="preserve">
+    <value>Select or save a passenger before creating the journey.</value>
+  </data>
+  <data name="Ui_Select_time_3d7f91" xml:space="preserve">
+    <value>Select time</value>
+  </data>
+  <data name="Ui_Select_vehicle_cb380a" xml:space="preserve">
+    <value>Select vehicle</value>
+  </data>
+  <data name="Ui_Set_a_permanent_password_8d1b5f" xml:space="preserve">
+    <value>Set a permanent password</value>
+  </data>
+  <data name="Ui_Set_time_7c58b6" xml:space="preserve">
+    <value>Set time</value>
+  </data>
+  <data name="Ui_Show_password_044b85" xml:space="preserve">
+    <value>Show password</value>
+  </data>
+  <data name="Ui_Sign_in_ada2e9" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Ui_Sign_in_to_your_company_workspace_d73f32" xml:space="preserve">
+    <value>Sign in to your company workspace.</value>
+  </data>
+  <data name="Ui_Sign_out_dc1649" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Ui_Sign_out_of_this_company_workspace_224b41" xml:space="preserve">
+    <value>Sign out of this company workspace?</value>
+  </data>
+  <data name="Ui_Start_journey_1d0241" xml:space="preserve">
+    <value>Start journey</value>
+  </data>
+  <data name="Ui_Street_airport_hotel_or_place_408867" xml:space="preserve">
+    <value>Street, airport, hotel or place</value>
+  </data>
+  <data name="Ui_Tap_a_notification_to_view_the_journey_details_006d54" xml:space="preserve">
+    <value>Tap a notification to view the journey details.</value>
+  </data>
+  <data name="Ui_Tap_search_to_choose_an_address_Swipe_long_addresses_to_read_more_4154f0" xml:space="preserve">
+    <value>Tap search to choose an address. Swipe long addresses to read more.</value>
+  </data>
+  <data name="Ui_The_request_timed_out_Refresh_and_check_the_result_before_saving_again_90f7e7" xml:space="preserve">
+    <value>The request timed out. Refresh and check the result before saving again.</value>
+  </data>
+  <data name="Ui_The_server_is_currently_unavailable_Please_try_again_shortly_89dec4" xml:space="preserve">
+    <value>The server is currently unavailable. Please try again shortly.</value>
+  </data>
+  <data name="Ui_Theme_a797e3" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Ui_Today_24345a" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Ui_Too_many_requests_Please_wait_a_moment_and_try_again_2f9aee" xml:space="preserve">
+    <value>Too many requests. Please wait a moment and try again.</value>
+  </data>
+  <data name="Ui_Total_expenses_67fe37" xml:space="preserve">
+    <value>Total expenses</value>
+  </data>
+  <data name="Ui_Track_chauffeur_on_map_b1727e" xml:space="preserve">
+    <value>Track chauffeur on map</value>
+  </data>
+  <data name="Ui_Tracking_e81a15" xml:space="preserve">
+    <value>Tracking</value>
+  </data>
+  <data name="Ui_Trip_fare_7143ec" xml:space="preserve">
+    <value>Trip fare</value>
+  </data>
+  <data name="Ui_Trip_price_summary_87b508" xml:space="preserve">
+    <value>Trip price summary</value>
+  </data>
+  <data name="Ui_Try_Past_adjust_your_search_or_pull_down_to_refresh_42cb95" xml:space="preserve">
+    <value>Try Past, adjust your search or pull down to refresh.</value>
+  </data>
+  <data name="Ui_Try_another_name_or_phone_number_or_add_a_new_passenger_085bb7" xml:space="preserve">
+    <value>Try another name or phone number, or add a new passenger.</value>
+  </data>
+  <data name="Ui_Unable_to_complete_this_action_Please_try_again_or_refresh_the_screen_b15aba" xml:space="preserve">
+    <value>Unable to complete this action. Please try again or refresh the screen.</value>
+  </data>
+  <data name="Ui_Unable_to_connect_Check_your_internet_connection_and_try_again_0d9f1a" xml:space="preserve">
+    <value>Unable to connect. Check your internet connection and try again.</value>
+  </data>
+  <data name="Ui_Unable_to_read_the_received_data_Refresh_or_try_again_later_aebfab" xml:space="preserve">
+    <value>Unable to read the received data. Refresh or try again later.</value>
+  </data>
+  <data name="Ui_Unassigned_e57016" xml:space="preserve">
+    <value>Unassigned</value>
+  </data>
+  <data name="Ui_Upcoming_523baa" xml:space="preserve">
+    <value>Upcoming</value>
+  </data>
+  <data name="Ui_Upcoming_rides_d41cbb" xml:space="preserve">
+    <value>Upcoming rides</value>
+  </data>
+  <data name="Ui_Update_password_350c35" xml:space="preserve">
+    <value>Update password</value>
+  </data>
+  <data name="Ui_Use_a_name_of_up_to_150_characters_without_HTML_symbols_32777f" xml:space="preserve">
+    <value>Use a name of up to 150 characters without HTML symbols.</value>
+  </data>
+  <data name="Ui_Use_letters_numbers_and_hyphens_for_the_company_code_35f9c6" xml:space="preserve">
+    <value>Use letters, numbers and hyphens for the company code.</value>
+  </data>
+  <data name="Ui_Vehicle_9bb28c" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="Ui_Vehicle_plate_a00f76" xml:space="preserve">
+    <value>Vehicle / plate</value>
+  </data>
+  <data name="Ui_Vehicle_type_964438" xml:space="preserve">
+    <value>Vehicle type</value>
+  </data>
+  <data name="Ui_Version_0_4b0a3f" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="Ui_View_chauffeur_statement_c42ab6" xml:space="preserve">
+    <value>View chauffeur statement</value>
+  </data>
+  <data name="Ui_View_receipt_3da41a" xml:space="preserve">
+    <value>View receipt</value>
+  </data>
+  <data name="Ui_Waiting_for_positions_4e5e5f" xml:space="preserve">
+    <value>Waiting for positions</value>
+  </data>
+  <data name="Ui_Website_booking_c4e187" xml:space="preserve">
+    <value>Website booking</value>
+  </data>
+  <data name="Ui_Welcome_back_b80783" xml:space="preserve">
+    <value>Welcome back</value>
+  </data>
+  <data name="Ui_Would_you_like_to_close_the_app_089149" xml:space="preserve">
+    <value>Would you like to close the app?</value>
+  </data>
+  <data name="Ui_YOUR_WORKSPACE_d60ec6" xml:space="preserve">
+    <value>YOUR WORKSPACE</value>
+  </data>
+  <data name="Ui_You_do_not_have_permission_to_perform_this_action_069956" xml:space="preserve">
+    <value>You do not have permission to perform this action.</value>
+  </data>
+  <data name="Ui_Your_account_4ab291" xml:space="preserve">
+    <value>Your account</value>
+  </data>
+  <data name="Ui_Your_company_Your_workspace_48ccb9" xml:space="preserve">
+    <value>Your company. Your workspace.</value>
+  </data>
+  <data name="Ui_Your_fleet_Connected_5dbf57" xml:space="preserve">
+    <value>Your fleet. Connected.</value>
+  </data>
+  <data name="Ui_Your_profile_preferences_and_sign_out_c0023d" xml:space="preserve">
+    <value>Your profile, preferences and sign out</value>
+  </data>
+  <data name="Ui_Your_session_has_expired_or_your_sign_in_details_are_incorrect_Please__359ce2" xml:space="preserve">
+    <value>Your session has expired or your sign-in details are incorrect. Please sign in again.</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_Upcoming_rides_will_appear_here_f92628" xml:space="preserve">
+    <value>You’re all caught up. Upcoming rides will appear here.</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_Website_bookings_and_pending_extra_requests_appea_22d5b9" xml:space="preserve">
+    <value>You’re all caught up. Website bookings and pending extra requests appear here.</value>
+  </data>
+  <data name="Ui_Zelle_2a9876" xml:space="preserve">
+    <value>Zelle</value>
+  </data>
+  <data name="Ui_e_g_lux_85c766" xml:space="preserve">
+    <value>e.g. lux</value>
+  </data>
+  <data name="Ui_you_company_com_6e837e" xml:space="preserve">
+    <value>you@company.com</value>
+  </data>
+  <data name="Ui_0_road_miles_calculated_by_Google_Maps_da032c" xml:space="preserve">
+    <value>{0} road miles · calculated by Google Maps</value>
+  </data>
+  <data name="Ui__213edd" xml:space="preserve">
+    <value>→</value>
+  </data>
+  <data name="Ui_Search_passenger_by_name_or_phone_149ec7" xml:space="preserve">
+    <value>Search passenger by name or phone</value>
+  </data>
+  <data name="Ui_Draft_statement_1c22a0" xml:space="preserve">
+    <value>Draft statement</value>
+  </data>
+  <data name="Ui_Finalized_statement_3545ac" xml:space="preserve">
+    <value>Finalized statement</value>
+  </data>
+  <data name="Ui_Operating_expenses_93d42f" xml:space="preserve">
+    <value>Operating expenses: </value>
+  </data>
+  <data name="Ui_Distance_tier_fixed_0_5cb820" xml:space="preserve">
+    <value>Distance tier: fixed {0}</value>
+  </data>
+  <data name="Ui_0_booked_h_1_approved_min_2_h_e8facd" xml:space="preserve">
+    <value>{0} booked h + {1} approved min × {2} / h</value>
+  </data>
+  <data name="Ui_Receipt_attached_f05fe5" xml:space="preserve">
+    <value>Receipt attached</value>
+  </data>
+  <data name="Ui_Update_time_unavailable_858faa" xml:space="preserve">
+    <value>Update time unavailable</value>
+  </data>
+  <data name="Ui_Location_may_be_stale_dfde4c" xml:space="preserve">
+    <value>Location may be stale</value>
+  </data>
+  <data name="Ui_Recently_updated_5f0500" xml:space="preserve">
+    <value>Recently updated</value>
+  </data>
+  <data name="Ui_Updated_0_1_on_the_road_0806d6" xml:space="preserve">
+    <value>Updated {0} · {1} on the road</value>
+  </data>
+  <data name="Ui_Approved_41b81e" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Ui_Rejected_27eeb7" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Ui_Requested_c26bf6" xml:space="preserve">
+    <value>Requested</value>
+  </data>
+  <data name="Ui_Refunded_d6fbc7" xml:space="preserve">
+    <value>Refunded</value>
+  </data>
+  <data name="Ui_OK_9ce3bd" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Ui_New_ride_assigned_cd1d5b" xml:space="preserve">
+    <value>New ride assigned</value>
+  </data>
+  <data name="Ui_New_website_booking_2a3cb2" xml:space="preserve">
+    <value>New website booking</value>
+  </data>
+  <data name="Ui_New_extra_request_761618" xml:space="preserve">
+    <value>New extra request</value>
+  </data>
+  <data name="Ui_Mark_all_as_read_1b8316" xml:space="preserve">
+    <value>Mark all as read</value>
+  </data>
+  <data name="Ui_Load_more_dfe60c" xml:space="preserve">
+    <value>Load more</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_8ec250" xml:space="preserve">
+    <value>You’re all caught up.</value>
+  </data>
+  <data name="Ui_You_have_a_new_ride_Tap_to_view_details_3f94c8" xml:space="preserve">
+    <value>You have a new ride. Tap to view details.</value>
+  </data>
+  <data name="Ui_Setting_up_device_notifications_c0a5a8" xml:space="preserve">
+    <value>Setting up device notifications…</value>
+  </data>
+  <data name="Ui_Device_notifications_are_enabled_1c8d6c" xml:space="preserve">
+    <value>Device notifications are enabled.</value>
+  </data>
+  <data name="Ui_Notifications_are_disabled_in_your_phone_settings_48be78" xml:space="preserve">
+    <value>Notifications are disabled in your phone settings.</value>
+  </data>
+  <data name="Ui_Device_notifications_are_unavailable_Tap_Enable_notifications_to_retry_3dbd91" xml:space="preserve">
+    <value>Device notifications are unavailable. Tap Enable notifications to retry.</value>
+  </data>
+  <data name="Ui_Enable_notifications_da3967" xml:space="preserve">
+    <value>Enable notifications</value>
+  </data>
+  <data name="Ui_Push_notifications_could_not_be_registered_Check_your_connection_and_n_b756f3" xml:space="preserve">
+    <value>Push notifications could not be registered. Check your connection and notification permissions.</value>
+  </data>
+  <data name="Ui_Push_notifications_are_unavailable_Check_notification_permissions_and__de47b1" xml:space="preserve">
+    <value>Push notifications are unavailable. Check notification permissions and your connection.</value>
+  </data>
+  <data name="Ui_The_notification_could_not_be_opened_Open_Notifications_and_try_again_05e2fc" xml:space="preserve">
+    <value>The notification could not be opened. Open Notifications and try again.</value>
+  </data>
+  <data name="Ui_Notifications_could_not_be_refreshed_Open_Notifications_and_try_again_b9b270" xml:space="preserve">
+    <value>Notifications could not be refreshed. Open Notifications and try again.</value>
+  </data>
+  <data name="Ui_This_ride_is_no_longer_available_0d3bb0" xml:space="preserve">
+    <value>This ride is no longer available.</value>
+  </data>
+  <data name="Ui_This_notification_belongs_to_another_company_Sign_in_to_that_company_t_ce1d9d" xml:space="preserve">
+    <value>This notification belongs to another company. Sign in to that company to view the ride.</value>
+  </data>
+  <data name="Ui_A_new_journey_has_been_assigned_f47a70" xml:space="preserve">
+    <value>A new journey has been assigned.</value>
+  </data>
+  <data name="Ui_Call_passenger_92207a" xml:space="preserve">
+    <value>Call passenger</value>
+  </data>
+  <data name="Ui_Passenger_sign_7e893d" xml:space="preserve">
+    <value>Passenger sign</value>
+  </data>
+  <data name="Ui_Pickup_location_19c618" xml:space="preserve">
+    <value>Pickup location</value>
+  </data>
+  <data name="Ui_Google_Maps_40cd7f" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="Ui_Navigate_to_pickup_a3dbc0" xml:space="preserve">
+    <value>Navigate to pickup</value>
+  </data>
+  <data name="Ui_Drop_off_location_d78449" xml:space="preserve">
+    <value>Drop-off location</value>
+  </data>
+  <data name="Ui_Navigate_to_drop_off_0a145a" xml:space="preserve">
+    <value>Navigate to drop-off</value>
+  </data>
+  <data name="Ui_Customer_details_8bded5" xml:space="preserve">
+    <value>Customer details</value>
+  </data>
+  <data name="Ui_Special_notes_7a3f09" xml:space="preserve">
+    <value>Special notes</value>
+  </data>
+  <data name="Ui_Journey_status_0086b8" xml:space="preserve">
+    <value>Journey status</value>
+  </data>
+  <data name="Ui_Journey_closed_Location_tracking_is_off_1cd090" xml:space="preserve">
+    <value>Journey closed. Location tracking is off.</value>
+  </data>
+  <data name="Ui_Resume_location_sharing_5a4a2f" xml:space="preserve">
+    <value>Resume location sharing</value>
+  </data>
+  <data name="Ui_Extra_distance_or_extra_time_03068c" xml:space="preserve">
+    <value>Extra distance or extra time</value>
+  </data>
+  <data name="Ui_Request_extra_distance_or_extra_time_26d3ea" xml:space="preserve">
+    <value>Request extra distance or extra time</value>
+  </data>
+  <data name="Ui_Extra_type_f39001" xml:space="preserve">
+    <value>Extra type</value>
+  </data>
+  <data name="Ui_Explain_the_extra_requested_by_the_customer_648103" xml:space="preserve">
+    <value>Explain the extra requested by the customer</value>
+  </data>
+  <data name="Ui_Time_is_entered_in_minutes_Dispatch_confirms_the_charge_with_the_custo_c745ef" xml:space="preserve">
+    <value>Time is entered in minutes. Dispatch confirms the charge with the customer. Submitting does not change the fare.</value>
+  </data>
+  <data name="Ui_Send_extra_request_e9f710" xml:space="preserve">
+    <value>Send extra request</value>
+  </data>
+  <data name="Ui_Trip_extras_0727d1" xml:space="preserve">
+    <value>Trip extras</value>
+  </data>
+  <data name="Ui_Only_approved_extras_are_charged_64a21f" xml:space="preserve">
+    <value>Only approved extras are charged.</value>
+  </data>
+  <data name="Ui_No_extra_requests_for_this_journey_c4852b" xml:space="preserve">
+    <value>No extra requests for this journey.</value>
+  </data>
+  <data name="Ui_Assign_chauffeur_b90847" xml:space="preserve">
+    <value>Assign chauffeur</value>
+  </data>
+  <data name="Ui_Vehicle_plate_cccdf9" xml:space="preserve">
+    <value>Vehicle plate</value>
+  </data>
+  <data name="Ui_On_the_way_7884d3" xml:space="preserve">
+    <value>On the way</value>
+  </data>
+  <data name="Ui_At_the_pickup_location_8f1a4d" xml:space="preserve">
+    <value>At the pickup location</value>
+  </data>
+  <data name="Ui_Passenger_on_board_80a08d" xml:space="preserve">
+    <value>Passenger on board</value>
+  </data>
+  <data name="Ui_Finish_journey_94c627" xml:space="preserve">
+    <value>Finish journey</value>
+  </data>
+  <data name="Ui_Hourly_0_hours_072798" xml:space="preserve">
+    <value>Hourly · {0} hours</value>
+  </data>
+  <data name="Ui_Available_0_hours_before_pickup_1_b009fa" xml:space="preserve">
+    <value>Available {0} hours before pickup · {1}</value>
+  </data>
+  <data name="Ui_Limo_license_0_1_Please_renew_and_send_the_updated_document_to_dispatc_62ff76" xml:space="preserve">
+    <value>Limo license: {0} · {1}. Please renew and send the updated document to dispatch.</value>
+  </data>
+  <data name="Ui_Total_extra_time_minutes_4ac4f0" xml:space="preserve">
+    <value>Total extra time (minutes)</value>
+  </data>
+  <data name="Ui_Total_extra_miles_9907aa" xml:space="preserve">
+    <value>Total extra miles</value>
+  </data>
+  <data name="Ui_Extra_request_sent_to_dispatch_awaiting_approval_900828" xml:space="preserve">
+    <value>Extra request sent to dispatch · awaiting approval</value>
+  </data>
+  <data name="Ui_Enter_an_extra_quantity_between_0_01_and_100000_28f318" xml:space="preserve">
+    <value>Enter an extra quantity between 0.01 and 100000.</value>
+  </data>
+  <data name="Ui_Enter_an_extra_description_of_up_to_1000_characters_bb717a" xml:space="preserve">
+    <value>Enter an extra description of up to 1000 characters.</value>
+  </data>
+  <data name="Ui_Start_your_journey_before_requesting_an_extra_d7a997" xml:space="preserve">
+    <value>Start your journey before requesting an extra.</value>
+  </data>
+  <data name="Ui_Refresh_this_journey_before_requesting_an_extra_e71990" xml:space="preserve">
+    <value>Refresh this journey before requesting an extra.</value>
+  </data>
+  <data name="Ui_Only_the_assigned_chauffeur_can_request_extras_82113b" xml:space="preserve">
+    <value>Only the assigned chauffeur can request extras.</value>
+  </data>
+  <data name="Ui_The_journey_changed_Review_its_current_status_before_continuing_29c7f5" xml:space="preserve">
+    <value>The journey changed. Review its current status before continuing.</value>
+  </data>
+  <data name="Ui_Approved_charge_0_7e2b86" xml:space="preserve">
+    <value>Approved charge: {0}</value>
+  </data>
+  <data name="Ui_minutes_be2e2b" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Ui_miles_54234b" xml:space="preserve">
+    <value>miles</value>
+  </data>
+  <data name="Ui_Finished_355bcc" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="Ui_Approved_charge_532458" xml:space="preserve">
+    <value>Approved charge: </value>
+  </data>
+  <data name="Ui_Location_is_unavailable_Enable_device_location_and_try_again_2eaa68" xml:space="preserve">
+    <value>Location is unavailable. Enable device location and try again.</value>
+  </data>
+  <data name="Ui_Finish_the_current_journey_before_opening_another_trip_Location_sharin_86a57d" xml:space="preserve">
+    <value>Finish the current journey before opening another trip. Location sharing is still running.</value>
+  </data>
+  <data name="Ui_Live_65c821" xml:space="preserve">
+    <value>Live</value>
+  </data>
+  <data name="Ui_History_90ccd6" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Ui_Choose_a_chauffeur_to_review_recorded_journeys_e0ab62" xml:space="preserve">
+    <value>Choose a chauffeur to review recorded journeys.</value>
+  </data>
+  <data name="Ui_Search_chauffeurs_or_vehicles_77f9d4" xml:space="preserve">
+    <value>Search chauffeurs or vehicles</value>
+  </data>
+  <data name="Ui_No_chauffeurs_found_27664a" xml:space="preserve">
+    <value>No chauffeurs found</value>
+  </data>
+  <data name="Ui_From_date_3b5d11" xml:space="preserve">
+    <value>From date</value>
+  </data>
+  <data name="Ui_To_date_af244d" xml:space="preserve">
+    <value>To date</value>
+  </data>
+  <data name="Ui_Show_journeys_e1f741" xml:space="preserve">
+    <value>Show journeys</value>
+  </data>
+  <data name="Ui_Dates_use_each_journey_s_company_timezone_b2308e" xml:space="preserve">
+    <value>Dates use each journey’s company timezone.</value>
+  </data>
+  <data name="Ui_No_journeys_in_this_date_range_509924" xml:space="preserve">
+    <value>No journeys in this date range</value>
+  </data>
+  <data name="Ui_View_route_and_timeline_2b5c6e" xml:space="preserve">
+    <value>View route and timeline</value>
+  </data>
+  <data name="Ui_Fit_route_ccd867" xml:space="preserve">
+    <value>Fit route</value>
+  </data>
+  <data name="Ui_No_recorded_locations_for_this_journey_7eb1e4" xml:space="preserve">
+    <value>No recorded locations for this journey.</value>
+  </data>
+  <data name="Ui_Go_to_start_81469d" xml:space="preserve">
+    <value>Go to start</value>
+  </data>
+  <data name="Ui_Go_to_end_abe70f" xml:space="preserve">
+    <value>Go to end</value>
+  </data>
+  <data name="Ui_Playback_speed_6ff42b" xml:space="preserve">
+    <value>Playback speed</value>
+  </data>
+  <data name="Ui_Follow_vehicle_9f60f5" xml:space="preserve">
+    <value>Follow vehicle</value>
+  </data>
+  <data name="Ui_Events_c5497b" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Ui_Recorded_GPS_only_Gaps_over_2_minutes_are_not_interpolated_255b48" xml:space="preserve">
+    <value>Recorded GPS only. Gaps over 2 minutes are not interpolated.</value>
+  </data>
+  <data name="Ui_Play_5d12bd" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Ui_Pause_781961" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="Ui_Route_replay_cc1703" xml:space="preserve">
+    <value>Route replay</value>
+  </data>
+  <data name="Ui_0_locations_1_0_0_km_recorded_f578a2" xml:space="preserve">
+    <value>{0} locations · {1:0.0} km recorded</value>
+  </data>
+  <data name="Ui_The_start_date_must_be_before_the_end_date_bdb28b" xml:space="preserve">
+    <value>The start date must be before the end date.</value>
+  </data>
+  <data name="Ui_Select_a_journey_b26b75" xml:space="preserve">
+    <value>Select a journey.</value>
+  </data>
+  <data name="Ui_This_route_is_too_large_to_load_on_this_device_998ef2" xml:space="preserve">
+    <value>This route is too large to load on this device.</value>
+  </data>
+  <data name="Ui_The_route_could_not_be_loaded_completely_Please_try_again_a0e49d" xml:space="preserve">
+    <value>The route could not be loaded completely. Please try again.</value>
+  </data>
+  <data name="Ui_No_map_location_was_found_for_this_address_48e208" xml:space="preserve">
+    <value>No map location was found for this address.</value>
+  </data>
+  <data name="Ui_Exit_full_screen_map_926d68" xml:space="preserve">
+    <value>Exit full screen map</value>
+  </data>
+  <data name="Ui_No_show_75602c" xml:space="preserve">
+    <value>No-show</value>
+  </data>
+  <data name="Ui_RECEIPT_OPTIONAL_355dbf" xml:space="preserve">
+    <value>RECEIPT (OPTIONAL)</value>
+  </data>
+  <data name="Ui_Optionally_attach_a_receipt_from_Camera_Photos_or_Files_0b32e9" xml:space="preserve">
+    <value>Optionally attach a receipt from Camera, Photos or Files.</value>
+  </data>
+  <data name="Ui_Add_at_least_one_pay_band_d95b27" xml:space="preserve">
+    <value>Add at least one pay band.</value>
+  </data>
+  <data name="Ui_Add_band_f91496" xml:space="preserve">
+    <value>Add band</value>
+  </data>
+  <data name="Ui_Apply_this_pay_system_to_the_selected_chauffeur_b14efc" xml:space="preserve">
+    <value>Apply this pay system to the selected chauffeur?</value>
+  </data>
+  <data name="Ui_Approve_extra_8bc585" xml:space="preserve">
+    <value>Approve extra</value>
+  </data>
+  <data name="Ui_Approved_charge_399641" xml:space="preserve">
+    <value>Approved charge</value>
+  </data>
+  <data name="Ui_Assign_another_pay_system_to_its_drivers_before_deleting_this_one_63ca21" xml:space="preserve">
+    <value>Assign another pay system to its drivers before deleting this one.</value>
+  </data>
+  <data name="Ui_Assign_pay_system_64918a" xml:space="preserve">
+    <value>Assign pay system</value>
+  </data>
+  <data name="Ui_Balances_and_assignments_10cab9" xml:space="preserve">
+    <value>Balances and assignments</value>
+  </data>
+  <data name="Ui_Cancel_journey_d8deca" xml:space="preserve">
+    <value>Cancel journey</value>
+  </data>
+  <data name="Ui_Charge_confirmed_with_the_customer_df93de" xml:space="preserve">
+    <value>Charge confirmed with the customer</value>
+  </data>
+  <data name="Ui_Company_expenses_1b64db" xml:space="preserve">
+    <value>Company expenses</value>
+  </data>
+  <data name="Ui_Company_profitability_f0a2d0" xml:space="preserve">
+    <value>Company profitability</value>
+  </data>
+  <data name="Ui_Confirm_the_charge_with_the_customer_before_approval_3be1e0" xml:space="preserve">
+    <value>Confirm the charge with the customer before approval.</value>
+  </data>
+  <data name="Ui_Contract_type_6f00c1" xml:space="preserve">
+    <value>Contract type</value>
+  </data>
+  <data name="Ui_Cost_classification_bd5d8a" xml:space="preserve">
+    <value>Cost classification</value>
+  </data>
+  <data name="Ui_Delete_f6fdbe" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Ui_Delete_category_a82b0f" xml:space="preserve">
+    <value>Delete category</value>
+  </data>
+  <data name="Ui_Delete_category_0_dc1d82" xml:space="preserve">
+    <value>Delete category {0}?</value>
+  </data>
+  <data name="Ui_Delete_expense_711c08" xml:space="preserve">
+    <value>Delete expense</value>
+  </data>
+  <data name="Ui_Delete_expense_0_This_cannot_be_undone_7a138b" xml:space="preserve">
+    <value>Delete expense {0}? This cannot be undone.</value>
+  </data>
+  <data name="Ui_Delete_pay_system_0d5ede" xml:space="preserve">
+    <value>Delete pay system</value>
+  </data>
+  <data name="Ui_Delete_this_unused_pay_system_fb03b7" xml:space="preserve">
+    <value>Delete this unused pay system?</value>
+  </data>
+  <data name="Ui_Distance_pay_bands_605b04" xml:space="preserve">
+    <value>Distance pay bands</value>
+  </data>
+  <data name="Ui_Driver_statement_1d6a98" xml:space="preserve">
+    <value>Driver statement</value>
+  </data>
+  <data name="Ui_Edit_expense_5b77ee" xml:space="preserve">
+    <value>Edit expense</value>
+  </data>
+  <data name="Ui_Edit_journey_fa99d2" xml:space="preserve">
+    <value>Edit journey</value>
+  </data>
+  <data name="Ui_Enter_a_description_and_select_an_existing_category_4217b5" xml:space="preserve">
+    <value>Enter a description and select an existing category.</value>
+  </data>
+  <data name="Ui_Enter_a_pay_system_name_2bad8a" xml:space="preserve">
+    <value>Enter a pay system name.</value>
+  </data>
+  <data name="Ui_Enter_a_positive_amount_ea7055" xml:space="preserve">
+    <value>Enter a positive amount.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_amount_b0e59c" xml:space="preserve">
+    <value>Enter a valid amount.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_non_negative_amount_116e78" xml:space="preserve">
+    <value>Enter a valid non-negative amount.</value>
+  </data>
+  <data name="Ui_Expense_categories_c45009" xml:space="preserve">
+    <value>Expense categories</value>
+  </data>
+  <data name="Ui_Export_CSV_5755f9" xml:space="preserve">
+    <value>Export CSV</value>
+  </data>
+  <data name="Ui_Export_PDF_3dd7d5" xml:space="preserve">
+    <value>Export PDF</value>
+  </data>
+  <data name="Ui_Finalize_statement_cf6b53" xml:space="preserve">
+    <value>Finalize statement</value>
+  </data>
+  <data name="Ui_Hourly_rate_cbe59c" xml:space="preserve">
+    <value>Hourly rate</value>
+  </data>
+  <data name="Ui_Include_upper_limit_126993" xml:space="preserve">
+    <value>Include upper limit</value>
+  </data>
+  <data name="Ui_Journey_no_longer_exists_30259d" xml:space="preserve">
+    <value>Journey no longer exists.</value>
+  </data>
+  <data name="Ui_Leave_the_final_limit_empty_for_an_unlimited_band_7b9dac" xml:space="preserve">
+    <value>Leave the final limit empty for an unlimited band.</value>
+  </data>
+  <data name="Ui_Legacy_balance_c84132" xml:space="preserve">
+    <value>Legacy balance</value>
+  </data>
+  <data name="Ui_Manage_categories_eceede" xml:space="preserve">
+    <value>Manage categories</value>
+  </data>
+  <data name="Ui_Monthly_salary_50f577" xml:space="preserve">
+    <value>Monthly salary</value>
+  </data>
+  <data name="Ui_Needs_review_33a506" xml:space="preserve">
+    <value>Needs review</value>
+  </data>
+  <data name="Ui_New_6403f2" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Ui_New_pay_system_482db9" xml:space="preserve">
+    <value>New pay system</value>
+  </data>
+  <data name="Ui_Pay_calculation_186ae5" xml:space="preserve">
+    <value>Pay calculation</value>
+  </data>
+  <data name="Ui_Pay_system_804417" xml:space="preserve">
+    <value>Pay system</value>
+  </data>
+  <data name="Ui_Pay_system_name_1606f4" xml:space="preserve">
+    <value>Pay system name</value>
+  </data>
+  <data name="Ui_Pay_systems_10a2a2" xml:space="preserve">
+    <value>Pay systems</value>
+  </data>
+  <data name="Ui_Payment_record_ed5232" xml:space="preserve">
+    <value>Payment record</value>
+  </data>
+  <data name="Ui_Percentage_must_be_between_0_and_100_96f807" xml:space="preserve">
+    <value>Percentage must be between 0 and 100.</value>
+  </data>
+  <data name="Ui_Print_Save_PDF_6b1534" xml:space="preserve">
+    <value>Print / Save PDF</value>
+  </data>
+  <data name="Ui_Provisional_report_cb576e" xml:space="preserve">
+    <value>Provisional report</value>
+  </data>
+  <data name="Ui_Record_settlement_f3254a" xml:space="preserve">
+    <value>Record settlement</value>
+  </data>
+  <data name="Ui_Record_this_legacy_balance_settlement_No_money_transfer_is_made_b44e67" xml:space="preserve">
+    <value>Record this legacy balance settlement? No money transfer is made.</value>
+  </data>
+  <data name="Ui_Recording_a_settlement_updates_the_legacy_ledger_only_No_money_transfe_7bc8a9" xml:space="preserve">
+    <value>Recording a settlement updates the legacy ledger only. No money transfer is made.</value>
+  </data>
+  <data name="Ui_Reject_extra_5a6692" xml:space="preserve">
+    <value>Reject extra</value>
+  </data>
+  <data name="Ui_Reload_latest_33af4d" xml:space="preserve">
+    <value>Reload latest</value>
+  </data>
+  <data name="Ui_Remove_attachment_0fcc65" xml:space="preserve">
+    <value>Remove attachment</value>
+  </data>
+  <data name="Ui_Remove_band_fb769d" xml:space="preserve">
+    <value>Remove band</value>
+  </data>
+  <data name="Ui_Resolve_all_review_items_before_finalizing_271716" xml:space="preserve">
+    <value>Resolve all review items before finalizing.</value>
+  </data>
+  <data name="Ui_Review_extra_059bdb" xml:space="preserve">
+    <value>Review extra</value>
+  </data>
+  <data name="Ui_Review_note_0e846b" xml:space="preserve">
+    <value>Review note</value>
+  </data>
+  <data name="Ui_Review_the_extra_request_and_amount_408838" xml:space="preserve">
+    <value>Review the extra request and amount.</value>
+  </data>
+  <data name="Ui_Save_expense_0_for_1_8cf9a2" xml:space="preserve">
+    <value>Save expense {0} for {1}?</value>
+  </data>
+  <data name="Ui_Save_pay_system_2a696b" xml:space="preserve">
+    <value>Save pay system</value>
+  </data>
+  <data name="Ui_Save_these_pay_rules_Finalized_statements_will_retain_their_existing_r_e2aca7" xml:space="preserve">
+    <value>Save these pay rules? Finalized statements will retain their existing rules.</value>
+  </data>
+  <data name="Ui_Search_categories_259c54" xml:space="preserve">
+    <value>Search categories</value>
+  </data>
+  <data name="Ui_Search_chauffeur_23d692" xml:space="preserve">
+    <value>Search chauffeur</value>
+  </data>
+  <data name="Ui_Select_a_chauffeur_and_pay_system_148f59" xml:space="preserve">
+    <value>Select a chauffeur and pay system.</value>
+  </data>
+  <data name="Ui_Select_a_chauffeur_50a7aa" xml:space="preserve">
+    <value>Select a chauffeur.</value>
+  </data>
+  <data name="Ui_Select_a_valid_date_range_c6aa9b" xml:space="preserve">
+    <value>Select a valid date range.</value>
+  </data>
+  <data name="Ui_Select_the_linked_vehicle_for_vehicle_expenses_0f8715" xml:space="preserve">
+    <value>Select the linked vehicle for vehicle expenses.</value>
+  </data>
+  <data name="Ui_Settlement_amount_f015ee" xml:space="preserve">
+    <value>Settlement amount</value>
+  </data>
+  <data name="Ui_Settlement_must_be_positive_and_cannot_exceed_the_outstanding_balance_0a2944" xml:space="preserve">
+    <value>Settlement must be positive and cannot exceed the outstanding balance.</value>
+  </data>
+  <data name="Ui_This_expense_is_no_longer_available_a9ec67" xml:space="preserve">
+    <value>This expense is no longer available.</value>
+  </data>
+  <data name="Ui_This_extra_has_already_been_reviewed_Refresh_the_journey_3ed23f" xml:space="preserve">
+    <value>This extra has already been reviewed. Refresh the journey.</value>
+  </data>
+  <data name="Ui_This_journey_cannot_be_cancelled_in_its_current_state_2acef2" xml:space="preserve">
+    <value>This journey cannot be cancelled in its current state.</value>
+  </data>
+  <data name="Ui_This_record_is_no_longer_available_c60719" xml:space="preserve">
+    <value>This record is no longer available.</value>
+  </data>
+  <data name="Ui_This_statement_has_already_been_finalized_Refresh_it_078fd9" xml:space="preserve">
+    <value>This statement has already been finalized. Refresh it.</value>
+  </data>
+  <data name="Ui_Upper_limit_miles_07c2bc" xml:space="preserve">
+    <value>Upper limit (miles)</value>
+  </data>
+  <data name="Ui_Use_increasing_band_limits_only_the_last_band_may_be_unlimited_854930" xml:space="preserve">
+    <value>Use increasing band limits; only the last band may be unlimited.</value>
+  </data>
+  <data name="Ui_Use_plain_category_names_of_up_to_100_characters_e5e4f6" xml:space="preserve">
+    <value>Use plain category names of up to 100 characters.</value>
+  </data>
+  <data name="Ui_Value_8dce17" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Ui_Approve_this_extra_charge_after_confirming_it_with_the_customer_0be347" xml:space="preserve">
+    <value>Approve this extra charge after confirming it with the customer?</value>
+  </data>
+  <data name="Ui_Reject_this_extra_request_8bc8ca" xml:space="preserve">
+    <value>Reject this extra request?</value>
+  </data>
+  <data name="Ui_Cancel_this_journey_This_does_not_issue_a_payment_refund_c3d99b" xml:space="preserve">
+    <value>Cancel this journey? This does not issue a payment refund.</value>
+  </data>
+  <data name="Ui_Set_the_payment_record_to_0_No_money_is_collected_or_refunded_1c6671" xml:space="preserve">
+    <value>Set the payment record to {0}? No money is collected or refunded.</value>
+  </data>
+  <data name="Ui_Save_changes_to_the_journey_for_0_81a56a" xml:space="preserve">
+    <value>Save changes to the journey for {0}?</value>
+  </data>
+  <data name="Ui_This_journey_is_locked_Refresh_its_current_status_1b853f" xml:space="preserve">
+    <value>This journey is locked. Refresh its current status.</value>
+  </data>
+  <data name="Ui_Finalize_this_reviewed_statement_Its_rules_and_amounts_will_be_preserv_fed121" xml:space="preserve">
+    <value>Finalize this reviewed statement? Its rules and amounts will be preserved.</value>
+  </data>
+  <data name="Ui_The_statement_changed_Refresh_and_review_before_finalizing_4ccb5b" xml:space="preserve">
+    <value>The statement changed. Refresh and review before finalizing.</value>
+  </data>
+  <data name="Ui_Data_changed_on_the_server_Refresh_and_review_before_saving_again_b02722" xml:space="preserve">
+    <value>Data changed on the server. Refresh and review before saving again.</value>
+  </data>
+  <data name="Ui_Your_account_does_not_have_permission_for_this_action_803170" xml:space="preserve">
+    <value>Your account does not have permission for this action.</value>
+  </data>
+  <data name="Ui_All_vehicles_f521f4" xml:space="preserve">
+    <value>All vehicles</value>
+  </data>
+  <data name="Ui_Operating_expense_b559d0" xml:space="preserve">
+    <value>Operating expense</value>
+  </data>
+  <data name="Ui_Driver_payroll_payment_694f6b" xml:space="preserve">
+    <value>Driver payroll payment</value>
+  </data>
+  <data name="Ui_Other_staff_salary_d61634" xml:space="preserve">
+    <value>Other staff salary</value>
+  </data>
+  <data name="Ui_fixed_7bc555" xml:space="preserve">
+    <value>Fixed amount</value>
+  </data>
+  <data name="Ui_percent_56b249" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="Ui_bands_0c2a21" xml:space="preserve">
+    <value>Distance &amp; hourly</value>
+  </data>
+  <data name="Ui_salary_47dfeb" xml:space="preserve">
+    <value>Monthly salary</value>
+  </data>
+  <data name="Ui_Booked_hours_adbd29" xml:space="preserve">
+    <value>Booked hours</value>
+  </data>
+  <data name="Ui_Extra_minutes_8958d9" xml:space="preserve">
+    <value>Extra minutes</value>
+  </data>
+  <data name="Ui_Total_hours_18c63f" xml:space="preserve">
+    <value>Total hours</value>
+  </data>
+  <data name="Ui_Pay_rule_3f2720" xml:space="preserve">
+    <value>Pay rule</value>
+  </data>
+  <data name="Ui_External_source_82e693" xml:space="preserve">
+    <value>External source</value>
+  </data>
+  <data name="Ui_External_reference_52aa72" xml:space="preserve">
+    <value>External reference</value>
+  </data>
+  <data name="Ui_Review_issue_38f326" xml:space="preserve">
+    <value>Review issue</value>
+  </data>
+  <data name="Ui_Unposted_maintenance_0faad8" xml:space="preserve">
+    <value>Unposted maintenance: </value>
+  </data>
+  <data name="Ui_Hourly_rate_45db5b" xml:space="preserve">
+    <value>Hourly rate: </value>
+  </data>
+  <data name="Ui_Miles_0_0_ece6f4" xml:space="preserve">
+    <value>Miles: {0:0.##}</value>
+  </data>
+  <data name="Ui_Booked_hours_0_0_15517d" xml:space="preserve">
+    <value>Booked hours: {0:0.##}</value>
+  </data>
+  <data name="Ui_Extra_minutes_0_0_d93652" xml:space="preserve">
+    <value>Extra minutes: {0:0.##}</value>
+  </data>
+  <data name="Ui_Total_hours_0_0_cf7a11" xml:space="preserve">
+    <value>Total hours: {0:0.##}</value>
+  </data>
+  <data name="Ui_Margin_0_0_f0e3ce" xml:space="preserve">
+    <value>Margin: {0:0.##}%</value>
+  </data>
+  <data name="Ui_Wait_for_the_report_to_load_a78525" xml:space="preserve">
+    <value>Wait for the report to load.</value>
+  </data>
+  <data name="Ui_The_report_is_not_available_da0c92" xml:space="preserve">
+    <value>The report is not available.</value>
+  </data>
+  <data name="Ui_Mark_this_journey_as_no_show_b2b908" xml:space="preserve">
+    <value>Mark this journey as no-show?</value>
+  </data>
+  <data name="Ui_Choose_a_valid_payment_state_9d6121" xml:space="preserve">
+    <value>Choose a valid payment state.</value>
+  </data>
+  <data name="Ui_Choose_a_valid_cost_classification_4646b9" xml:space="preserve">
+    <value>Choose a valid cost classification.</value>
+  </data>
+  <data name="Ui_Select_the_driver_for_a_payroll_payment_f1bd56" xml:space="preserve">
+    <value>Select the driver for a payroll payment.</value>
+  </data>
+  <data name="Ui_Not_linked_0196fd" xml:space="preserve">
+    <value>Not linked</value>
+  </data>
+  <data name="Ui_General_c6a956" xml:space="preserve">
+    <value>General: </value>
+  </data>
+  <data name="Ui_Vehicle_c1958f" xml:space="preserve">
+    <value>Vehicle: </value>
+  </data>
+  <data name="Ui_Receipts_0_0879bb" xml:space="preserve">
+    <value>Receipts: {0}</value>
+  </data>
+  <data name="Ui_Collected_583f28" xml:space="preserve">
+    <value>Collected: </value>
+  </data>
+  <data name="Ui_Outstanding_a35ff6" xml:space="preserve">
+    <value>Outstanding: </value>
+  </data>
+  <data name="Ui_Payroll_settlements_2f7511" xml:space="preserve">
+    <value>Payroll settlements: </value>
+  </data>
+  <data name="Ui_Chauffeur_pay_e63a26" xml:space="preserve">
+    <value>Chauffeur pay</value>
+  </data>
+  <data name="Ui_Add_category_d169b7" xml:space="preserve">
+    <value>Add category</value>
+  </data>
+  <data name="Ui_Rename_category_e66630" xml:space="preserve">
+    <value>Rename category</value>
+  </data>
+  <data name="Ui_Accrual_estimate_based_on_entered_costs_Salary_is_prorated_by_days_Pay_45f2f1" xml:space="preserve">
+    <value>Accrual estimate based on entered costs. Salary is prorated by days. Payroll payments are settlements, not a second expense; incident estimates excluded.</value>
+  </data>
+  <data name="Ui_Card_payment_records_must_be_managed_through_the_web_payment_flow_9416c9" xml:space="preserve">
+    <value>Card payment records must be managed through the web payment flow.</value>
+  </data>
+  <data name="Ui_Existing_price_is_retained_unless_the_passenger_route_hours_vehicle_ty_55afd1" xml:space="preserve">
+    <value>Existing price is retained unless the passenger, route, hours, vehicle type, coupon or payment method changes.</value>
+  </data>
+  <data name="Ui_Unassign_chauffeur_dd4815" xml:space="preserve">
+    <value>Unassign chauffeur</value>
+  </data>
+  <data name="Ui_Remove_the_chauffeur_and_vehicle_assignment_from_this_unstarted_journe_5fd081" xml:space="preserve">
+    <value>Remove the chauffeur and vehicle assignment from this unstarted journey?</value>
+  </data>
+  <data name="Ui_Trip_ID_c4599d" xml:space="preserve">
+    <value>Trip ID</value>
+  </data>
+  <data name="Ui_Source_kind_7eda9b" xml:space="preserve">
+    <value>Source kind</value>
+  </data>
+  <data name="Ui_All_6a7208" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Ui_Operating_expenses_b6cc84" xml:space="preserve">
+    <value>Operating expenses:</value>
+  </data>
+  <data name="Ui_Approved_charge_39de7f" xml:space="preserve">
+    <value>Approved charge:</value>
+  </data>
+  <data name="Ui_Unposted_maintenance_f765af" xml:space="preserve">
+    <value>Unposted maintenance:</value>
+  </data>
+  <data name="Ui_Hourly_rate_cea423" xml:space="preserve">
+    <value>Hourly rate:</value>
+  </data>
+  <data name="Ui_General_a2672e" xml:space="preserve">
+    <value>General:</value>
+  </data>
+  <data name="Ui_Vehicle_d74938" xml:space="preserve">
+    <value>Vehicle:</value>
+  </data>
+  <data name="Ui_Collected_8e0cd5" xml:space="preserve">
+    <value>Collected:</value>
+  </data>
+  <data name="Ui_Outstanding_02fc96" xml:space="preserve">
+    <value>Outstanding:</value>
+  </data>
+  <data name="Ui_Payroll_settlements_24a67d" xml:space="preserve">
+    <value>Payroll settlements:</value>
+  </data>
+<data name="Ui_Moving_65cd4d" xml:space="preserve"><value>Moving</value></data>
+<data name="Ui_Stationary_faa595" xml:space="preserve"><value>Stationary</value></data>
+<data name="Ui_Connection_delayed_or_unconfirmed_7da128" xml:space="preserve"><value>Connection delayed or unconfirmed</value></data>
+<data name="Ui_Live_updates_connected_3ec442" xml:space="preserve"><value>Live updates connected</value></data>
+<data name="Ui_Connecting_live_tracking_2362cf" xml:space="preserve"><value>Connecting live tracking…</value></data>
+<data name="Ui_Live_connection_interrupted_periodic_refresh_2d4725" xml:space="preserve"><value>Live connection interrupted · periodic refresh</value></data>
+<data name="Ui_Live_connection_interrupted_retrying_4507d4" xml:space="preserve"><value>Live connection interrupted · retrying</value></data>
+
+<data name="Ui_Synchronization_cbcf7a" xml:space="preserve"><value>Synchronization</value></data>
+<data name="Ui_Pending_journeys_and_location_uploads_d5b3ca" xml:space="preserve"><value>Pending journeys and location uploads</value></data>
+<data name="Ui_Sync_now_2b7d93" xml:space="preserve"><value>Sync now</value></data>
+<data name="Ui_No_saved_journeys_are_waiting_for_synchronization_105f5d" xml:space="preserve"><value>No saved journeys are waiting for synchronization.</value></data>
+<data name="Ui_Saved_on_this_device_Pending_data_stays_protected_until_the_server_ack_735961" xml:space="preserve"><value>Saved on this device. Pending data stays protected until the server acknowledges it. Review items are not deleted automatically.</value></data>
+<data name="Ui_0_journeys_1_locations_pending_28c46a" xml:space="preserve"><value>{0} journeys · {1} locations pending</value></data>
+<data name="Ui_0_locations_pending_1_need_review_0b01d9" xml:space="preserve"><value>{0} locations pending · {1} need review</value></data>
+<data name="Ui_Ended_on_this_device_0_e2d553" xml:space="preserve"><value>Ended on this device: {0}</value></data>
+<data name="Ui_Journey_ended_awaiting_synchronization_a75f1e" xml:space="preserve"><value>Journey ended · awaiting synchronization</value></data>
+<data name="Ui_Journey_completed_location_uploads_pending_a32e5c" xml:space="preserve"><value>Journey completed · location uploads pending</value></data>
+<data name="Ui_Synchronization_complete_e65b25" xml:space="preserve"><value>Synchronization complete</value></data>
+<data name="Ui_Review_required_c77ff1" xml:space="preserve"><value>Review required</value></data>
+<data name="Ui_Sign_in_to_synchronize_79a9ec" xml:space="preserve"><value>Sign in to synchronize</value></data>
+<data name="Ui_Location_uploads_pending_0332d2" xml:space="preserve"><value>Location uploads pending</value></data>
+<data name="Ui_End_this_journey_on_this_device_It_will_synchronize_when_connected_9e0852" xml:space="preserve"><value>End this journey on this device? It will synchronize when connected.</value></data>
+<data name="Ui_Offline_completion_is_unavailable_Connect_to_check_server_support_firs_d60bb7" xml:space="preserve"><value>Offline completion is unavailable. Connect to check server support first.</value></data>
+<data name="Ui_Connect_to_the_internet_to_synchronize_saved_journeys_ad5c54" xml:space="preserve"><value>Connect to the internet to synchronize saved journeys.</value></data>
+<data name="Ui_Only_the_assigned_chauffeur_can_finish_an_onboard_journey_574f1b" xml:space="preserve"><value>Only the assigned chauffeur can finish an onboard journey.</value></data>
+<data name="Ui_Synchronization_storage_is_full_Connect_and_synchronize_before_continu_b30255" xml:space="preserve"><value>Synchronization storage is full. Connect and synchronize before continuing.</value></data>
+<data name="Ui_Saved_synchronization_data_needs_recovery_Its_encryption_key_is_unavai_884b87" xml:space="preserve"><value>Saved synchronization data needs recovery. Its encryption key is unavailable.</value></data>
+<data name="Ui_The_journey_was_cancelled_by_dispatch_01718e" xml:space="preserve"><value>The journey was cancelled by dispatch.</value></data>
+<data name="Ui_The_chauffeur_assignment_changed_Contact_dispatch_cac014" xml:space="preserve"><value>The chauffeur assignment changed. Contact dispatch.</value></data>
+<data name="Ui_This_journey_needs_assignment_review_Contact_dispatch_bdaba4" xml:space="preserve"><value>This journey needs assignment review. Contact dispatch.</value></data>
+<data name="Ui_The_completion_time_needs_review_Contact_dispatch_79a7db" xml:space="preserve"><value>The completion time needs review. Contact dispatch.</value></data>
+<data name="Ui_The_synchronization_window_has_expired_Saved_data_has_been_retained_199030" xml:space="preserve"><value>The synchronization window has expired. Saved data has been retained.</value></data>
+<data name="Ui_Sign_in_to_the_original_account_to_synchronize_d6700c" xml:space="preserve"><value>Sign in to the original account to synchronize.</value></data>
+<data name="Ui_Some_saved_locations_need_review_Contact_dispatch_fe5706" xml:space="preserve"><value>Some saved locations need review. Contact dispatch.</value></data>
+<data name="Ui_The_journey_changed_on_the_server_Contact_dispatch_979e48" xml:space="preserve"><value>The journey changed on the server. Contact dispatch.</value></data>
+<data name="Ui_The_saved_synchronization_request_needs_review_Contact_dispatch_dee43d" xml:space="preserve"><value>The saved synchronization request needs review. Contact dispatch.</value></data>
+<data name="Ui_Waiting_for_a_connection_or_the_next_synchronization_attempt_95145d" xml:space="preserve"><value>Waiting for a connection or the next synchronization attempt.</value></data>
+<data name="Ui_Saved_data_needs_review_Contact_dispatch_578979" xml:space="preserve"><value>Saved data needs review. Contact dispatch.</value></data>
+<data name="Ui_This_journey_has_already_ended_on_this_device_46e7fb" xml:space="preserve"><value>This journey has already ended on this device.</value></data>
+<data name="Ui_Completed_items_disappear_from_this_page_after_24_hours_Pending_journe_88442c" xml:space="preserve"><value>Completed items disappear from this page after 24 hours. Pending journeys and items needing review stay visible.</value></data>
+</root>

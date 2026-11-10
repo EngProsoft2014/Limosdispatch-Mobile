@@ -1,0 +1,1 @@
+using LimosDispatch.Mobile.ViewModels;namespace LimosDispatch.Mobile.Pages;public partial class PaySystemsPage:ContentPage{readonly PaySystemsViewModel model;public PaySystemsPage(PaySystemsViewModel model){InitializeComponent();BindingContext=this.model=model;}protected override async void OnAppearing(){base.OnAppearing();await model.LoadAsync();}}

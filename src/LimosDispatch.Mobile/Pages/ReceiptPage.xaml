@@ -1,0 +1,5 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LimosDispatch.Mobile.Pages.ReceiptPage" Title="{DynamicResource Ui_Receipt_f6ce3b}" BackgroundColor="{DynamicResource Canvas}"><Grid Padding="16" RowDefinitions="Auto,*" RowSpacing="16"><Label x:Name="ReceiptName" FontSize="15"/><Image x:Name="ReceiptImage" Grid.Row="1" Aspect="AspectFit"/><VerticalStackLayout x:Name="DocumentPanel" Grid.Row="1" IsVisible="False" VerticalOptions="Center" Spacing="16"><Image Source="receipt_document.png" WidthRequest="64" HeightRequest="64"/><Label Text="{DynamicResource Ui_PDF_receipt_6c9ff2}" FontSize="20" HorizontalTextAlignment="Center"/><Button Text="{DynamicResource Ui_Open_document_5fc7f2}" Clicked="OnOpenDocument"/></VerticalStackLayout></Grid></ContentPage>
+
+
+
+

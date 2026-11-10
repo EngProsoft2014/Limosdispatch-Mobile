@@ -1,0 +1,1691 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Ui_24_hour_time_f91025" xml:space="preserve">
+    <value>الوقت بنظام 24 ساعة</value>
+  </data>
+  <data name="Ui_ASSIGN_CHAUFFEUR_d92785" xml:space="preserve">
+    <value>إسناد السائق</value>
+  </data>
+  <data name="Ui_Access_is_unavailable_Please_check_your_app_permissions_b26d78" xml:space="preserve">
+    <value>الوصول غير متاح. راجع صلاحيات التطبيق.</value>
+  </data>
+  <data name="Ui_Accessibility_announcements_while_the_app_is_open_745b86" xml:space="preserve">
+    <value>إعلانات تسهيل الاستخدام أثناء فتح التطبيق</value>
+  </data>
+  <data name="Ui_Account_85dfa3" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  <data name="Ui_Add_an_expense_528520" xml:space="preserve">
+    <value>إضافة مصروف</value>
+  </data>
+  <data name="Ui_Add_expense_d83567" xml:space="preserve">
+    <value>إضافة مصروف</value>
+  </data>
+  <data name="Ui_Add_new_passenger_8e1551" xml:space="preserve">
+    <value>إنشاء راكب جديد</value>
+  </data>
+  <data name="Ui_Admin_4e7afe" xml:space="preserve">
+    <value>أدمن</value>
+  </data>
+  <data name="Ui_After_discount_34c7d4" xml:space="preserve">
+    <value>بعد الخصم</value>
+  </data>
+  <data name="Ui_Amount_43dc85" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="Ui_Announce_assignments_c54608" xml:space="preserve">
+    <value>الإعلان عن الإسنادات</value>
+  </data>
+  <data name="Ui_App_theme_3d0ba3" xml:space="preserve">
+    <value>مظهر التطبيق</value>
+  </data>
+  <data name="Ui_Apply_cfea41" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+  <data name="Ui_Arrived_a22d66" xml:space="preserve">
+    <value>وصل</value>
+  </data>
+  <data name="Ui_Assign_journey_01b0e4" xml:space="preserve">
+    <value>إسناد الرحلة</value>
+  </data>
+  <data name="Ui_Attach_a_receipt_from_Camera_Photos_or_Files_07d100" xml:space="preserve">
+    <value>أرفق إيصالًا من الكاميرا أو الصور أو الملفات.</value>
+  </data>
+  <data name="Ui_Back_to_passenger_search_9f181d" xml:space="preserve">
+    <value>العودة للبحث عن راكب</value>
+  </data>
+  <data name="Ui_Base_fare_0778fa" xml:space="preserve">
+    <value>الأجرة الأساسية</value>
+  </data>
+  <data name="Ui_Booster_seat_833ddb" xml:space="preserve">
+    <value>مقعد أطفال معزز</value>
+  </data>
+  <data name="Ui_CHAUFFEUR_VEHICLE_6c01f5" xml:space="preserve">
+    <value>السائق والمركبة</value>
+  </data>
+  <data name="Ui_Calculate_a_valid_Google_driving_route_before_saving_2b3a22" xml:space="preserve">
+    <value>احسب مسار قيادة صحيحًا من Google قبل الحفظ.</value>
+  </data>
+  <data name="Ui_Calculating_Google_driving_distance_12a8c9" xml:space="preserve">
+    <value>جارٍ حساب مسافة الطريق من Google…</value>
+  </data>
+  <data name="Ui_Camera_4da9c9" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+  <data name="Ui_Cancel_77dfd2" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Ui_Cancelled_a1bf92" xml:space="preserve">
+    <value>ملغاة</value>
+  </data>
+  <data name="Ui_Can_t_find_them_Save_a_new_contact_cb7a0e" xml:space="preserve">
+    <value>لم تجد الراكب؟ احفظ جهة اتصال جديدة.</value>
+  </data>
+  <data name="Ui_Card_collection_is_not_enabled_in_this_mobile_build_Complete_card_chec_6b5232" xml:space="preserve">
+    <value>تحصيل البطاقة غير مفعّل في هذه النسخة. أكمل الدفع عبر الويب أو اختر طريقة أخرى.</value>
+  </data>
+  <data name="Ui_Card_fees_can_be_previewed_here_Card_collection_must_be_completed_thro_ddc454" xml:space="preserve">
+    <value>يمكن معاينة رسوم البطاقة هنا. تحصيل البطاقة يتم عبر الويب؛ التحصيل من الموبايل غير مفعّل.</value>
+  </data>
+  <data name="Ui_Cash_758ec5" xml:space="preserve">
+    <value>نقدًا</value>
+  </data>
+  <data name="Ui_Category_a3c686" xml:space="preserve">
+    <value>التصنيف</value>
+  </data>
+  <data name="Ui_Category_name_ed3dc4" xml:space="preserve">
+    <value>اسم التصنيف</value>
+  </data>
+  <data name="Ui_Change_the_dates_or_pull_down_to_refresh_c140e6" xml:space="preserve">
+    <value>غيّر التواريخ أو اسحب لأسفل للتحديث.</value>
+  </data>
+  <data name="Ui_Check_4b5e84" xml:space="preserve">
+    <value>شيك</value>
+  </data>
+  <data name="Ui_Check_coupon_9f7f71" xml:space="preserve">
+    <value>فحص الكوبون</value>
+  </data>
+  <data name="Ui_Checking_the_customer_s_price_92064c" xml:space="preserve">
+    <value>جارٍ التحقق من سعر العميل…</value>
+  </data>
+  <data name="Ui_Child_seats_e24fb3" xml:space="preserve">
+    <value>مقاعد الأطفال</value>
+  </data>
+  <data name="Ui_Choose_a_vehicle_type_and_a_distance_or_duration_covered_by_company_pr_3f9e03" xml:space="preserve">
+    <value>اختر نوع مركبة ومسافة أو مدة تغطيها أسعار الشركة.</value>
+  </data>
+  <data name="Ui_Choose_chauffeur_578753" xml:space="preserve">
+    <value>اختر السائق</value>
+  </data>
+  <data name="Ui_Choose_expense_receipt_03b0da" xml:space="preserve">
+    <value>اختيار إيصال المصروف</value>
+  </data>
+  <data name="Ui_Choose_pickup_and_drop_off_to_calculate_the_road_distance_87a05d" xml:space="preserve">
+    <value>اختر الانطلاق والوصول لحساب مسافة الطريق.</value>
+  </data>
+  <data name="Ui_Choose_the_appearance_that_suits_you_83d8a2" xml:space="preserve">
+    <value>اختر المظهر المناسب لك</value>
+  </data>
+  <data name="Ui_Choose_the_correct_address_below_bc99c8" xml:space="preserve">
+    <value>اختر العنوان الصحيح أدناه.</value>
+  </data>
+  <data name="Ui_Choose_the_quantity_of_each_type_Use_0_when_not_required_c1b08a" xml:space="preserve">
+    <value>حدّد عدد كل نوع، أو 0 عند عدم الحاجة.</value>
+  </data>
+  <data name="Ui_Choose_your_passenger_bef2a1" xml:space="preserve">
+    <value>اختر الراكب</value>
+  </data>
+  <data name="Ui_Choose_your_preferred_language_f9d875" xml:space="preserve">
+    <value>اختر اللغة المناسبة لك</value>
+  </data>
+  <data name="Ui_Close_bbfa77" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Ui_Close_address_search_fd3177" xml:space="preserve">
+    <value>إغلاق بحث العناوين</value>
+  </data>
+  <data name="Ui_Close_passenger_search_152481" xml:space="preserve">
+    <value>إغلاق بحث الركاب</value>
+  </data>
+  <data name="Ui_Company_code_e9eebb" xml:space="preserve">
+    <value>كود الشركة</value>
+  </data>
+  <data name="Ui_Company_0_09ee5c" xml:space="preserve">
+    <value>الشركة: {0}</value>
+  </data>
+  <data name="Ui_Complete_journey_3abb7c" xml:space="preserve">
+    <value>إنهاء الرحلة</value>
+  </data>
+  <data name="Ui_Completed_1798b3" xml:space="preserve">
+    <value>مكتملة</value>
+  </data>
+  <data name="Ui_Completed_fares_e41dcb" xml:space="preserve">
+    <value>أجور الرحلات المكتملة</value>
+  </data>
+  <data name="Ui_Confirm_04a212" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="Ui_Confirmed_8cc7ac" xml:space="preserve">
+    <value>مؤكدة</value>
+  </data>
+  <data name="Ui_Confirmed_Enroute_Arrived_Onboard_Completed_2a53d9" xml:space="preserve">
+    <value>مؤكدة ← في الطريق ← وصل ← الراكب على متن السيارة ← مكتملة</value>
+  </data>
+  <data name="Ui_Coupon_applied_Review_the_final_total_below_5ee77a" xml:space="preserve">
+    <value>تم تطبيق الكوبون. راجع الإجمالي النهائي.</value>
+  </data>
+  <data name="Ui_Coupon_code_optional_e310f7" xml:space="preserve">
+    <value>كود الكوبون (اختياري)</value>
+  </data>
+  <data name="Ui_Coupon_discount_bdb1a1" xml:space="preserve">
+    <value>خصم الكوبون</value>
+  </data>
+  <data name="Ui_Create_a_ride_20846b" xml:space="preserve">
+    <value>إنشاء رحلة</value>
+  </data>
+  <data name="Ui_Create_journey_2a2a53" xml:space="preserve">
+    <value>إنشاء الرحلة</value>
+  </data>
+  <data name="Ui_Create_the_journey_for_0_on_1_Total_2_3_e018ed" xml:space="preserve">
+    <value>إنشاء رحلة للراكب {0} في {1}؟ الإجمالي: {2} {3}.</value>
+  </data>
+  <data name="Ui_Credit_Card_69ed5a" xml:space="preserve">
+    <value>بطاقة ائتمان</value>
+  </data>
+  <data name="Ui_Credit_card_fees_0de7d4" xml:space="preserve">
+    <value>رسوم بطاقة الائتمان</value>
+  </data>
+  <data name="Ui_Current_temporary_password_6ae11b" xml:space="preserve">
+    <value>كلمة المرور المؤقتة الحالية</value>
+  </data>
+  <data name="Ui_Customer_discount_3851df" xml:space="preserve">
+    <value>خصم العميل</value>
+  </data>
+  <data name="Ui_DRIVER_STATEMENT_36ac96" xml:space="preserve">
+    <value>كشف حساب السائق</value>
+  </data>
+  <data name="Ui_DROP_OFF_37ea34" xml:space="preserve">
+    <value>الوصول</value>
+  </data>
+  <data name="Ui_Dark_ae1ef0" xml:space="preserve">
+    <value>داكن</value>
+  </data>
+  <data name="Ui_Data_has_changed_on_the_server_Refresh_and_review_it_before_saving_9845d1" xml:space="preserve">
+    <value>تغيرت البيانات على الخادم. حدّثها وراجعها قبل الحفظ.</value>
+  </data>
+  <data name="Ui_Description_55f8eb" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="Ui_Details_dc3dec" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="Ui_Dispatch_notifications_c345c8" xml:space="preserve">
+    <value>إشعارات الديسباتش</value>
+  </data>
+  <data name="Ui_Distance_423208" xml:space="preserve">
+    <value>بالمسافة</value>
+  </data>
+  <data name="Ui_Distance_company_mileage_band_Hourly_booked_hours_hourly_rate_dee40c" xml:space="preserve">
+    <value>المسافة: شريحة أميال الشركة. بالساعة: الساعات المحجوزة × سعر الساعة.</value>
+  </data>
+  <data name="Ui_Driver_b5c7d8" xml:space="preserve">
+    <value>سائق</value>
+  </data>
+  <data name="Ui_Drivers_sharing_their_location_during_a_ride_will_appear_here_4d93d7" xml:space="preserve">
+    <value>سيظهر هنا السائقون الذين يشاركون موقعهم أثناء الرحلة.</value>
+  </data>
+  <data name="Ui_Drop_off_6aa76e" xml:space="preserve">
+    <value>الوصول</value>
+  </data>
+  <data name="Ui_Duration_in_hours_df9534" xml:space="preserve">
+    <value>المدة بالساعات</value>
+  </data>
+  <data name="Ui_Each_child_seat_quantity_must_be_a_whole_number_from_0_to_20_e1eab6" xml:space="preserve">
+    <value>عدد كل نوع من مقاعد الأطفال يجب أن يكون عددًا صحيحًا من 0 إلى 20.</value>
+  </data>
+  <data name="Ui_Earned_wages_1620df" xml:space="preserve">
+    <value>مستحقات السائق</value>
+  </data>
+  <data name="Ui_Earnings_ad772f" xml:space="preserve">
+    <value>الأرباح</value>
+  </data>
+  <data name="Ui_Email_84add5" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Ui_Email_optional_5c10b5" xml:space="preserve">
+    <value>البريد الإلكتروني (اختياري)</value>
+  </data>
+  <data name="Ui_Email_address_c94d31" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Ui_Enroute_825715" xml:space="preserve">
+    <value>في الطريق</value>
+  </data>
+  <data name="Ui_Enter_a_phone_number_fd7290" xml:space="preserve">
+    <value>أدخل رقم الهاتف.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_email_address_such_as_name_example_com_245fe1" xml:space="preserve">
+    <value>أدخل بريدًا صحيحًا مثل name@example.com.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_phone_number_with_7_to_15_digits_A_leading_is_allowed_092512" xml:space="preserve">
+    <value>أدخل هاتفًا صحيحًا من 7 إلى 15 رقمًا، ويمكن أن يبدأ بعلامة +.</value>
+  </data>
+  <data name="Ui_Enter_at_least_3_characters_to_search_Google_addresses_c2d11b" xml:space="preserve">
+    <value>أدخل 3 أحرف على الأقل للبحث في عناوين Google.</value>
+  </data>
+  <data name="Ui_Enter_the_passenger_name_f349f9" xml:space="preserve">
+    <value>أدخل اسم الراكب.</value>
+  </data>
+  <data name="Ui_Enter_your_company_code_5dd900" xml:space="preserve">
+    <value>أدخل كود الشركة.</value>
+  </data>
+  <data name="Ui_Enter_your_email_address_14864a" xml:space="preserve">
+    <value>أدخل بريدك الإلكتروني.</value>
+  </data>
+  <data name="Ui_Enter_your_password_137816" xml:space="preserve">
+    <value>أدخل كلمة المرور</value>
+  </data>
+  <data name="Ui_Enter_your_password_46affb" xml:space="preserve">
+    <value>أدخل كلمة المرور.</value>
+  </data>
+  <data name="Ui_Exit_f83b6f" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="Ui_Expense_type_9e3802" xml:space="preserve">
+    <value>نوع المصروف</value>
+  </data>
+  <data name="Ui_Expenses_8d437d" xml:space="preserve">
+    <value>المصروفات</value>
+  </data>
+  <data name="Ui_Expenses_from_date_d8ae82" xml:space="preserve">
+    <value>المصروفات من تاريخ</value>
+  </data>
+  <data name="Ui_Expenses_to_date_614032" xml:space="preserve">
+    <value>المصروفات إلى تاريخ</value>
+  </data>
+  <data name="Ui_Extra_request_awaiting_review_21913b" xml:space="preserve">
+    <value>طلب إضافة بانتظار المراجعة</value>
+  </data>
+  <data name="Ui_Extra_0_847bea" xml:space="preserve">
+    <value>إضافة {0}</value>
+  </data>
+  <data name="Ui_Files_6ce6c5" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="Ui_Final_total_2d5825" xml:space="preserve">
+    <value>الإجمالي النهائي</value>
+  </data>
+  <data name="Ui_Find_the_right_place_d00bb3" xml:space="preserve">
+    <value>اعثر على المكان الصحيح</value>
+  </data>
+  <data name="Ui_Fixed_ab98f5" xml:space="preserve">
+    <value>مبلغ ثابت</value>
+  </data>
+  <data name="Ui_Flight_number_optional_3e7f05" xml:space="preserve">
+    <value>رقم رحلة الطيران (اختياري)</value>
+  </data>
+  <data name="Ui_Flight_0_9ded66" xml:space="preserve">
+    <value>رحلة الطيران: {0}</value>
+  </data>
+  <data name="Ui_Full_name_eeb692" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+  <data name="Ui_Full_screen_map_a50ec0" xml:space="preserve">
+    <value>الخريطة بملء الشاشة</value>
+  </data>
+  <data name="Ui_General_9239ee" xml:space="preserve">
+    <value>عام</value>
+  </data>
+  <data name="Ui_Hide_password_e40123" xml:space="preserve">
+    <value>إخفاء كلمة المرور</value>
+  </data>
+  <data name="Ui_Hour_c37cf8" xml:space="preserve">
+    <value>الساعة</value>
+  </data>
+  <data name="Ui_Hour_00_23_d65a7a" xml:space="preserve">
+    <value>الساعة (00–23)</value>
+  </data>
+  <data name="Ui_Hourly_d93625" xml:space="preserve">
+    <value>بالساعة</value>
+  </data>
+  <data name="Ui_Hourly_journey_as_directed_No_drop_off_or_road_distance_required_76ef8a" xml:space="preserve">
+    <value>رحلة بالساعة حسب الطلب. لا يلزم عنوان وصول أو مسافة.</value>
+  </data>
+  <data name="Ui_I_have_arrived_5e4327" xml:space="preserve">
+    <value>لقد وصلت</value>
+  </data>
+  <data name="Ui_Infant_seat_d23b71" xml:space="preserve">
+    <value>مقعد رضيع</value>
+  </data>
+  <data name="Ui_JOURNEY_PRICING_96bc87" xml:space="preserve">
+    <value>الرحلة والتسعير</value>
+  </data>
+  <data name="Ui_JOURNEY_DETAILS_7d797c" xml:space="preserve">
+    <value>تفاصيل الرحلة</value>
+  </data>
+  <data name="Ui_Journey_e40c09" xml:space="preserve">
+    <value>الرحلة</value>
+  </data>
+  <data name="Ui_Journey_type_a1242d" xml:space="preserve">
+    <value>نوع الرحلة</value>
+  </data>
+  <data name="Ui_Keep_screen_awake_e46566" xml:space="preserve">
+    <value>إبقاء الشاشة مضاءة</value>
+  </data>
+  <data name="Ui_Language_89b86a" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Ui_Light_a36ef8" xml:space="preserve">
+    <value>فاتح</value>
+  </data>
+  <data name="Ui_LimosDispatch_97de9d" xml:space="preserve">
+    <value>LimosDispatch</value>
+  </data>
+  <data name="Ui_Linked_chauffeur_243edb" xml:space="preserve">
+    <value>السائق المرتبط</value>
+  </data>
+  <data name="Ui_Linked_vehicle_required_for_vehicle_costs_4b280f" xml:space="preserve">
+    <value>المركبة المرتبطة (مطلوبة لتكاليف المركبة)</value>
+  </data>
+  <data name="Ui_List_a1fffa" xml:space="preserve">
+    <value>القائمة</value>
+  </data>
+  <data name="Ui_Live_tracking_17d2f3" xml:space="preserve">
+    <value>التتبع المباشر</value>
+  </data>
+  <data name="Ui_Location_is_shared_during_an_active_journey_Keep_device_location_enabl_fd7b4c" xml:space="preserve">
+    <value>تتم مشاركة الموقع أثناء الرحلة النشطة. أبقِ الموقع مفعّلًا؛ تتحكم إعدادات الهاتف في الوصول بالخلفية.</value>
+  </data>
+  <data name="Ui_Location_sharing_3546e9" xml:space="preserve">
+    <value>مشاركة الموقع</value>
+  </data>
+  <data name="Ui_Location_sharing_active_1fc85f" xml:space="preserve">
+    <value>مشاركة الموقع نشطة</value>
+  </data>
+  <data name="Ui_Location_sharing_is_off_ac3e7d" xml:space="preserve">
+    <value>مشاركة الموقع متوقفة</value>
+  </data>
+  <data name="Ui_Location_upload_pending_check_connection_and_permissions_dbf36d" xml:space="preserve">
+    <value>رفع الموقع معلق · تحقق من الاتصال والصلاحيات</value>
+  </data>
+  <data name="Ui_Map_ab478f" xml:space="preserve">
+    <value>الخريطة</value>
+  </data>
+  <data name="Ui_Mileage_f67a05" xml:space="preserve">
+    <value>بالأميال</value>
+  </data>
+  <data name="Ui_Minute_c1335d" xml:space="preserve">
+    <value>الدقيقة</value>
+  </data>
+  <data name="Ui_Minute_00_59_d7006e" xml:space="preserve">
+    <value>الدقيقة (00–59)</value>
+  </data>
+  <data name="Ui_More_4bab2d" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="Ui_NEW_EXPENSE_3f5b47" xml:space="preserve">
+    <value>مصروف جديد</value>
+  </data>
+  <data name="Ui_New_journey_7d861d" xml:space="preserve">
+    <value>رحلة جديدة</value>
+  </data>
+  <data name="Ui_New_passenger_789c53" xml:space="preserve">
+    <value>راكب جديد</value>
+  </data>
+  <data name="Ui_New_password_12_characters_0c7436" xml:space="preserve">
+    <value>كلمة مرور جديدة (12 حرفًا فأكثر)</value>
+  </data>
+  <data name="Ui_No_active_chauffeurs_4cacb6" xml:space="preserve">
+    <value>لا يوجد سائقون نشطون</value>
+  </data>
+  <data name="Ui_No_expenses_in_this_date_range_2ea3b6" xml:space="preserve">
+    <value>لا توجد مصروفات في هذه الفترة</value>
+  </data>
+  <data name="Ui_No_further_action_8c5ee6" xml:space="preserve">
+    <value>لا توجد خطوة تالية</value>
+  </data>
+  <data name="Ui_No_matching_options_0f909d" xml:space="preserve">
+    <value>لا توجد خيارات مطابقة</value>
+  </data>
+  <data name="Ui_No_matching_passengers_41158e" xml:space="preserve">
+    <value>لا يوجد ركاب مطابقون</value>
+  </data>
+  <data name="Ui_No_receipt_2da2a0" xml:space="preserve">
+    <value>لا يوجد إيصال</value>
+  </data>
+  <data name="Ui_No_rides_here_38c01d" xml:space="preserve">
+    <value>لا توجد رحلات هنا</value>
+  </data>
+  <data name="Ui_No_suggestions_Try_a_more_complete_address_a7c3f3" xml:space="preserve">
+    <value>لا توجد اقتراحات. جرّب عنوانًا أكثر تفصيلًا.</value>
+  </data>
+  <data name="Ui_Not_required_45240f" xml:space="preserve">
+    <value>غير مطلوب</value>
+  </data>
+  <data name="Ui_Notes_704400" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="Ui_Notes_special_requirements_759587" xml:space="preserve">
+    <value>ملاحظات / متطلبات خاصة</value>
+  </data>
+  <data name="Ui_Notifications_753a22" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+  <data name="Ui_OPERATING_ESTIMATE_8f262d" xml:space="preserve">
+    <value>تقدير التشغيل</value>
+  </data>
+  <data name="Ui_Ocean_76022a" xml:space="preserve">
+    <value>المحيط</value>
+  </data>
+  <data name="Ui_Onboard_3a883b" xml:space="preserve">
+    <value>على متن السيارة</value>
+  </data>
+  <data name="Ui_Only_completed_journeys_count_Finalized_statements_retain_their_origin_fdf986" xml:space="preserve">
+    <value>تُحتسب الرحلات المكتملة فقط. تحتفظ الكشوف المعتمدة بقواعد العقد الأصلية. الأرباح ليست إثباتًا للدفع.</value>
+  </data>
+  <data name="Ui_Only_during_an_active_journey_dd9f13" xml:space="preserve">
+    <value>أثناء الرحلة النشطة فقط</value>
+  </data>
+  <data name="Ui_Only_my_rides_68016c" xml:space="preserve">
+    <value>رحلاتي فقط</value>
+  </data>
+  <data name="Ui_Open_attached_document_ba6f40" xml:space="preserve">
+    <value>فتح المستند المرفق</value>
+  </data>
+  <data name="Ui_Open_company_website_bdb3bc" xml:space="preserve">
+    <value>فتح موقع الشركة</value>
+  </data>
+  <data name="Ui_Open_document_5fc7f2" xml:space="preserve">
+    <value>فتح المستند</value>
+  </data>
+  <data name="Ui_Open_navigation_0f53b3" xml:space="preserve">
+    <value>فتح الملاحة</value>
+  </data>
+  <data name="Ui_Opening_your_workspace_786d09" xml:space="preserve">
+    <value>جارٍ فتح مساحة العمل…</value>
+  </data>
+  <data name="Ui_Operating_estimate_completed_fares_minus_earned_wages_and_operating_ex_37b090" xml:space="preserve">
+    <value>تقدير التشغيل: أجور الرحلات المكتملة ناقص مستحقات السائقين والمصروفات التشغيلية. تستبعد دفعات الرواتب لتجنب تكرار حسابها.</value>
+  </data>
+  <data name="Ui_Optional_Leave_the_chauffeur_empty_to_create_an_unassigned_ride_1ceabd" xml:space="preserve">
+    <value>اختياري. اترك السائق فارغًا لإنشاء رحلة دون إسناد.</value>
+  </data>
+  <data name="Ui_PASSENGER_ef3b57" xml:space="preserve">
+    <value>الراكب</value>
+  </data>
+  <data name="Ui_PASSENGER_SERVICE_fb45ad" xml:space="preserve">
+    <value>الراكب والخدمة</value>
+  </data>
+  <data name="Ui_PASSENGER_DIRECTORY_eb4bb7" xml:space="preserve">
+    <value>دليل الركاب</value>
+  </data>
+  <data name="Ui_PDF_receipt_6c9ff2" xml:space="preserve">
+    <value>إيصال PDF</value>
+  </data>
+  <data name="Ui_PDF_JPG_PNG_or_WebP_maximum_1_5_MB_cffc03" xml:space="preserve">
+    <value>PDF أو JPG أو PNG أو WebP · بحد أقصى 1.5 ميجابايت</value>
+  </data>
+  <data name="Ui_PICKUP_9478ed" xml:space="preserve">
+    <value>الانطلاق</value>
+  </data>
+  <data name="Ui_PLAN_YOUR_ROUTE_f5ddcf" xml:space="preserve">
+    <value>خطّط لمسارك</value>
+  </data>
+  <data name="Ui_PREFERENCES_f6d44b" xml:space="preserve">
+    <value>التفضيلات</value>
+  </data>
+  <data name="Ui_Paid_dc9d45" xml:space="preserve">
+    <value>مدفوع</value>
+  </data>
+  <data name="Ui_Passenger_count_eb2b61" xml:space="preserve">
+    <value>عدد الركاب</value>
+  </data>
+  <data name="Ui_Passenger_name_834778" xml:space="preserve">
+    <value>اسم الراكب</value>
+  </data>
+  <data name="Ui_Passenger_onboard_3aa89c" xml:space="preserve">
+    <value>الراكب على متن السيارة</value>
+  </data>
+  <data name="Ui_Passengers_0_c1b3dd" xml:space="preserve">
+    <value>الركاب: {0}</value>
+  </data>
+  <data name="Ui_Password_8be3c9" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Ui_Past_405c12" xml:space="preserve">
+    <value>السابقة</value>
+  </data>
+  <data name="Ui_Payment_b41a92" xml:space="preserve">
+    <value>الدفع</value>
+  </data>
+  <data name="Ui_Payment_method_0e55fb" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="Ui_Payment_status_9dfea4" xml:space="preserve">
+    <value>حالة الدفع</value>
+  </data>
+  <data name="Ui_Pending_96f608" xml:space="preserve">
+    <value>معلق</value>
+  </data>
+  <data name="Ui_Phone_77064d" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="Ui_Phone_number_8961d3" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="Ui_Photograph_expense_receipt_612f71" xml:space="preserve">
+    <value>تصوير إيصال المصروف</value>
+  </data>
+  <data name="Ui_Photos_c8b2e8" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="Ui_Pickup_a51122" xml:space="preserve">
+    <value>الانطلاق</value>
+  </data>
+  <data name="Ui_Powered_by_Google_2068cc" xml:space="preserve">
+    <value>Powered by Google</value>
+  </data>
+  <data name="Ui_Price_checked_with_the_company_server_34c0da" xml:space="preserve">
+    <value>تم التحقق من السعر من خادم الشركة.</value>
+  </data>
+  <data name="Ui_Quantity_0_44a8c1" xml:space="preserve">
+    <value>العدد: {0}</value>
+  </data>
+  <data name="Ui_RECEIPT_REQUIRED_8ed95d" xml:space="preserve">
+    <value>الإيصال مطلوب</value>
+  </data>
+  <data name="Ui_ROUTE_SCHEDULE_1f8848" xml:space="preserve">
+    <value>المسار والموعد</value>
+  </data>
+  <data name="Ui_Recalculate_route_3aa225" xml:space="preserve">
+    <value>إعادة حساب المسار</value>
+  </data>
+  <data name="Ui_Receipt_f6ce3b" xml:space="preserve">
+    <value>الإيصال</value>
+  </data>
+  <data name="Ui_Refresh_journey_1eb50c" xml:space="preserve">
+    <value>تحديث الرحلة</value>
+  </data>
+  <data name="Ui_Remember_me_ced7b3" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="Ui_Retry_9f5cd8" xml:space="preserve">
+    <value>إعادة المحاولة</value>
+  </data>
+  <data name="Ui_Retry_assignment_16f4a8" xml:space="preserve">
+    <value>إعادة محاولة الإسناد</value>
+  </data>
+  <data name="Ui_Rides_ae8496" xml:space="preserve">
+    <value>الرحلات</value>
+  </data>
+  <data name="Ui_Rides_people_and_every_mile_in_between_afdbce" xml:space="preserve">
+    <value>رحلات وأشخاص وكل ميل بينهما.</value>
+  </data>
+  <data name="Ui_Save_select_passenger_9cf575" xml:space="preserve">
+    <value>حفظ الراكب واختياره</value>
+  </data>
+  <data name="Ui_Save_expense_0402d1" xml:space="preserve">
+    <value>حفظ المصروف</value>
+  </data>
+  <data name="Ui_Save_their_details_in_Customers_and_select_them_for_this_journey_012e3a" xml:space="preserve">
+    <value>احفظ بياناته في العملاء واختره لهذه الرحلة.</value>
+  </data>
+  <data name="Ui_Search_a_street_address_airport_or_hotel_Choose_a_Google_suggestion_fo_392b65" xml:space="preserve">
+    <value>ابحث عن عنوان شارع أو مطار أو فندق، واختر اقتراح Google لمسار دقيق.</value>
+  </data>
+  <data name="Ui_Search_chauffeur_or_expense_8f3ca8" xml:space="preserve">
+    <value>ابحث عن سائق أو مصروف</value>
+  </data>
+  <data name="Ui_Search_drop_off_address_2899d9" xml:space="preserve">
+    <value>البحث عن عنوان الوصول</value>
+  </data>
+  <data name="Ui_Search_dropoff_address_f10749" xml:space="preserve">
+    <value>البحث عن عنوان الوصول</value>
+  </data>
+  <data name="Ui_Search_name_phone_or_email_face38" xml:space="preserve">
+    <value>ابحث بالاسم أو الهاتف أو البريد</value>
+  </data>
+  <data name="Ui_Search_options_5616c8" xml:space="preserve">
+    <value>ابحث في الخيارات</value>
+  </data>
+  <data name="Ui_Search_passenger_route_or_chauffeur_eb37a5" xml:space="preserve">
+    <value>ابحث عن راكب أو مسار أو سائق</value>
+  </data>
+  <data name="Ui_Search_pickup_address_84ae4e" xml:space="preserve">
+    <value>البحث عن عنوان الانطلاق</value>
+  </data>
+  <data name="Ui_Searching_Google_addresses_6db770" xml:space="preserve">
+    <value>جارٍ البحث في عناوين Google…</value>
+  </data>
+  <data name="Ui_Select_a_passenger_and_complete_pricing_before_checking_a_coupon_05488b" xml:space="preserve">
+    <value>اختر الراكب وأكمل التسعير قبل فحص الكوبون.</value>
+  </data>
+  <data name="Ui_Select_a_passenger_and_complete_the_route_or_hours_to_see_the_final_to_77e613" xml:space="preserve">
+    <value>اختر الراكب وأكمل المسار أو الساعات لعرض الإجمالي.</value>
+  </data>
+  <data name="Ui_Select_an_active_vehicle_for_the_assigned_chauffeur_ea01ce" xml:space="preserve">
+    <value>اختر مركبة نشطة للسائق المعيّن.</value>
+  </data>
+  <data name="Ui_Select_chauffeur_26c2ab" xml:space="preserve">
+    <value>اختر السائق</value>
+  </data>
+  <data name="Ui_Select_date_b84a6e" xml:space="preserve">
+    <value>اختر التاريخ</value>
+  </data>
+  <data name="Ui_Select_or_save_a_passenger_before_creating_the_journey_6ebd78" xml:space="preserve">
+    <value>اختر راكبًا أو احفظ راكبًا جديدًا قبل إنشاء الرحلة.</value>
+  </data>
+  <data name="Ui_Select_time_3d7f91" xml:space="preserve">
+    <value>اختر الوقت</value>
+  </data>
+  <data name="Ui_Select_vehicle_cb380a" xml:space="preserve">
+    <value>اختر المركبة</value>
+  </data>
+  <data name="Ui_Set_a_permanent_password_8d1b5f" xml:space="preserve">
+    <value>عيّن كلمة مرور دائمة</value>
+  </data>
+  <data name="Ui_Set_time_7c58b6" xml:space="preserve">
+    <value>تعيين الوقت</value>
+  </data>
+  <data name="Ui_Show_password_044b85" xml:space="preserve">
+    <value>إظهار كلمة المرور</value>
+  </data>
+  <data name="Ui_Sign_in_ada2e9" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="Ui_Sign_in_to_your_company_workspace_d73f32" xml:space="preserve">
+    <value>سجّل الدخول إلى مساحة عمل شركتك.</value>
+  </data>
+  <data name="Ui_Sign_out_dc1649" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="Ui_Sign_out_of_this_company_workspace_224b41" xml:space="preserve">
+    <value>هل تريد تسجيل الخروج من مساحة عمل الشركة؟</value>
+  </data>
+  <data name="Ui_Start_journey_1d0241" xml:space="preserve">
+    <value>بدء الرحلة</value>
+  </data>
+  <data name="Ui_Street_airport_hotel_or_place_408867" xml:space="preserve">
+    <value>شارع أو مطار أو فندق أو مكان</value>
+  </data>
+  <data name="Ui_Tap_a_notification_to_view_the_journey_details_006d54" xml:space="preserve">
+    <value>اضغط على إشعار لعرض تفاصيل الرحلة.</value>
+  </data>
+  <data name="Ui_Tap_search_to_choose_an_address_Swipe_long_addresses_to_read_more_4154f0" xml:space="preserve">
+    <value>اضغط على البحث لاختيار عنوان. اسحب العنوان الطويل لقراءة الباقي.</value>
+  </data>
+  <data name="Ui_The_request_timed_out_Refresh_and_check_the_result_before_saving_again_90f7e7" xml:space="preserve">
+    <value>انتهت مهلة الطلب. حدّث الشاشة وتحقق من النتيجة قبل تكرار الحفظ.</value>
+  </data>
+  <data name="Ui_The_server_is_currently_unavailable_Please_try_again_shortly_89dec4" xml:space="preserve">
+    <value>الخادم غير متاح حاليًا. حاول بعد قليل.</value>
+  </data>
+  <data name="Ui_Theme_a797e3" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="Ui_Today_24345a" xml:space="preserve">
+    <value>اليوم</value>
+  </data>
+  <data name="Ui_Too_many_requests_Please_wait_a_moment_and_try_again_2f9aee" xml:space="preserve">
+    <value>طلبات كثيرة. انتظر قليلًا ثم حاول مجددًا.</value>
+  </data>
+  <data name="Ui_Total_expenses_67fe37" xml:space="preserve">
+    <value>إجمالي المصروفات</value>
+  </data>
+  <data name="Ui_Track_chauffeur_on_map_b1727e" xml:space="preserve">
+    <value>تتبع السائق على الخريطة</value>
+  </data>
+  <data name="Ui_Tracking_e81a15" xml:space="preserve">
+    <value>التتبع</value>
+  </data>
+  <data name="Ui_Trip_fare_7143ec" xml:space="preserve">
+    <value>أجرة الرحلة</value>
+  </data>
+  <data name="Ui_Trip_price_summary_87b508" xml:space="preserve">
+    <value>ملخص سعر الرحلة</value>
+  </data>
+  <data name="Ui_Try_Past_adjust_your_search_or_pull_down_to_refresh_42cb95" xml:space="preserve">
+    <value>جرّب الرحلات السابقة أو عدّل البحث أو اسحب للتحديث.</value>
+  </data>
+  <data name="Ui_Try_another_name_or_phone_number_or_add_a_new_passenger_085bb7" xml:space="preserve">
+    <value>جرّب اسمًا أو هاتفًا آخر، أو أضف راكبًا جديدًا.</value>
+  </data>
+  <data name="Ui_Unable_to_complete_this_action_Please_try_again_or_refresh_the_screen_b15aba" xml:space="preserve">
+    <value>تعذر إكمال العملية. حاول مجددًا أو حدّث الشاشة.</value>
+  </data>
+  <data name="Ui_Unable_to_connect_Check_your_internet_connection_and_try_again_0d9f1a" xml:space="preserve">
+    <value>تعذر الاتصال. تحقق من الإنترنت وحاول مجددًا.</value>
+  </data>
+  <data name="Ui_Unable_to_read_the_received_data_Refresh_or_try_again_later_aebfab" xml:space="preserve">
+    <value>تعذرت قراءة البيانات المستلمة. حدّث الشاشة أو حاول لاحقًا.</value>
+  </data>
+  <data name="Ui_Unassigned_e57016" xml:space="preserve">
+    <value>دون إسناد</value>
+  </data>
+  <data name="Ui_Upcoming_523baa" xml:space="preserve">
+    <value>القادمة</value>
+  </data>
+  <data name="Ui_Upcoming_rides_d41cbb" xml:space="preserve">
+    <value>الرحلات القادمة</value>
+  </data>
+  <data name="Ui_Update_password_350c35" xml:space="preserve">
+    <value>تحديث كلمة المرور</value>
+  </data>
+  <data name="Ui_Use_a_name_of_up_to_150_characters_without_HTML_symbols_32777f" xml:space="preserve">
+    <value>استخدم اسمًا حتى 150 حرفًا دون رموز HTML.</value>
+  </data>
+  <data name="Ui_Use_letters_numbers_and_hyphens_for_the_company_code_35f9c6" xml:space="preserve">
+    <value>استخدم حروفًا وأرقامًا وشرطة في كود الشركة.</value>
+  </data>
+  <data name="Ui_Vehicle_9bb28c" xml:space="preserve">
+    <value>سيارة</value>
+  </data>
+  <data name="Ui_Vehicle_plate_a00f76" xml:space="preserve">
+    <value>المركبة / اللوحة</value>
+  </data>
+  <data name="Ui_Vehicle_type_964438" xml:space="preserve">
+    <value>نوع المركبة</value>
+  </data>
+  <data name="Ui_Version_0_4b0a3f" xml:space="preserve">
+    <value>الإصدار {0}</value>
+  </data>
+  <data name="Ui_View_chauffeur_statement_c42ab6" xml:space="preserve">
+    <value>عرض كشف السائق</value>
+  </data>
+  <data name="Ui_View_receipt_3da41a" xml:space="preserve">
+    <value>عرض الإيصال</value>
+  </data>
+  <data name="Ui_Waiting_for_positions_4e5e5f" xml:space="preserve">
+    <value>بانتظار المواقع</value>
+  </data>
+  <data name="Ui_Website_booking_c4e187" xml:space="preserve">
+    <value>حجز من الموقع</value>
+  </data>
+  <data name="Ui_Welcome_back_b80783" xml:space="preserve">
+    <value>مرحبًا بعودتك</value>
+  </data>
+  <data name="Ui_Would_you_like_to_close_the_app_089149" xml:space="preserve">
+    <value>هل تريد إغلاق التطبيق؟</value>
+  </data>
+  <data name="Ui_YOUR_WORKSPACE_d60ec6" xml:space="preserve">
+    <value>مساحة عملك</value>
+  </data>
+  <data name="Ui_You_do_not_have_permission_to_perform_this_action_069956" xml:space="preserve">
+    <value>ليس لديك صلاحية لتنفيذ العملية.</value>
+  </data>
+  <data name="Ui_Your_account_4ab291" xml:space="preserve">
+    <value>حسابك</value>
+  </data>
+  <data name="Ui_Your_company_Your_workspace_48ccb9" xml:space="preserve">
+    <value>شركتك. مساحة عملك.</value>
+  </data>
+  <data name="Ui_Your_fleet_Connected_5dbf57" xml:space="preserve">
+    <value>أسطولك مترابط.</value>
+  </data>
+  <data name="Ui_Your_profile_preferences_and_sign_out_c0023d" xml:space="preserve">
+    <value>ملفك وتفضيلاتك وتسجيل الخروج</value>
+  </data>
+  <data name="Ui_Your_session_has_expired_or_your_sign_in_details_are_incorrect_Please__359ce2" xml:space="preserve">
+    <value>انتهت الجلسة أو بيانات الدخول غير صحيحة. سجّل الدخول مجددًا.</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_Upcoming_rides_will_appear_here_f92628" xml:space="preserve">
+    <value>لا توجد إشعارات جديدة. ستظهر هنا الرحلات القادمة.</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_Website_bookings_and_pending_extra_requests_appea_22d5b9" xml:space="preserve">
+    <value>لا توجد إشعارات جديدة. تظهر هنا حجوزات الموقع وطلبات الإضافات المعلقة.</value>
+  </data>
+  <data name="Ui_Zelle_2a9876" xml:space="preserve">
+    <value>Zelle</value>
+  </data>
+  <data name="Ui_e_g_lux_85c766" xml:space="preserve">
+    <value>مثل lux</value>
+  </data>
+  <data name="Ui_you_company_com_6e837e" xml:space="preserve">
+    <value>you@company.com</value>
+  </data>
+  <data name="Ui_0_road_miles_calculated_by_Google_Maps_da032c" xml:space="preserve">
+    <value>{0} ميل طريق · محسوبة بواسطة Google Maps</value>
+  </data>
+  <data name="Ui__213edd" xml:space="preserve">
+    <value>←</value>
+  </data>
+  <data name="Ui_Search_passenger_by_name_or_phone_149ec7" xml:space="preserve">
+    <value>ابحث عن الراكب بالاسم أو الهاتف</value>
+  </data>
+  <data name="Ui_Draft_statement_1c22a0" xml:space="preserve">
+    <value>كشف مبدئي</value>
+  </data>
+  <data name="Ui_Finalized_statement_3545ac" xml:space="preserve">
+    <value>كشف نهائي</value>
+  </data>
+  <data name="Ui_Operating_expenses_93d42f" xml:space="preserve">
+    <value>المصروفات التشغيلية: </value>
+  </data>
+  <data name="Ui_Distance_tier_fixed_0_5cb820" xml:space="preserve">
+    <value>شريحة المسافة: مبلغ ثابت {0}</value>
+  </data>
+  <data name="Ui_0_booked_h_1_approved_min_2_h_e8facd" xml:space="preserve">
+    <value>{0} ساعة محجوزة + {1} دقيقة إضافية معتمدة × {2} / ساعة</value>
+  </data>
+  <data name="Ui_Receipt_attached_f05fe5" xml:space="preserve">
+    <value>المستند مرفق</value>
+  </data>
+  <data name="Ui_Update_time_unavailable_858faa" xml:space="preserve">
+    <value>وقت التحديث غير متاح</value>
+  </data>
+  <data name="Ui_Location_may_be_stale_dfde4c" xml:space="preserve">
+    <value>قد يكون الموقع غير محدث</value>
+  </data>
+  <data name="Ui_Recently_updated_5f0500" xml:space="preserve">
+    <value>تم التحديث مؤخرًا</value>
+  </data>
+  <data name="Ui_Updated_0_1_on_the_road_0806d6" xml:space="preserve">
+    <value>آخر تحديث {0} · {1} في الطريق</value>
+  </data>
+  <data name="Ui_Approved_41b81e" xml:space="preserve">
+    <value>معتمد</value>
+  </data>
+  <data name="Ui_Rejected_27eeb7" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
+  <data name="Ui_Requested_c26bf6" xml:space="preserve">
+    <value>مطلوب</value>
+  </data>
+  <data name="Ui_Refunded_d6fbc7" xml:space="preserve">
+    <value>مسترد</value>
+  </data>
+  <data name="Ui_OK_9ce3bd" xml:space="preserve">
+    <value>حسنًا</value>
+  </data>
+  <data name="Ui_New_ride_assigned_cd1d5b" xml:space="preserve">
+    <value>تم إسناد رحلة جديدة</value>
+  </data>
+  <data name="Ui_New_website_booking_2a3cb2" xml:space="preserve">
+    <value>حجز جديد من الموقع</value>
+  </data>
+  <data name="Ui_New_extra_request_761618" xml:space="preserve">
+    <value>طلب إضافة جديد</value>
+  </data>
+  <data name="Ui_Mark_all_as_read_1b8316" xml:space="preserve">
+    <value>تحديد الكل كمقروء</value>
+  </data>
+  <data name="Ui_Load_more_dfe60c" xml:space="preserve">
+    <value>عرض المزيد</value>
+  </data>
+  <data name="Ui_You_re_all_caught_up_8ec250" xml:space="preserve">
+    <value>لا توجد إشعارات جديدة.</value>
+  </data>
+  <data name="Ui_You_have_a_new_ride_Tap_to_view_details_3f94c8" xml:space="preserve">
+    <value>لديك رحلة جديدة. اضغط لعرض التفاصيل.</value>
+  </data>
+  <data name="Ui_Setting_up_device_notifications_c0a5a8" xml:space="preserve">
+    <value>جارٍ إعداد إشعارات الجهاز…</value>
+  </data>
+  <data name="Ui_Device_notifications_are_enabled_1c8d6c" xml:space="preserve">
+    <value>إشعارات الجهاز مفعّلة.</value>
+  </data>
+  <data name="Ui_Notifications_are_disabled_in_your_phone_settings_48be78" xml:space="preserve">
+    <value>الإشعارات غير مفعّلة في إعدادات الهاتف.</value>
+  </data>
+  <data name="Ui_Device_notifications_are_unavailable_Tap_Enable_notifications_to_retry_3dbd91" xml:space="preserve">
+    <value>إشعارات الجهاز غير متاحة. اضغط تفعيل الإشعارات للمحاولة مجددًا.</value>
+  </data>
+  <data name="Ui_Enable_notifications_da3967" xml:space="preserve">
+    <value>تفعيل الإشعارات</value>
+  </data>
+  <data name="Ui_Push_notifications_could_not_be_registered_Check_your_connection_and_n_b756f3" xml:space="preserve">
+    <value>تعذّر تسجيل إشعارات الجهاز. تحقّق من الاتصال وصلاحية الإشعارات.</value>
+  </data>
+  <data name="Ui_Push_notifications_are_unavailable_Check_notification_permissions_and__de47b1" xml:space="preserve">
+    <value>الإشعارات غير متاحة. تحقّق من الصلاحيات والاتصال.</value>
+  </data>
+  <data name="Ui_The_notification_could_not_be_opened_Open_Notifications_and_try_again_05e2fc" xml:space="preserve">
+    <value>تعذّر فتح الإشعار. افتح قائمة الإشعارات وحاول مجددًا.</value>
+  </data>
+  <data name="Ui_Notifications_could_not_be_refreshed_Open_Notifications_and_try_again_b9b270" xml:space="preserve">
+    <value>تعذّر تحديث الإشعارات. افتح قائمة الإشعارات وحاول مجددًا.</value>
+  </data>
+  <data name="Ui_This_ride_is_no_longer_available_0d3bb0" xml:space="preserve">
+    <value>هذه الرحلة لم تعد متاحة.</value>
+  </data>
+  <data name="Ui_This_notification_belongs_to_another_company_Sign_in_to_that_company_t_ce1d9d" xml:space="preserve">
+    <value>هذا الإشعار يخص شركة أخرى. سجّل الدخول إلى تلك الشركة لعرض الرحلة.</value>
+  </data>
+  <data name="Ui_A_new_journey_has_been_assigned_f47a70" xml:space="preserve">
+    <value>تم إسناد رحلة جديدة.</value>
+  </data>
+  <data name="Ui_Call_passenger_92207a" xml:space="preserve">
+    <value>اتصال بالراكب</value>
+  </data>
+  <data name="Ui_Passenger_sign_7e893d" xml:space="preserve">
+    <value>لوحة اسم الراكب</value>
+  </data>
+  <data name="Ui_Pickup_location_19c618" xml:space="preserve">
+    <value>موقع الاستلام</value>
+  </data>
+  <data name="Ui_Google_Maps_40cd7f" xml:space="preserve">
+    <value>خرائط جوجل</value>
+  </data>
+  <data name="Ui_Navigate_to_pickup_a3dbc0" xml:space="preserve">
+    <value>توجيه للاستلام</value>
+  </data>
+  <data name="Ui_Drop_off_location_d78449" xml:space="preserve">
+    <value>موقع الوصول</value>
+  </data>
+  <data name="Ui_Navigate_to_drop_off_0a145a" xml:space="preserve">
+    <value>توجيه للوصول</value>
+  </data>
+  <data name="Ui_Customer_details_8bded5" xml:space="preserve">
+    <value>بيانات العميل</value>
+  </data>
+  <data name="Ui_Special_notes_7a3f09" xml:space="preserve">
+    <value>ملاحظات خاصة</value>
+  </data>
+  <data name="Ui_Journey_status_0086b8" xml:space="preserve">
+    <value>مراحل الرحلة</value>
+  </data>
+  <data name="Ui_Journey_closed_Location_tracking_is_off_1cd090" xml:space="preserve">
+    <value>الرحلة مغلقة. تتبع الموقع متوقف.</value>
+  </data>
+  <data name="Ui_Resume_location_sharing_5a4a2f" xml:space="preserve">
+    <value>استئناف مشاركة الموقع</value>
+  </data>
+  <data name="Ui_Extra_distance_or_extra_time_03068c" xml:space="preserve">
+    <value>مسافة أو وقت إضافي</value>
+  </data>
+  <data name="Ui_Request_extra_distance_or_extra_time_26d3ea" xml:space="preserve">
+    <value>طلب مسافة أو وقت إضافي</value>
+  </data>
+  <data name="Ui_Extra_type_f39001" xml:space="preserve">
+    <value>نوع الإضافة</value>
+  </data>
+  <data name="Ui_Explain_the_extra_requested_by_the_customer_648103" xml:space="preserve">
+    <value>اشرح الإضافة التي طلبها العميل</value>
+  </data>
+  <data name="Ui_Time_is_entered_in_minutes_Dispatch_confirms_the_charge_with_the_custo_c745ef" xml:space="preserve">
+    <value>يُدخل الوقت بالدقائق. يؤكد الديسباتش التكلفة مع العميل. إرسال الطلب لا يغير الأجرة.</value>
+  </data>
+  <data name="Ui_Send_extra_request_e9f710" xml:space="preserve">
+    <value>إرسال طلب الإضافة</value>
+  </data>
+  <data name="Ui_Trip_extras_0727d1" xml:space="preserve">
+    <value>إضافات الرحلة</value>
+  </data>
+  <data name="Ui_Only_approved_extras_are_charged_64a21f" xml:space="preserve">
+    <value>تُحتسب الإضافات المعتمدة فقط.</value>
+  </data>
+  <data name="Ui_No_extra_requests_for_this_journey_c4852b" xml:space="preserve">
+    <value>لا توجد طلبات إضافية لهذه الرحلة.</value>
+  </data>
+  <data name="Ui_Assign_chauffeur_b90847" xml:space="preserve">
+    <value>إسناد سائق</value>
+  </data>
+  <data name="Ui_Vehicle_plate_cccdf9" xml:space="preserve">
+    <value>لوحة المركبة</value>
+  </data>
+  <data name="Ui_On_the_way_7884d3" xml:space="preserve">
+    <value>في الطريق</value>
+  </data>
+  <data name="Ui_At_the_pickup_location_8f1a4d" xml:space="preserve">
+    <value>في موقع الاستلام</value>
+  </data>
+  <data name="Ui_Passenger_on_board_80a08d" xml:space="preserve">
+    <value>الراكب على متن المركبة</value>
+  </data>
+  <data name="Ui_Finish_journey_94c627" xml:space="preserve">
+    <value>إنهاء الرحلة</value>
+  </data>
+  <data name="Ui_Hourly_0_hours_072798" xml:space="preserve">
+    <value>بالساعة · {0} ساعات</value>
+  </data>
+  <data name="Ui_Available_0_hours_before_pickup_1_b009fa" xml:space="preserve">
+    <value>متاح قبل الاستلام بـ {0} ساعات · {1}</value>
+  </data>
+  <data name="Ui_Limo_license_0_1_Please_renew_and_send_the_updated_document_to_dispatc_62ff76" xml:space="preserve">
+    <value>رخصة الليموزين: {0} · {1}. يرجى التجديد وإرسال المستند المحدّث للديسباتش.</value>
+  </data>
+  <data name="Ui_Total_extra_time_minutes_4ac4f0" xml:space="preserve">
+    <value>إجمالي الوقت الإضافي (دقائق)</value>
+  </data>
+  <data name="Ui_Total_extra_miles_9907aa" xml:space="preserve">
+    <value>إجمالي الأميال الإضافية</value>
+  </data>
+  <data name="Ui_Extra_request_sent_to_dispatch_awaiting_approval_900828" xml:space="preserve">
+    <value>أُرسل طلب الإضافة للديسباتش · بانتظار الموافقة</value>
+  </data>
+  <data name="Ui_Enter_an_extra_quantity_between_0_01_and_100000_28f318" xml:space="preserve">
+    <value>أدخل كمية إضافية بين 0.01 و100000.</value>
+  </data>
+  <data name="Ui_Enter_an_extra_description_of_up_to_1000_characters_bb717a" xml:space="preserve">
+    <value>أدخل وصف الإضافة بحد أقصى 1000 حرف.</value>
+  </data>
+  <data name="Ui_Start_your_journey_before_requesting_an_extra_d7a997" xml:space="preserve">
+    <value>ابدأ الرحلة قبل طلب إضافة.</value>
+  </data>
+  <data name="Ui_Refresh_this_journey_before_requesting_an_extra_e71990" xml:space="preserve">
+    <value>حدّث الرحلة قبل طلب إضافة.</value>
+  </data>
+  <data name="Ui_Only_the_assigned_chauffeur_can_request_extras_82113b" xml:space="preserve">
+    <value>يمكن للسائق المسند إليه فقط طلب إضافات.</value>
+  </data>
+  <data name="Ui_The_journey_changed_Review_its_current_status_before_continuing_29c7f5" xml:space="preserve">
+    <value>تغيرت الرحلة. راجع حالتها الحالية قبل المتابعة.</value>
+  </data>
+  <data name="Ui_Approved_charge_0_7e2b86" xml:space="preserve">
+    <value>التكلفة المعتمدة: {0}</value>
+  </data>
+  <data name="Ui_minutes_be2e2b" xml:space="preserve">
+    <value>دقائق</value>
+  </data>
+  <data name="Ui_miles_54234b" xml:space="preserve">
+    <value>أميال</value>
+  </data>
+  <data name="Ui_Finished_355bcc" xml:space="preserve">
+    <value>انتهت الرحلة</value>
+  </data>
+  <data name="Ui_Approved_charge_532458" xml:space="preserve">
+    <value>التكلفة المعتمدة: </value>
+  </data>
+  <data name="Ui_Location_is_unavailable_Enable_device_location_and_try_again_2eaa68" xml:space="preserve">
+    <value>الموقع غير متاح. فعّل موقع الجهاز وحاول مجددًا.</value>
+  </data>
+  <data name="Ui_Finish_the_current_journey_before_opening_another_trip_Location_sharin_86a57d" xml:space="preserve">
+    <value>أنه الرحلة الحالية قبل فتح رحلة أخرى. مشاركة الموقع ما زالت تعمل.</value>
+  </data>
+  <data name="Ui_Live_65c821" xml:space="preserve">
+    <value>مباشر</value>
+  </data>
+  <data name="Ui_History_90ccd6" xml:space="preserve">
+    <value>السجل</value>
+  </data>
+  <data name="Ui_Choose_a_chauffeur_to_review_recorded_journeys_e0ab62" xml:space="preserve">
+    <value>اختر سائقًا لاستعراض الرحلات والمسارات المسجلة.</value>
+  </data>
+  <data name="Ui_Search_chauffeurs_or_vehicles_77f9d4" xml:space="preserve">
+    <value>ابحث عن سائق أو سيارة</value>
+  </data>
+  <data name="Ui_No_chauffeurs_found_27664a" xml:space="preserve">
+    <value>لم يتم العثور على سائقين</value>
+  </data>
+  <data name="Ui_From_date_3b5d11" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="Ui_To_date_af244d" xml:space="preserve">
+    <value>إلى تاريخ</value>
+  </data>
+  <data name="Ui_Show_journeys_e1f741" xml:space="preserve">
+    <value>عرض الرحلات</value>
+  </data>
+  <data name="Ui_Dates_use_each_journey_s_company_timezone_b2308e" xml:space="preserve">
+    <value>التواريخ حسب المنطقة الزمنية المسجلة لكل رحلة.</value>
+  </data>
+  <data name="Ui_No_journeys_in_this_date_range_509924" xml:space="preserve">
+    <value>لا توجد رحلات خلال هذه الفترة</value>
+  </data>
+  <data name="Ui_View_route_and_timeline_2b5c6e" xml:space="preserve">
+    <value>عرض المسار والأحداث</value>
+  </data>
+  <data name="Ui_Fit_route_ccd867" xml:space="preserve">
+    <value>عرض المسار كاملًا</value>
+  </data>
+  <data name="Ui_No_recorded_locations_for_this_journey_7eb1e4" xml:space="preserve">
+    <value>لا توجد مواقع مسجلة لهذه الرحلة.</value>
+  </data>
+  <data name="Ui_Go_to_start_81469d" xml:space="preserve">
+    <value>الذهاب للبداية</value>
+  </data>
+  <data name="Ui_Go_to_end_abe70f" xml:space="preserve">
+    <value>الذهاب للنهاية</value>
+  </data>
+  <data name="Ui_Playback_speed_6ff42b" xml:space="preserve">
+    <value>سرعة العرض</value>
+  </data>
+  <data name="Ui_Follow_vehicle_9f60f5" xml:space="preserve">
+    <value>متابعة السيارة</value>
+  </data>
+  <data name="Ui_Events_c5497b" xml:space="preserve">
+    <value>الأحداث</value>
+  </data>
+  <data name="Ui_Recorded_GPS_only_Gaps_over_2_minutes_are_not_interpolated_255b48" xml:space="preserve">
+    <value>مواقع GPS المسجلة فقط. لا تُفترض حركة خلال انقطاع يتجاوز دقيقتين.</value>
+  </data>
+  <data name="Ui_Play_5d12bd" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="Ui_Pause_781961" xml:space="preserve">
+    <value>إيقاف مؤقت</value>
+  </data>
+  <data name="Ui_Route_replay_cc1703" xml:space="preserve">
+    <value>إعادة عرض المسار</value>
+  </data>
+  <data name="Ui_0_locations_1_0_0_km_recorded_f578a2" xml:space="preserve">
+    <value>{0} موقع · {1:0.0} كم مسجلة</value>
+  </data>
+  <data name="Ui_The_start_date_must_be_before_the_end_date_bdb28b" xml:space="preserve">
+    <value>تاريخ البداية يجب أن يسبق تاريخ النهاية.</value>
+  </data>
+  <data name="Ui_Select_a_journey_b26b75" xml:space="preserve">
+    <value>اختر رحلة.</value>
+  </data>
+  <data name="Ui_This_route_is_too_large_to_load_on_this_device_998ef2" xml:space="preserve">
+    <value>حجم المسار أكبر من قدرة التحميل على هذا الجهاز.</value>
+  </data>
+  <data name="Ui_The_route_could_not_be_loaded_completely_Please_try_again_a0e49d" xml:space="preserve">
+    <value>تعذر تحميل المسار كاملًا. حاول مرة أخرى.</value>
+  </data>
+  <data name="Ui_No_map_location_was_found_for_this_address_48e208" xml:space="preserve">
+    <value>لم يتم العثور على موقع لهذا العنوان.</value>
+  </data>
+  <data name="Ui_Exit_full_screen_map_926d68" xml:space="preserve">
+    <value>الخروج من ملء الشاشة</value>
+  </data>
+  <data name="Ui_No_show_75602c" xml:space="preserve">
+    <value>لم يحضر الراكب</value>
+  </data>
+  <data name="Ui_RECEIPT_OPTIONAL_355dbf" xml:space="preserve">
+    <value>المرفق (اختياري)</value>
+  </data>
+  <data name="Ui_Optionally_attach_a_receipt_from_Camera_Photos_or_Files_0b32e9" xml:space="preserve">
+    <value>يمكنك إرفاق إيصال من الكاميرا أو الصور أو الملفات اختياريًا.</value>
+  </data>
+  <data name="Ui_Add_at_least_one_pay_band_d95b27" xml:space="preserve">
+    <value>أضف شريحة أجر واحدة على الأقل.</value>
+  </data>
+  <data name="Ui_Add_band_f91496" xml:space="preserve">
+    <value>إضافة شريحة</value>
+  </data>
+  <data name="Ui_Apply_this_pay_system_to_the_selected_chauffeur_b14efc" xml:space="preserve">
+    <value>تطبيق نظام الأجر على السائق المحدد؟</value>
+  </data>
+  <data name="Ui_Approve_extra_8bc585" xml:space="preserve">
+    <value>قبول الإضافة</value>
+  </data>
+  <data name="Ui_Approved_charge_399641" xml:space="preserve">
+    <value>المبلغ المعتمد</value>
+  </data>
+  <data name="Ui_Assign_another_pay_system_to_its_drivers_before_deleting_this_one_63ca21" xml:space="preserve">
+    <value>عيّن نظام أجر آخر للسائقين قبل حذف هذا النظام.</value>
+  </data>
+  <data name="Ui_Assign_pay_system_64918a" xml:space="preserve">
+    <value>إسناد نظام الأجر</value>
+  </data>
+  <data name="Ui_Balances_and_assignments_10cab9" xml:space="preserve">
+    <value>الأرصدة والإسناد</value>
+  </data>
+  <data name="Ui_Cancel_journey_d8deca" xml:space="preserve">
+    <value>إلغاء الرحلة</value>
+  </data>
+  <data name="Ui_Charge_confirmed_with_the_customer_df93de" xml:space="preserve">
+    <value>تم تأكيد المبلغ مع العميل</value>
+  </data>
+  <data name="Ui_Company_expenses_1b64db" xml:space="preserve">
+    <value>مصروفات الشركة</value>
+  </data>
+  <data name="Ui_Company_profitability_f0a2d0" xml:space="preserve">
+    <value>ربحية الشركة</value>
+  </data>
+  <data name="Ui_Confirm_the_charge_with_the_customer_before_approval_3be1e0" xml:space="preserve">
+    <value>أكد المبلغ مع العميل قبل الموافقة.</value>
+  </data>
+  <data name="Ui_Contract_type_6f00c1" xml:space="preserve">
+    <value>نوع العقد</value>
+  </data>
+  <data name="Ui_Cost_classification_bd5d8a" xml:space="preserve">
+    <value>تصنيف التكلفة</value>
+  </data>
+  <data name="Ui_Delete_f6fdbe" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Ui_Delete_category_a82b0f" xml:space="preserve">
+    <value>حذف التصنيف</value>
+  </data>
+  <data name="Ui_Delete_category_0_dc1d82" xml:space="preserve">
+    <value>حذف التصنيف {0}؟</value>
+  </data>
+  <data name="Ui_Delete_expense_711c08" xml:space="preserve">
+    <value>حذف المصروف</value>
+  </data>
+  <data name="Ui_Delete_expense_0_This_cannot_be_undone_7a138b" xml:space="preserve">
+    <value>حذف المصروف {0}؟ لا يمكن التراجع.</value>
+  </data>
+  <data name="Ui_Delete_pay_system_0d5ede" xml:space="preserve">
+    <value>حذف نظام الأجر</value>
+  </data>
+  <data name="Ui_Delete_this_unused_pay_system_fb03b7" xml:space="preserve">
+    <value>حذف نظام الأجر غير المستخدم؟</value>
+  </data>
+  <data name="Ui_Distance_pay_bands_605b04" xml:space="preserve">
+    <value>شرائح أجر المسافة</value>
+  </data>
+  <data name="Ui_Driver_statement_1d6a98" xml:space="preserve">
+    <value>كشف حساب السائق</value>
+  </data>
+  <data name="Ui_Edit_expense_5b77ee" xml:space="preserve">
+    <value>تعديل المصروف</value>
+  </data>
+  <data name="Ui_Edit_journey_fa99d2" xml:space="preserve">
+    <value>تعديل الرحلة</value>
+  </data>
+  <data name="Ui_Enter_a_description_and_select_an_existing_category_4217b5" xml:space="preserve">
+    <value>أدخل وصفًا واختر تصنيفًا موجودًا.</value>
+  </data>
+  <data name="Ui_Enter_a_pay_system_name_2bad8a" xml:space="preserve">
+    <value>أدخل اسم نظام الأجر.</value>
+  </data>
+  <data name="Ui_Enter_a_positive_amount_ea7055" xml:space="preserve">
+    <value>أدخل مبلغًا أكبر من صفر.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_amount_b0e59c" xml:space="preserve">
+    <value>أدخل مبلغًا صحيحًا.</value>
+  </data>
+  <data name="Ui_Enter_a_valid_non_negative_amount_116e78" xml:space="preserve">
+    <value>أدخل مبلغًا صحيحًا لا يقل عن صفر.</value>
+  </data>
+  <data name="Ui_Expense_categories_c45009" xml:space="preserve">
+    <value>تصنيفات المصروفات</value>
+  </data>
+  <data name="Ui_Export_CSV_5755f9" xml:space="preserve">
+    <value>تصدير CSV</value>
+  </data>
+  <data name="Ui_Export_PDF_3dd7d5" xml:space="preserve">
+    <value>تصدير PDF</value>
+  </data>
+  <data name="Ui_Finalize_statement_cf6b53" xml:space="preserve">
+    <value>اعتماد كشف الحساب</value>
+  </data>
+  <data name="Ui_Hourly_rate_cbe59c" xml:space="preserve">
+    <value>أجر الساعة</value>
+  </data>
+  <data name="Ui_Include_upper_limit_126993" xml:space="preserve">
+    <value>تضمين الحد الأعلى</value>
+  </data>
+  <data name="Ui_Journey_no_longer_exists_30259d" xml:space="preserve">
+    <value>لم تعد الرحلة موجودة.</value>
+  </data>
+  <data name="Ui_Leave_the_final_limit_empty_for_an_unlimited_band_7b9dac" xml:space="preserve">
+    <value>اترك الحد الأخير فارغًا لشريحة بلا حد أقصى.</value>
+  </data>
+  <data name="Ui_Legacy_balance_c84132" xml:space="preserve">
+    <value>الرصيد السابق</value>
+  </data>
+  <data name="Ui_Manage_categories_eceede" xml:space="preserve">
+    <value>إدارة التصنيفات</value>
+  </data>
+  <data name="Ui_Monthly_salary_50f577" xml:space="preserve">
+    <value>الراتب الشهري</value>
+  </data>
+  <data name="Ui_Needs_review_33a506" xml:space="preserve">
+    <value>يحتاج مراجعة</value>
+  </data>
+  <data name="Ui_New_6403f2" xml:space="preserve">
+    <value>جديد</value>
+  </data>
+  <data name="Ui_New_pay_system_482db9" xml:space="preserve">
+    <value>نظام أجر جديد</value>
+  </data>
+  <data name="Ui_Pay_calculation_186ae5" xml:space="preserve">
+    <value>طريقة حساب الأجر</value>
+  </data>
+  <data name="Ui_Pay_system_804417" xml:space="preserve">
+    <value>نظام الأجر</value>
+  </data>
+  <data name="Ui_Pay_system_name_1606f4" xml:space="preserve">
+    <value>اسم نظام الأجر</value>
+  </data>
+  <data name="Ui_Pay_systems_10a2a2" xml:space="preserve">
+    <value>أنظمة الأجر</value>
+  </data>
+  <data name="Ui_Payment_record_ed5232" xml:space="preserve">
+    <value>سجل الدفع</value>
+  </data>
+  <data name="Ui_Percentage_must_be_between_0_and_100_96f807" xml:space="preserve">
+    <value>يجب أن تكون النسبة بين 0 و100.</value>
+  </data>
+  <data name="Ui_Print_Save_PDF_6b1534" xml:space="preserve">
+    <value>طباعة / حفظ PDF</value>
+  </data>
+  <data name="Ui_Provisional_report_cb576e" xml:space="preserve">
+    <value>تقرير مبدئي</value>
+  </data>
+  <data name="Ui_Record_settlement_f3254a" xml:space="preserve">
+    <value>تسجيل تسوية</value>
+  </data>
+  <data name="Ui_Record_this_legacy_balance_settlement_No_money_transfer_is_made_b44e67" xml:space="preserve">
+    <value>تسجيل تسوية الرصيد السابق؟ لن يتم تحويل أموال.</value>
+  </data>
+  <data name="Ui_Recording_a_settlement_updates_the_legacy_ledger_only_No_money_transfe_7bc8a9" xml:space="preserve">
+    <value>تسجيل التسوية يحدّث الرصيد السابق فقط ولا يحوّل أي أموال.</value>
+  </data>
+  <data name="Ui_Reject_extra_5a6692" xml:space="preserve">
+    <value>رفض الإضافة</value>
+  </data>
+  <data name="Ui_Reload_latest_33af4d" xml:space="preserve">
+    <value>تحميل أحدث البيانات</value>
+  </data>
+  <data name="Ui_Remove_attachment_0fcc65" xml:space="preserve">
+    <value>إزالة المرفق</value>
+  </data>
+  <data name="Ui_Remove_band_fb769d" xml:space="preserve">
+    <value>إزالة الشريحة</value>
+  </data>
+  <data name="Ui_Resolve_all_review_items_before_finalizing_271716" xml:space="preserve">
+    <value>عالج جميع بنود المراجعة قبل اعتماد الكشف.</value>
+  </data>
+  <data name="Ui_Review_extra_059bdb" xml:space="preserve">
+    <value>مراجعة الإضافة</value>
+  </data>
+  <data name="Ui_Review_note_0e846b" xml:space="preserve">
+    <value>ملاحظة المراجعة</value>
+  </data>
+  <data name="Ui_Review_the_extra_request_and_amount_408838" xml:space="preserve">
+    <value>راجع طلب الإضافة والمبلغ.</value>
+  </data>
+  <data name="Ui_Save_expense_0_for_1_8cf9a2" xml:space="preserve">
+    <value>حفظ المصروف {0} بمبلغ {1}؟</value>
+  </data>
+  <data name="Ui_Save_pay_system_2a696b" xml:space="preserve">
+    <value>حفظ نظام الأجر</value>
+  </data>
+  <data name="Ui_Save_these_pay_rules_Finalized_statements_will_retain_their_existing_r_e2aca7" xml:space="preserve">
+    <value>حفظ قواعد الأجر؟ ستحتفظ الكشوف المعتمدة بقواعدها السابقة.</value>
+  </data>
+  <data name="Ui_Search_categories_259c54" xml:space="preserve">
+    <value>البحث في التصنيفات</value>
+  </data>
+  <data name="Ui_Search_chauffeur_23d692" xml:space="preserve">
+    <value>البحث عن سائق</value>
+  </data>
+  <data name="Ui_Select_a_chauffeur_and_pay_system_148f59" xml:space="preserve">
+    <value>اختر سائقًا ونظام أجر.</value>
+  </data>
+  <data name="Ui_Select_a_chauffeur_50a7aa" xml:space="preserve">
+    <value>اختر سائقًا.</value>
+  </data>
+  <data name="Ui_Select_a_valid_date_range_c6aa9b" xml:space="preserve">
+    <value>اختر فترة تاريخ صحيحة.</value>
+  </data>
+  <data name="Ui_Select_the_linked_vehicle_for_vehicle_expenses_0f8715" xml:space="preserve">
+    <value>اختر السيارة المرتبطة بمصروفات السيارة.</value>
+  </data>
+  <data name="Ui_Settlement_amount_f015ee" xml:space="preserve">
+    <value>مبلغ التسوية</value>
+  </data>
+  <data name="Ui_Settlement_must_be_positive_and_cannot_exceed_the_outstanding_balance_0a2944" xml:space="preserve">
+    <value>يجب أن تكون التسوية أكبر من صفر وألا تتجاوز الرصيد المستحق.</value>
+  </data>
+  <data name="Ui_This_expense_is_no_longer_available_a9ec67" xml:space="preserve">
+    <value>لم يعد هذا المصروف متاحًا.</value>
+  </data>
+  <data name="Ui_This_extra_has_already_been_reviewed_Refresh_the_journey_3ed23f" xml:space="preserve">
+    <value>تمت مراجعة الإضافة بالفعل. حدّث الرحلة.</value>
+  </data>
+  <data name="Ui_This_journey_cannot_be_cancelled_in_its_current_state_2acef2" xml:space="preserve">
+    <value>لا يمكن إلغاء الرحلة في حالتها الحالية.</value>
+  </data>
+  <data name="Ui_This_record_is_no_longer_available_c60719" xml:space="preserve">
+    <value>لم يعد هذا السجل متاحًا.</value>
+  </data>
+  <data name="Ui_This_statement_has_already_been_finalized_Refresh_it_078fd9" xml:space="preserve">
+    <value>تم اعتماد الكشف بالفعل. حدّث البيانات.</value>
+  </data>
+  <data name="Ui_Upper_limit_miles_07c2bc" xml:space="preserve">
+    <value>الحد الأعلى (ميل)</value>
+  </data>
+  <data name="Ui_Use_increasing_band_limits_only_the_last_band_may_be_unlimited_854930" xml:space="preserve">
+    <value>استخدم حدودًا تصاعدية؛ يمكن أن تكون الشريحة الأخيرة فقط بلا حد أقصى.</value>
+  </data>
+  <data name="Ui_Use_plain_category_names_of_up_to_100_characters_e5e4f6" xml:space="preserve">
+    <value>استخدم أسماء تصنيفات نصية بحد أقصى 100 حرف.</value>
+  </data>
+  <data name="Ui_Value_8dce17" xml:space="preserve">
+    <value>القيمة</value>
+  </data>
+  <data name="Ui_Approve_this_extra_charge_after_confirming_it_with_the_customer_0be347" xml:space="preserve">
+    <value>قبول مبلغ الإضافة بعد تأكيده مع العميل؟</value>
+  </data>
+  <data name="Ui_Reject_this_extra_request_8bc8ca" xml:space="preserve">
+    <value>رفض طلب الإضافة؟</value>
+  </data>
+  <data name="Ui_Cancel_this_journey_This_does_not_issue_a_payment_refund_c3d99b" xml:space="preserve">
+    <value>إلغاء هذه الرحلة؟ لن يتم رد أي دفعة.</value>
+  </data>
+  <data name="Ui_Set_the_payment_record_to_0_No_money_is_collected_or_refunded_1c6671" xml:space="preserve">
+    <value>تغيير سجل الدفع إلى {0}؟ لن يتم تحصيل أو رد أي أموال.</value>
+  </data>
+  <data name="Ui_Save_changes_to_the_journey_for_0_81a56a" xml:space="preserve">
+    <value>حفظ تعديلات رحلة {0}؟</value>
+  </data>
+  <data name="Ui_This_journey_is_locked_Refresh_its_current_status_1b853f" xml:space="preserve">
+    <value>هذه الرحلة مقفلة. حدّث حالتها الحالية.</value>
+  </data>
+  <data name="Ui_Finalize_this_reviewed_statement_Its_rules_and_amounts_will_be_preserv_fed121" xml:space="preserve">
+    <value>اعتماد الكشف الذي راجعته؟ سيتم تثبيت قواعده ومبالغه.</value>
+  </data>
+  <data name="Ui_The_statement_changed_Refresh_and_review_before_finalizing_4ccb5b" xml:space="preserve">
+    <value>تغيّر كشف الحساب. حدّثه وراجعه قبل الاعتماد.</value>
+  </data>
+  <data name="Ui_Data_changed_on_the_server_Refresh_and_review_before_saving_again_b02722" xml:space="preserve">
+    <value>تغيّرت البيانات على السيرفر. حدّثها وراجعها قبل إعادة الحفظ.</value>
+  </data>
+  <data name="Ui_Your_account_does_not_have_permission_for_this_action_803170" xml:space="preserve">
+    <value>حسابك لا يملك صلاحية هذا الإجراء.</value>
+  </data>
+  <data name="Ui_All_vehicles_f521f4" xml:space="preserve">
+    <value>كل السيارات</value>
+  </data>
+  <data name="Ui_Operating_expense_b559d0" xml:space="preserve">
+    <value>مصروف تشغيلي</value>
+  </data>
+  <data name="Ui_Driver_payroll_payment_694f6b" xml:space="preserve">
+    <value>دفعة أجور سائق</value>
+  </data>
+  <data name="Ui_Other_staff_salary_d61634" xml:space="preserve">
+    <value>راتب موظف آخر</value>
+  </data>
+  <data name="Ui_fixed_7bc555" xml:space="preserve">
+    <value>مبلغ ثابت</value>
+  </data>
+  <data name="Ui_percent_56b249" xml:space="preserve">
+    <value>نسبة مئوية</value>
+  </data>
+  <data name="Ui_bands_0c2a21" xml:space="preserve">
+    <value>شرائح المسافة والساعة</value>
+  </data>
+  <data name="Ui_salary_47dfeb" xml:space="preserve">
+    <value>راتب شهري</value>
+  </data>
+  <data name="Ui_Booked_hours_adbd29" xml:space="preserve">
+    <value>الساعات المحجوزة</value>
+  </data>
+  <data name="Ui_Extra_minutes_8958d9" xml:space="preserve">
+    <value>الدقائق الإضافية</value>
+  </data>
+  <data name="Ui_Total_hours_18c63f" xml:space="preserve">
+    <value>إجمالي الساعات</value>
+  </data>
+  <data name="Ui_Pay_rule_3f2720" xml:space="preserve">
+    <value>قاعدة الأجر</value>
+  </data>
+  <data name="Ui_External_source_82e693" xml:space="preserve">
+    <value>مصدر الاستيراد</value>
+  </data>
+  <data name="Ui_External_reference_52aa72" xml:space="preserve">
+    <value>مرجع الاستيراد</value>
+  </data>
+  <data name="Ui_Review_issue_38f326" xml:space="preserve">
+    <value>سبب المراجعة</value>
+  </data>
+  <data name="Ui_Unposted_maintenance_0faad8" xml:space="preserve">
+    <value>صيانة غير مسجلة: </value>
+  </data>
+  <data name="Ui_Hourly_rate_45db5b" xml:space="preserve">
+    <value>أجر الساعة: </value>
+  </data>
+  <data name="Ui_Miles_0_0_ece6f4" xml:space="preserve">
+    <value>الأميال: {0:0.##}</value>
+  </data>
+  <data name="Ui_Booked_hours_0_0_15517d" xml:space="preserve">
+    <value>الساعات المحجوزة: {0:0.##}</value>
+  </data>
+  <data name="Ui_Extra_minutes_0_0_d93652" xml:space="preserve">
+    <value>الدقائق الإضافية: {0:0.##}</value>
+  </data>
+  <data name="Ui_Total_hours_0_0_cf7a11" xml:space="preserve">
+    <value>إجمالي الساعات: {0:0.##}</value>
+  </data>
+  <data name="Ui_Margin_0_0_f0e3ce" xml:space="preserve">
+    <value>هامش الربح: {0:0.##}%</value>
+  </data>
+  <data name="Ui_Wait_for_the_report_to_load_a78525" xml:space="preserve">
+    <value>انتظر تحميل التقرير.</value>
+  </data>
+  <data name="Ui_The_report_is_not_available_da0c92" xml:space="preserve">
+    <value>التقرير غير متاح.</value>
+  </data>
+  <data name="Ui_Mark_this_journey_as_no_show_b2b908" xml:space="preserve">
+    <value>تسجيل هذه الرحلة كعدم حضور؟</value>
+  </data>
+  <data name="Ui_Choose_a_valid_payment_state_9d6121" xml:space="preserve">
+    <value>اختر حالة دفع صحيحة.</value>
+  </data>
+  <data name="Ui_Choose_a_valid_cost_classification_4646b9" xml:space="preserve">
+    <value>اختر تصنيف تكلفة صحيحًا.</value>
+  </data>
+  <data name="Ui_Select_the_driver_for_a_payroll_payment_f1bd56" xml:space="preserve">
+    <value>اختر السائق لدفعة الأجور.</value>
+  </data>
+  <data name="Ui_Not_linked_0196fd" xml:space="preserve">
+    <value>غير مرتبط</value>
+  </data>
+  <data name="Ui_General_c6a956" xml:space="preserve">
+    <value>عام: </value>
+  </data>
+  <data name="Ui_Vehicle_c1958f" xml:space="preserve">
+    <value>سيارة: </value>
+  </data>
+  <data name="Ui_Receipts_0_0879bb" xml:space="preserve">
+    <value>المرفقات: {0}</value>
+  </data>
+  <data name="Ui_Collected_583f28" xml:space="preserve">
+    <value>المحصّل: </value>
+  </data>
+  <data name="Ui_Outstanding_a35ff6" xml:space="preserve">
+    <value>المعلق: </value>
+  </data>
+  <data name="Ui_Payroll_settlements_2f7511" xml:space="preserve">
+    <value>تسويات الأجور: </value>
+  </data>
+  <data name="Ui_Chauffeur_pay_e63a26" xml:space="preserve">
+    <value>أجور السائقين</value>
+  </data>
+  <data name="Ui_Add_category_d169b7" xml:space="preserve">
+    <value>إضافة تصنيف</value>
+  </data>
+  <data name="Ui_Rename_category_e66630" xml:space="preserve">
+    <value>تغيير اسم التصنيف</value>
+  </data>
+  <data name="Ui_Accrual_estimate_based_on_entered_costs_Salary_is_prorated_by_days_Pay_45f2f1" xml:space="preserve">
+    <value>تقدير استحقاق مبني على التكاليف المسجلة. يُحسب الراتب بنسبة الأيام. دفعات الأجور تسويات وليست مصروفًا مكررًا؛ تقديرات الحوادث مستبعدة.</value>
+  </data>
+  <data name="Ui_Card_payment_records_must_be_managed_through_the_web_payment_flow_9416c9" xml:space="preserve">
+    <value>تُدار سجلات الدفع بالبطاقة من خلال مسار الدفع في الويب.</value>
+  </data>
+  <data name="Ui_Existing_price_is_retained_unless_the_passenger_route_hours_vehicle_ty_55afd1" xml:space="preserve">
+    <value>يُحتفظ بالسعر الحالي ما لم يتغير الراكب أو المسار أو الساعات أو نوع السيارة أو الكوبون أو طريقة الدفع.</value>
+  </data>
+  <data name="Ui_Unassign_chauffeur_dd4815" xml:space="preserve">
+    <value>إلغاء إسناد السائق</value>
+  </data>
+  <data name="Ui_Remove_the_chauffeur_and_vehicle_assignment_from_this_unstarted_journe_5fd081" xml:space="preserve">
+    <value>إزالة إسناد السائق والسيارة من هذه الرحلة التي لم تبدأ؟</value>
+  </data>
+  <data name="Ui_Trip_ID_c4599d" xml:space="preserve">
+    <value>رقم الرحلة</value>
+  </data>
+  <data name="Ui_Source_kind_7eda9b" xml:space="preserve">
+    <value>نوع المصدر</value>
+  </data>
+  <data name="Ui_All_6a7208" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="Ui_Operating_expenses_b6cc84" xml:space="preserve">
+    <value>المصروفات التشغيلية:</value>
+  </data>
+  <data name="Ui_Approved_charge_39de7f" xml:space="preserve">
+    <value>التكلفة المعتمدة:</value>
+  </data>
+  <data name="Ui_Unposted_maintenance_f765af" xml:space="preserve">
+    <value>صيانة غير مسجلة:</value>
+  </data>
+  <data name="Ui_Hourly_rate_cea423" xml:space="preserve">
+    <value>أجر الساعة:</value>
+  </data>
+  <data name="Ui_General_a2672e" xml:space="preserve">
+    <value>عام:</value>
+  </data>
+  <data name="Ui_Vehicle_d74938" xml:space="preserve">
+    <value>سيارة:</value>
+  </data>
+  <data name="Ui_Collected_8e0cd5" xml:space="preserve">
+    <value>المحصّل:</value>
+  </data>
+  <data name="Ui_Outstanding_02fc96" xml:space="preserve">
+    <value>المعلق:</value>
+  </data>
+  <data name="Ui_Payroll_settlements_24a67d" xml:space="preserve">
+    <value>تسويات الأجور:</value>
+  </data>
+<data name="Ui_Moving_65cd4d" xml:space="preserve"><value>يتحرك</value></data>
+<data name="Ui_Stationary_faa595" xml:space="preserve"><value>متوقف</value></data>
+<data name="Ui_Connection_delayed_or_unconfirmed_7da128" xml:space="preserve"><value>الاتصال متأخر أو غير مؤكد</value></data>
+<data name="Ui_Live_updates_connected_3ec442" xml:space="preserve"><value>البث المباشر متصل</value></data>
+<data name="Ui_Connecting_live_tracking_2362cf" xml:space="preserve"><value>جارٍ الاتصال بالتتبع المباشر…</value></data>
+<data name="Ui_Live_connection_interrupted_periodic_refresh_2d4725" xml:space="preserve"><value>انقطع البث المباشر · تحديث دوري</value></data>
+<data name="Ui_Live_connection_interrupted_retrying_4507d4" xml:space="preserve"><value>انقطع البث المباشر · جارٍ إعادة المحاولة</value></data>
+
+<data name="Ui_Synchronization_cbcf7a" xml:space="preserve"><value>المزامنة</value></data>
+<data name="Ui_Pending_journeys_and_location_uploads_d5b3ca" xml:space="preserve"><value>الرحلات ونقاط التتبع بانتظار المزامنة</value></data>
+<data name="Ui_Sync_now_2b7d93" xml:space="preserve"><value>مزامنة الآن</value></data>
+<data name="Ui_No_saved_journeys_are_waiting_for_synchronization_105f5d" xml:space="preserve"><value>لا توجد رحلات محفوظة بانتظار المزامنة.</value></data>
+<data name="Ui_Saved_on_this_device_Pending_data_stays_protected_until_the_server_ack_735961" xml:space="preserve"><value>محفوظة على هذا الجهاز. تبقى البيانات المعلقة محمية حتى يؤكد السيرفر استلامها. لا تُحذف البيانات التي تحتاج مراجعة تلقائيًا.</value></data>
+<data name="Ui_0_journeys_1_locations_pending_28c46a" xml:space="preserve"><value>{0} رحلة · {1} نقطة بانتظار المزامنة</value></data>
+<data name="Ui_0_locations_pending_1_need_review_0b01d9" xml:space="preserve"><value>{0} نقطة معلقة · {1} تحتاج مراجعة</value></data>
+<data name="Ui_Ended_on_this_device_0_e2d553" xml:space="preserve"><value>وقت الإنهاء على هذا الجهاز: {0}</value></data>
+<data name="Ui_Journey_ended_awaiting_synchronization_a75f1e" xml:space="preserve"><value>انتهت الرحلة · بانتظار المزامنة</value></data>
+<data name="Ui_Journey_completed_location_uploads_pending_a32e5c" xml:space="preserve"><value>الرحلة مكتملة · نقاط التتبع بانتظار الرفع</value></data>
+<data name="Ui_Synchronization_complete_e65b25" xml:space="preserve"><value>اكتملت المزامنة</value></data>
+<data name="Ui_Review_required_c77ff1" xml:space="preserve"><value>تحتاج مراجعة</value></data>
+<data name="Ui_Sign_in_to_synchronize_79a9ec" xml:space="preserve"><value>سجّل الدخول لإكمال المزامنة</value></data>
+<data name="Ui_Location_uploads_pending_0332d2" xml:space="preserve"><value>نقاط التتبع بانتظار الرفع</value></data>
+<data name="Ui_End_this_journey_on_this_device_It_will_synchronize_when_connected_9e0852" xml:space="preserve"><value>هل تريد إنهاء الرحلة على هذا الجهاز؟ ستتم مزامنتها عند توفر الاتصال.</value></data>
+<data name="Ui_Offline_completion_is_unavailable_Connect_to_check_server_support_firs_d60bb7" xml:space="preserve"><value>الإنهاء دون اتصال غير متاح. اتصل أولًا للتحقق من دعم السيرفر.</value></data>
+<data name="Ui_Connect_to_the_internet_to_synchronize_saved_journeys_ad5c54" xml:space="preserve"><value>اتصل بالإنترنت لمزامنة الرحلات المحفوظة.</value></data>
+<data name="Ui_Only_the_assigned_chauffeur_can_finish_an_onboard_journey_574f1b" xml:space="preserve"><value>يمكن للسائق المسند فقط إنهاء رحلة الراكب على متنها.</value></data>
+<data name="Ui_Synchronization_storage_is_full_Connect_and_synchronize_before_continu_b30255" xml:space="preserve"><value>مساحة المزامنة ممتلئة. اتصل وأكمل المزامنة قبل المتابعة.</value></data>
+<data name="Ui_Saved_synchronization_data_needs_recovery_Its_encryption_key_is_unavai_884b87" xml:space="preserve"><value>بيانات المزامنة المحفوظة تحتاج استعادة. مفتاح التشفير غير متاح.</value></data>
+<data name="Ui_The_journey_was_cancelled_by_dispatch_01718e" xml:space="preserve"><value>ألغى الديسباتش الرحلة.</value></data>
+<data name="Ui_The_chauffeur_assignment_changed_Contact_dispatch_cac014" xml:space="preserve"><value>تغير إسناد السائق. تواصل مع الديسباتش.</value></data>
+<data name="Ui_This_journey_needs_assignment_review_Contact_dispatch_bdaba4" xml:space="preserve"><value>إسناد هذه الرحلة يحتاج مراجعة. تواصل مع الديسباتش.</value></data>
+<data name="Ui_The_completion_time_needs_review_Contact_dispatch_79a7db" xml:space="preserve"><value>وقت إنهاء الرحلة يحتاج مراجعة. تواصل مع الديسباتش.</value></data>
+<data name="Ui_The_synchronization_window_has_expired_Saved_data_has_been_retained_199030" xml:space="preserve"><value>انتهت مهلة المزامنة. تم الاحتفاظ بالبيانات المحفوظة.</value></data>
+<data name="Ui_Sign_in_to_the_original_account_to_synchronize_d6700c" xml:space="preserve"><value>سجل الدخول بالحساب الأصلي لإكمال المزامنة.</value></data>
+<data name="Ui_Some_saved_locations_need_review_Contact_dispatch_fe5706" xml:space="preserve"><value>بعض نقاط التتبع المحفوظة تحتاج مراجعة. تواصل مع الديسباتش.</value></data>
+<data name="Ui_The_journey_changed_on_the_server_Contact_dispatch_979e48" xml:space="preserve"><value>تغيرت الرحلة على السيرفر. تواصل مع الديسباتش.</value></data>
+<data name="Ui_The_saved_synchronization_request_needs_review_Contact_dispatch_dee43d" xml:space="preserve"><value>طلب المزامنة المحفوظ يحتاج مراجعة. تواصل مع الديسباتش.</value></data>
+<data name="Ui_Waiting_for_a_connection_or_the_next_synchronization_attempt_95145d" xml:space="preserve"><value>بانتظار الاتصال أو محاولة المزامنة التالية.</value></data>
+<data name="Ui_Saved_data_needs_review_Contact_dispatch_578979" xml:space="preserve"><value>البيانات المحفوظة تحتاج مراجعة. تواصل مع الديسباتش.</value></data>
+<data name="Ui_This_journey_has_already_ended_on_this_device_46e7fb" xml:space="preserve"><value>انتهت هذه الرحلة بالفعل على هذا الجهاز.</value></data>
+<data name="Ui_Completed_items_disappear_from_this_page_after_24_hours_Pending_journe_88442c" xml:space="preserve"><value>تختفي المزامنات المكتملة من هذه الصفحة بعد 24 ساعة. تبقى الرحلات المعلّقة والعناصر التي تحتاج مراجعة ظاهرة.</value></data>
+</root>

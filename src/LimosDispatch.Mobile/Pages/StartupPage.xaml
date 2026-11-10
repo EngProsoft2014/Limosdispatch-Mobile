@@ -1,0 +1,10 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:LimosDispatch.Mobile.ViewModels" xmlns:controls="clr-namespace:LimosDispatch.Mobile.Controls" x:Class="LimosDispatch.Mobile.Pages.StartupPage" x:DataType="vm:StartupViewModel" NavigationPage.HasNavigationBar="False" BackgroundColor="#111D28">
+ <VerticalStackLayout Padding="28" Spacing="20" VerticalOptions="Center">
+  <Image Source="brand_logo.png" WidthRequest="280" HeightRequest="110" Aspect="AspectFit"/>
+  <controls:LoadingDots IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+  <Label Text="{DynamicResource Ui_Opening_your_workspace_786d09}" TextColor="#AFBEC9" FontSize="13" HorizontalTextAlignment="Center" IsVisible="{Binding HasError,Converter={StaticResource Inverse}}"/>
+  <Label Text="{Binding Error,Converter={StaticResource LocalizedText}}" TextColor="#AFBEC9" HorizontalTextAlignment="Center" IsVisible="{Binding HasError}"/>
+  <Button Text="{DynamicResource Ui_Retry_9f5cd8}" Command="{Binding RetryCommand}" IsVisible="{Binding HasError}" WidthRequest="180" HorizontalOptions="Center"/>
+  <Button Text="{DynamicResource Ui_Sign_in_ada2e9}" Command="{Binding SignInCommand}" IsVisible="{Binding HasError}" WidthRequest="180" HorizontalOptions="Center"/>
+ </VerticalStackLayout>
+</ContentPage>

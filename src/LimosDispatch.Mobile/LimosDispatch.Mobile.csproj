@@ -18,8 +18,11 @@
 </ItemGroup><PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 <CodesignEntitlements>Platforms/iOS/Entitlements.plist</CodesignEntitlements>
 <CodesignEntitlements Condition="'$(Configuration)' == 'Release'">Platforms/iOS/Entitlements.Release.plist</CodesignEntitlements>
+<!-- Simulator Keychain access also requires an application identity. -->
+<CodesignEntitlements Condition="$(RuntimeIdentifier.StartsWith('iossimulator'))">Platforms/iOS/Entitlements.Simulator.plist</CodesignEntitlements>
 </PropertyGroup><ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 <BundleResource Include="Platforms/iOS/GoogleService-Info.plist" LogicalName="GoogleService-Info.plist"/>
 <BundleResource Include="Platforms/iOS/Resources/limosdispatch_alert.wav" LogicalName="limosdispatch_alert.wav"/>
 <PackageReference Include="AdamE.Google.iOS.Maps" Version="9.2.0.8"/>
-</ItemGroup><Import Project="../LimosDispatch.Core/LimosDispatch.Core.projitems" Label="Shared"/></Project>
+</ItemGroup>
+<Import Project="../LimosDispatch.Core/LimosDispatch.Core.projitems" Label="Shared"/></Project>

@@ -126,6 +126,43 @@ var values = await Task.WhenAll(Enumerable.Range(0, 20).Select(_ => auth.GetToke
 Check(refreshCount == 1 && values.All(t => t == "new") && store.Pair!.RefreshToken == "new-refresh", "20 concurrent consumers rotate refresh token once");
 await auth.RefreshAfterRejectionAsync("old"); Check(refreshCount == 1, "Stale 401 does not reuse old refresh token");
 try { auth.SetUser(new() { Company = "other" }); Check(false, "Tenant mismatch"); } catch (InvalidOperationException) { Check(true, "Tenant mismatch rejected"); }
+foreach (var role in new[] { "Driver", "Admin" })
+{
+    var sessionStore = new MemoryStore { Pair = new() { AccessToken = "revoked", RefreshToken = "revoked-refresh", Company = "test", ExpiresAt = DateTimeOffset.UtcNow.AddHours(1) } };
+    var requests = 0; var signouts = 0;
+    var sessionAuth = new AuthService(new HttpClient(new FakeHandler(_ =>
+    {
+        requests++;
+        return Task.FromResult(Response(HttpStatusCode.Unauthorized, "{}"));
+    })) { BaseAddress = new("https://example.test/") }, sessionStore);
+    await sessionAuth.GetTokenAsync(); sessionAuth.SetUser(new() { Company = "test", Role = role });
+    sessionAuth.SignedOut += () => signouts++;
+    try { await sessionAuth.ValidateCurrentSessionAsync(); } catch (UnauthorizedAccessException) { }
+    Check(requests == 2 && signouts == 1 && sessionAuth.User is null && sessionStore.Pair is null,
+        $"{role} foreground validation signs out revoked unexpired session without push");
+}
+foreach (var status in new[] { HttpStatusCode.Unauthorized, HttpStatusCode.Forbidden, HttpStatusCode.ServiceUnavailable })
+{
+    var sessionStore = new MemoryStore { Pair = new() { AccessToken = "old", RefreshToken = "refresh", Company = "test", ExpiresAt = DateTimeOffset.UtcNow.AddHours(1) } };
+    var sessionAuth = new AuthService(new HttpClient(new FakeHandler(request => Task.FromResult(
+        request.RequestUri!.AbsolutePath.EndsWith("refresh")
+            ? Response(HttpStatusCode.OK, """{"accessToken":"renewed","refreshToken":"next","expiresAt":"2099-01-01T00:00:00Z"}""")
+            : Response(status, "{}")))) { BaseAddress = new("https://example.test/") }, sessionStore);
+    await sessionAuth.GetTokenAsync(); sessionAuth.SetUser(new() { Company = "test", Role = "Admin" });
+    try { await sessionAuth.ValidateCurrentSessionAsync(); } catch (ApiException) { }
+    Check((sessionAuth.User is null) == (status == HttpStatusCode.Unauthorized) &&
+        (sessionStore.Pair is null) == (status == HttpStatusCode.Unauthorized),
+        $"Session validation clears repeated 401 but retains session for {status}");
+}
+{
+    var sessionStore = new MemoryStore { Pair = new() { AccessToken = "current", RefreshToken = "refresh", Company = "test", ExpiresAt = DateTimeOffset.UtcNow.AddHours(1) } };
+    var sessionAuth = new AuthService(new HttpClient(new FakeHandler(_ => throw new HttpRequestException("Offline"))) { BaseAddress = new("https://example.test/") }, sessionStore);
+    await sessionAuth.GetTokenAsync(); sessionAuth.SetUser(new() { Company = "test", Role = "Driver" });
+    await sessionAuth.RejectTokenAsync("previous-login");
+    Check(sessionAuth.User is not null && sessionStore.Pair is not null, "Delayed rejection from previous login preserves current session");
+    try { await sessionAuth.ValidateCurrentSessionAsync(); } catch (HttpRequestException) { }
+    Check(sessionAuth.User is not null && sessionStore.Pair is not null, "Offline session check preserves login and secure session");
+}
 var count = 0;
 var conflict = new ApiRepository(new HttpClient(new FakeHandler(_ => { count++; return Task.FromResult(Response(HttpStatusCode.Conflict, "{}")); })) { BaseAddress = new("https://example.test/") }, new StaticTokens());
 try { await conflict.PostAsync<JsonElement>("api/records/trips", new { }); Check(false, "Conflict"); } catch (ApiException e) { Check((int)e.Status == 409 && count == 1, "Conflicted write is never automatically repeated"); }

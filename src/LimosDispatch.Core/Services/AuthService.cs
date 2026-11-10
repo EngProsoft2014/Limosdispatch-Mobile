@@ -40,6 +40,23 @@ public sealed class AuthService(HttpClient client, ISessionStore store) : IAcces
     }
     public Task<string> GetTokenAsync(CancellationToken ct = default) => ValidToken(null, ct);
     public Task<string> RefreshAfterRejectionAsync(string rejected, CancellationToken ct = default) => ValidToken(rejected, ct);
+    public async Task RejectTokenAsync(string rejected, CancellationToken ct = default)
+    {
+        await gate.WaitAsync(ct);
+        try
+        {
+            // A delayed response from an old account must not clear a newer login.
+            if (current?.AccessToken == rejected) await ClearInternal();
+        }
+        finally { gate.Release(); }
+    }
+    public async Task ValidateCurrentSessionAsync(CancellationToken ct = default)
+    {
+        if (User is null) return;
+        // Use the normal 401/refresh path, including rejection of a renewed token.
+        // This also checks still-unexpired access tokens against server revocation.
+        await new ApiRepository(client, this).GetAsync<UserProfile>(ApiRoutes.Me, ct);
+    }
     private async Task<string> ValidToken(string? rejected, CancellationToken ct)
     {
         await gate.WaitAsync(ct);

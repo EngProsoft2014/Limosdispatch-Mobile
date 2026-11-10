@@ -11,6 +11,7 @@ public interface IAccessTokenProvider
 {
     Task<string> GetTokenAsync(CancellationToken ct = default);
     Task<string> RefreshAfterRejectionAsync(string rejected, CancellationToken ct = default);
+    Task RejectTokenAsync(string rejected, CancellationToken ct = default) => Task.CompletedTask;
 }
 public interface IGenericRepository
 {
@@ -41,6 +42,8 @@ public sealed class ApiRepository(HttpClient client, IAccessTokenProvider tokens
             token = await tokens.RefreshAfterRejectionAsync(token, requestToken);
             // Retry only a rejected 401 request. Never retry ambiguous writes or 409 conflicts.
             using var retry = await Execute(method, path, body, token, requestToken);
+            if (retry.StatusCode == HttpStatusCode.Unauthorized)
+                await tokens.RejectTokenAsync(token, requestToken);
             return await Read<T>(retry, requestToken);
         }
         catch (OperationCanceledException ex) when (!ct.IsCancellationRequested) { throw new TimeoutException("The API request timed out. Refresh and check its result before retrying a write.", ex); }

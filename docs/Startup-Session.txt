@@ -15,3 +15,37 @@ administrator/chauffeur restoration, explicit sign-out, rejected renewal,
 company mismatch and retaining sessions during temporary failures.
 Android build/run and iOS managed compilation passed. The Android emulator
 reopened directly into Rides using the existing saved session.
+
+Active-session validation (10 November 2026)
+------------------------------------------
+The added SessionMonitorService and its 20-second polling timer were removed
+at the user's request. There is no separate periodic session-validation request
+or monitor startup/resume hook. Startup session restoration and normal API
+requests retain their existing authentication checks.
+
+The normal API path attempts refresh after a 401. Rejected refresh credentials
+or a second 401 with the renewed access token clear the secure session and
+raise SignedOut. A delayed rejection of an older token cannot clear a newer
+login. Network errors, timeouts, 403 on a resource, and 5xx preserve the session.
+Authentication rejection does not remove offline synchronization data.
+
+The backend must invalidate the old session on another device's login and
+reject its access token at /api/auth/me (not only when its JWT expires), as
+well as reject its refresh token. A client cannot enforce cross-device session
+exclusivity if the backend still accepts both sessions.
+
+The documented driver SignalR hub currently exposes TripAssigned; no server
+session-revocation event/payload is present in the supplied API contract.
+No event names or push payloads have been assumed. Immediate event-driven
+logout needs the backend's actual hub/event contract. Push delivery alone
+cannot guarantee that a suspended/killed iOS application executes logout;
+normal authenticated API requests detect rejection when they are sent.
+
+Validation: 164 core checks plus 28 mock HTTP finance checks passed, including
+7 new checks for Driver/Admin revocation, renewed-token rejection, delayed
+old-token responses, and preserving sessions on offline/403/503 failures.
+iOS Simulator build passed without warnings/errors. Cross-device revocation
+against the live backend and TestFlight delivery still require a device test.
+All 34 encrypted SQLite/offline synchronization checks also passed. Android
+build verification on this Mac is blocked by missing Android SDK platform 36
+(XA5207); no Android target/API level was changed to bypass that requirement.

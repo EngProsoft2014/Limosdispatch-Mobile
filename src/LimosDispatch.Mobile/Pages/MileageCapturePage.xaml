@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="LimosDispatch.Mobile.Pages.MileageCapturePage" BackgroundColor="{DynamicResource Canvas}">
+ <ScrollView>
+  <VerticalStackLayout Padding="20,28" Spacing="14">
+   <Grid ColumnDefinitions="*,Auto">
+    <Label Text="{Binding Heading}" FontSize="26" FontAttributes="Bold" VerticalOptions="Center"/>
+    <Button Grid.Column="1" x:Name="CloseButton" Clicked="CloseClicked"/>
+   </Grid>
+   <Label Text="{Binding Day}" TextColor="{DynamicResource Muted}"/>
+   <VerticalStackLayout Spacing="12">
+    <Border Style="{StaticResource Field}"><ContentView x:Name="VehicleField"/></Border>
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+     <Border Grid.Column="0" Padding="6" HeightRequest="80">
+      <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding CameraCommand}"/></Border.GestureRecognizers>
+      <VerticalStackLayout InputTransparent="True" Spacing="5" VerticalOptions="Center">
+       <Image Source="receipt_camera.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center"/>
+       <Label Text="{DynamicResource Ui_Camera_4da9c9}" HorizontalTextAlignment="Center" FontSize="12"/>
+      </VerticalStackLayout>
+     </Border>
+     <Border Grid.Column="1" Padding="6" HeightRequest="80">
+      <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding GalleryCommand}"/></Border.GestureRecognizers>
+      <VerticalStackLayout InputTransparent="True" Spacing="5" VerticalOptions="Center">
+       <Image Source="receipt_photos.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center"/>
+       <Label Text="{DynamicResource Ui_Photos_c8b2e8}" HorizontalTextAlignment="Center" FontSize="12"/>
+      </VerticalStackLayout>
+     </Border>
+    </Grid>
+    <Image Source="{Binding Preview}" IsVisible="{Binding HasPhoto}" HeightRequest="180" Aspect="AspectFit"/>
+    <Label Text="{Binding ReadingStatus}" IsVisible="{Binding HasPhoto}" TextColor="{DynamicResource Muted}"/>
+    <Border Style="{StaticResource Field}"><Entry x:Name="MilesField" Text="{Binding Miles}" Keyboard="Numeric" HeightRequest="44"/></Border>
+    <HorizontalStackLayout Spacing="8">
+     <CheckBox IsChecked="{Binding IsLate}"/>
+     <Label x:Name="LateLabel" VerticalOptions="Center"/>
+    </HorizontalStackLayout>
+    <Border Style="{StaticResource Field}" IsVisible="{Binding IsLate}" HeightRequest="116" Padding="12,8"><Editor x:Name="ReasonField" Text="{Binding Reason}" MaxLength="500" HeightRequest="100"/></Border>
+   </VerticalStackLayout>
+   <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="{DynamicResource AccentText}"/>
+   <Button x:Name="SaveButton" Command="{Binding SaveCommand}" HeightRequest="44"/>
+  </VerticalStackLayout>
+ </ScrollView>
+</ContentPage>

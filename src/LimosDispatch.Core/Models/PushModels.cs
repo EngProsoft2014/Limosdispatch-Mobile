@@ -32,8 +32,9 @@ public sealed record PushTarget(string Company, string TripId, string Notificati
             ? new(company.ToLowerInvariant(), tripId!, notificationId ?? "") : null;
     public static PushTarget? FromData(IDictionary<string, string>? data)
     {
-        if (data is null || !data.TryGetValue("type", out var type) || type is not ("ride_assigned" or "website_booking_created" or "trip_extra_requested")) return null;
+        if (data is null || !data.TryGetValue("type", out var type) || type is not ("ride_assigned" or "website_booking_created" or "trip_extra_requested" or "ride_reminder")) return null;
         if (!data.TryGetValue("company", out var company) || !data.TryGetValue("tripId", out var trip) || !data.TryGetValue("notificationId", out var id) || !ValidId(id)) return null;
         return Create(company, trip, id);
     }
+    
 }

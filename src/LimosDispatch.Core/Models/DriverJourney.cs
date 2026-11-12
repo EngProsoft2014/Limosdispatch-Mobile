@@ -14,6 +14,8 @@ public sealed class JourneyEvent
 {
     public string Status { get; set; } = "";
     public long At { get; set; }
+    public GpsPoint? StageLocation { get; set; }
+    public bool HasLocation => StageLocation is { Latitude: >= -90 and <= 90, Longitude: >= -180 and <= 180, CapturedAt: > 0 };
     [System.Text.Json.Serialization.JsonIgnore] public string StageLabel => LimosDispatch.Core.Helpers.TripWorkflow.StageLabel(Status);
     public string LocalTime => At > 0 ? DateTimeOffset.FromUnixTimeMilliseconds(At).ToLocalTime().ToString("g") : "";
 }

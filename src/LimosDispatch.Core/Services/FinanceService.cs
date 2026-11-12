@@ -10,7 +10,35 @@ public sealed class FinanceService(IGenericRepository api,AuthService auth)
     public void Demand(string module,string action="View"){if(!User.Can(module,action))throw new UnauthorizedAccessException("Your account does not have permission for this action.");}
     public Task<WorkspaceEnvelope> WorkspaceAsync(CancellationToken ct=default)=>api.GetAsync<WorkspaceEnvelope>("api/workspace",ct);
     public static T Read<T>(WorkspaceEnvelope w,string key,T fallback)=>w.Data.TryGetValue(key,out var v)&&v.ValueKind is not (JsonValueKind.Null or JsonValueKind.Undefined)?v.Deserialize<T>(ApiRepository.Json)??fallback:fallback;
-    public async Task<ExpenseLookups> ExpenseChoicesAsync(CancellationToken ct=default){Demand("Expenses");var w=await WorkspaceAsync(ct);var x=Read(w,"expenseLookups",new ExpenseLookups());if(User.IsAdmin){if(x.Categories.Count==0)x.Categories=Read(w,"expenseCategories",new List<string>());if(x.Vehicles.Count==0)x.Vehicles=Read(w,"fleet",new List<FleetVehicle>());if(x.Drivers.Count==0)x.Drivers=Read(w,"drivers",new List<Driver>());}return x;}
+    public async Task<ExpenseLookups> ExpenseChoicesAsync(CancellationToken ct=default)
+    {
+        Demand("Expenses");
+        var workspace = await WorkspaceAsync(ct);
+        var lookups = Read(workspace, "expenseLookups", new ExpenseLookups());
+        lookups.Categories = (lookups.Categories ?? [])
+            .Concat(Read(workspace, "expenseCategories", new List<string>()))
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+
+        if (lookups.Categories.Count == 0)
+        {
+            try
+            {
+                lookups.Categories = await api.GetAsync<List<string>>("api/data/expenseCategories", ct) ?? [];
+            }
+            catch (ApiException ex) when (ex.Status is HttpStatusCode.Forbidden or HttpStatusCode.NotFound)
+            {
+                // Some roles only receive categories through the workspace.
+            }
+        }
+
+        if (User.IsAdmin)
+        {
+            if (lookups.Vehicles.Count == 0) lookups.Vehicles = Read(workspace, "fleet", new List<FleetVehicle>());
+            if (lookups.Drivers.Count == 0) lookups.Drivers = Read(workspace, "drivers", new List<Driver>());
+        }
+        return lookups;
+    }
     public Task<Records<JsonElement>> RecordsAsync(string module,CancellationToken ct=default)=>api.GetAsync<Records<JsonElement>>("api/records/"+Uri.EscapeDataString(module),ct);
     public static bool Equal(JsonElement a,JsonElement b)=>JsonNode.DeepEquals(JsonNode.Parse(a.GetRawText()),JsonNode.Parse(b.GetRawText()));
     public static string Id(JsonElement row)=>row.TryGetProperty("id",out var id)?id.GetString()??"":"";

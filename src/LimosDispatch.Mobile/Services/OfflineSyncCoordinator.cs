@@ -1,13 +1,16 @@
 using System.Security.Cryptography;
 using LimosDispatch.Core.Helpers;
 namespace LimosDispatch.Mobile.Services;
-public sealed class OfflineSyncCoordinator(OfflineSyncService sync,AuthService auth,RealtimeService realtime)
+public sealed class OfflineSyncCoordinator(OfflineSyncService sync,AuthService auth,RealtimeService realtime, MileageWorkflow mileage)
 {
     private CancellationTokenSource? session;private IDispatcherTimer? timer;private bool started;private bool refreshing;
     public void Start()
     {
         if(!started)
         {
+            sync.MileageReminderReceived += (scope, reminder) =>
+                MainThread.BeginInvokeOnMainThread(() => _ = UserFeedback.RunAsync(() =>
+                    mileage.ShowReminderAsync(reminder, () => scope == sync.Scope && realtime.IsForeground)));
             started=true;auth.SignedOut+=Stop;realtime.ForegroundChanged+=OnForeground;Connectivity.Current.ConnectivityChanged+=(_,_)=>{if(realtime.IsForeground)Wake();};
             timer=Application.Current!.Dispatcher.CreateTimer();timer.Interval=TimeSpan.FromSeconds(20);timer.Tick+=(_,_)=>{if(realtime.IsForeground)Wake();};timer.Start();
         }

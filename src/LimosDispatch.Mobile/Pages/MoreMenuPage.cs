@@ -5,11 +5,12 @@ public sealed partial class MoreMenuPage : ContentPage
 {
     private readonly NavigationService navigation;
     private readonly ViewModels.MoreViewModel viewModel;
-    public MoreMenuPage(NavigationService nav, ViewModels.MoreViewModel model)
+    public MoreMenuPage(NavigationService nav, ViewModels.MoreViewModel model, MileageWorkflow mileage)
     {
         InitializeComponent();
-        navigation = nav; viewModel = model; BuildMenu();
+        navigation = nav; viewModel = model; this.mileage = mileage; BuildMenu();
     }
+    private readonly MileageWorkflow mileage;
     private void BuildMenu()
     {
         var nav = navigation; var model = viewModel; MenuRows.Clear();
@@ -27,6 +28,21 @@ public sealed partial class MoreMenuPage : ContentPage
         languagePicker.SetBinding(ChoicePicker.SelectedItemProperty, nameof(model.SelectedLanguage));
         AddRow("language.png", "Language", "Choose your preferred language", async () => { await languagePicker.OpenAsync(); BuildMenu(); });
         if(model.HasDriverSettings)AddRow("sync_menu.png", "Synchronization", "Pending journeys and location uploads", () => nav.PushAsync<SynchronizationPage>());
+        if (model.User is { } user && (user.CanDispatch || user.IsDriver))
+            AddRow("mileage_menu.png", "Mileage", "Odometer readings and mileage history", () => nav.PushAsync<MileageReportPage>());
+        if (model.HasDriverSettings)
+        {
+            var actions = new Grid { ColumnDefinitions = [new(GridLength.Star), new(GridLength.Star)], ColumnSpacing = 8 };
+            actions.Add(MileageAction("Mileage check-in", false));
+            actions.Add(MileageAction("Mileage check-out", true), 1);
+            stack.Add(actions);
+        }
+        Button MileageAction(string label, bool checkout) => new()
+        {
+            Text = LocalizationService.Text(label),
+            Command = new AsyncCommand(() => LimosDispatch.Core.Helpers.UserFeedback.RunAsync(() => mileage.OpenAsync(checkout)))
+        };
+
         var signOut = new Button { Text = LocalizationService.Text("Sign out"), Command = model.LogoutCommand, Margin = new Thickness(0, 8, 0, 0), HeightRequest = 44 };
         signOut.SetDynamicResource(Button.BackgroundColorProperty, "Surface");
         signOut.SetDynamicResource(Button.TextColorProperty, "AccentText");

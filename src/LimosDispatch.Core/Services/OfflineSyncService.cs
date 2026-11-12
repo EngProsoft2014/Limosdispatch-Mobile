@@ -8,6 +8,7 @@ public sealed class OfflineSyncService(AuthService auth,IOfflineSyncStore store,
     private readonly SemaphoreSlim gate=new(1,1);
     private DateTimeOffset nextRequest;
     public event Action? Changed;
+    public event Action<OfflineScope, MileageReminder>? MileageReminderReceived;
     public TimeSpan RequestSpacing{get;init;}=TimeSpan.FromMilliseconds(2200);
     public OfflineScope? Scope=>OfflineScope.From(auth.User);
     private bool Current(OfflineScope scope)=>Scope==scope;
@@ -50,7 +51,7 @@ public sealed class OfflineSyncService(AuthService auth,IOfflineSyncStore store,
         var records=(await JourneysAsync()).Where(j=>j.EndedLocally&&!j.Synced).ToList();
         foreach(var j in records){var index=trips.FindIndex(t=>t.Id==j.TripId);if(index>=0)trips[index]=Project(j);else if(!j.Synced)trips.Add(Project(j));}
     }
-    public async Task<OfflineJourney> QueueCompletionAsync(Trip trip)
+    public async Task<OfflineJourney> QueueCompletionAsync(Trip trip, GpsPoint? stageLocation = null)
     {
         var scope=Scope??throw new UnauthorizedAccessException();
         if(trip.DriverId!=scope.DriverId||trip.Status!="Onboard")throw new InvalidOperationException("Only the assigned chauffeur can finish an onboard journey.");
@@ -61,7 +62,7 @@ public sealed class OfflineSyncService(AuthService auth,IOfflineSyncStore store,
         {
             if(j.EndedLocally)return;
             j.Snapshot=snapshot;j.Capabilities=caps;
-            j.Completion=new(Guid.NewGuid().ToString(),completedAt,Guid.NewGuid().ToString(),j.LastAccepted?.CapturedAt);
+            j.Completion=new(Guid.NewGuid().ToString(),completedAt,Guid.NewGuid().ToString(),j.LastAccepted?.CapturedAt,stageLocation);
             j.ErrorCode="";j.Blocked=false;j.SignInRequired=false;j.NextAttemptAt=default;
         });
         Notify();return (await store.GetAsync(scope,trip.Id))!;
@@ -91,6 +92,8 @@ public sealed class OfflineSyncService(AuthService auth,IOfflineSyncStore store,
                     var receipt=await api.PostAsync<OfflineCompletionReceipt>($"api/trips/{Uri.EscapeDataString(job.TripId)}/completion-sync",job.Completion!,ct);
                     if(receipt.RequestId!=job.Completion!.RequestId||receipt.TripId!=job.TripId||receipt.TripStatus!="Completed"||string.IsNullOrWhiteSpace(receipt.CompletionReceiptId)||receipt.CompletedAt!=job.Completion.CompletedAt||(receipt.ClientSessionId is {} session&&session!=job.Completion.ClientSessionId))throw new InvalidDataException("The completion acknowledgement did not match the saved request.");
                     await store.UpdateAsync(scope,job.TripId,j=>{j.Receipt=receipt;j.ErrorCode="";j.SignInRequired=false;j.Failures=0;j.NextAttemptAt=default;});Notify();
+                    if (receipt.MileageReminder is { Action: "open_mileage" } reminder)
+                        MileageReminderReceived?.Invoke(scope, reminder);
                 }
                 catch(OperationCanceledException)when(ct.IsCancellationRequested||!Current(scope)){return;}
                 catch(Exception error){await Failed(scope,job.TripId,error);if(error is ApiException e&&(int)e.Status is 401 or 429)return;}

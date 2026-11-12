@@ -420,6 +420,11 @@ if(Environment.GetEnvironmentVariable("LD_PRICING_FIXTURE") is {} pricingPath)
 }
 Check(!ScreenRules.IsPast(new Trip{Status="Unassigned",PickupAt=1},screenNow),"Overdue unassigned reservations remain available to dispatch");
 Check(ScreenRules.IsPast(new Trip{Status="No-show",PickupAt=long.MaxValue},screenNow),"No-show belongs in Past for admin as well as driver");
+var turningRoute = new GpsPoint[] { new(1000, 0, 0, 5), new(2000, 0, .001, 5), new(3000, .001, .001, 5) };
+RoutePlayback.At(turningRoute, 2500, out var northbound);
+RoutePlayback.At(turningRoute, 1500, out var eastbound);
+Check(northbound.HasValue && Math.Abs(northbound.Value) < .01 && eastbound.HasValue && Math.Abs(eastbound.Value - 90) < .01,
+    "Playback facing follows the recorded route even when seeking backwards");
 Console.WriteLine($"{passed} checks passed.");
 await FinanceChecks.RunAsync();
 await LiveChecks.RunAsync();

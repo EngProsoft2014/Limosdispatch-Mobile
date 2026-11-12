@@ -41,7 +41,7 @@ public partial class TrackingPage : ContentPage
     private void RenderStatus() => FleetMap.UpdateDetails(model.Drivers.Select(d => new Controls.FleetMarker(d.Id,d.DisplayName,LocalizationService.Text(d.Freshness),d.Latitude,d.Longitude)).ToList());
     private void RenderPins(bool animate)
     {
-        FleetMap.SetMarkers(model.Drivers.Select(d => new Controls.FleetMarker(d.Id,d.DisplayName,LocalizationService.Text(d.Freshness),d.Latitude,d.Longitude)).ToList(),animate);
+        FleetMap.SetMarkers(model.Drivers.Select(d => new Controls.FleetMarker(d.Id,d.DisplayName,LocalizationService.Text(d.Freshness),d.Latitude,d.Longitude)).ToList(), animate, orientCars: true);
         if (!centered && model.MapMode && FleetMap.IsReady && model.Drivers.Count > 0)
         { var first = model.Drivers[0]; centered = true; FleetMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(first.Latitude, first.Longitude), Distance.FromKilometers(15))); }
     }

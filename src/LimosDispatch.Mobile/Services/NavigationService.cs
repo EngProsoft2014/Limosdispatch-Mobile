@@ -41,8 +41,17 @@ public sealed class NavigationService(IServiceProvider services)
     public async Task OpenTrackingAsync(string tripId)
     {
         var page = services.GetRequiredService<TrackingPage>();
-        ((TrackingViewModel)page.BindingContext).TripId = tripId;
+        var model = (TrackingViewModel)page.BindingContext;
+        model.TripId = tripId;
+        model.MapMode = true;
         await Root.Navigation.PushAsync(page);
     }
+    public async Task OpenRouteHistoryAsync(Trip trip)
+    {
+        var page = services.GetRequiredService<RoutePlaybackPage>();
+        page.Configure(trip);
+        await Root.Navigation.PushAsync(page);
+    }
+
     public Task<bool> ConfirmAsync(string title, string message) => FeedbackService.ConfirmAsync(message, "Confirm");
 }

@@ -32,7 +32,14 @@ public sealed class AddExpenseViewModel:BaseViewModel
     private void SetReceipt(Receipt? value){if(value is null)return;receipt=value;var bytes=ReceiptFiles.Read(value);Preview=HasImage?ImageSource.FromStream(()=>new MemoryStream(bytes)):null;NotifyReceipt();}
     public override Task LoadAsync()=>Run(async()=>
     {
-        var records=await dispatch.ExpensesAsync();var choices=await finance.ExpenseChoicesAsync();Categories.Clear();foreach(var c in choices.Categories.Concat(records.Rows.Select(e=>e.Category)).Where(c=>!string.IsNullOrWhiteSpace(c)).Distinct(StringComparer.OrdinalIgnoreCase))Categories.Add(c);
+        var choices = await finance.ExpenseChoicesAsync();
+        Categories.Clear();
+        foreach (var choice in choices.Categories.Where(c => !string.IsNullOrWhiteSpace(c)).Distinct(StringComparer.OrdinalIgnoreCase))
+            Categories.Add(choice);
+
+        var records = await dispatch.ExpensesAsync();
+        foreach (var choice in records.Rows.Select(e => e.Category).Where(c => !string.IsNullOrWhiteSpace(c)))
+            if (!Categories.Contains(choice, StringComparer.OrdinalIgnoreCase)) Categories.Add(choice);
         Drivers.Clear();Drivers.Add("");foreach(var d in choices.Drivers)Drivers.Add(d.Name);Vehicles.Clear();foreach(var v in choices.Vehicles)Vehicles.Add(v.Plate+" · "+v.Name);
         if(loaded){if(original is null)version=records.Version;return;}version=records.Version;
         if(original is not null){original=records.Rows.FirstOrDefault(e=>e.Id==draftId)??throw new InvalidOperationException("This expense is no longer available.");Name=original.Name;Category=original.Category;Amount=original.Amount.ToString("0.##",LocalizationService.NumericCulture);Notes=original.Notes;Driver=original.Driver;Vehicle=original.Vehicle;Scope=original.Scope;CostKind=original.CostKind;Date=DateTime.ParseExact(original.Date,"yyyy-MM-dd",CultureInfo.InvariantCulture);receipt=null;Preview=null;if(original.Receipt is not null)SetReceipt(original.Receipt);NotifyReceipt();}

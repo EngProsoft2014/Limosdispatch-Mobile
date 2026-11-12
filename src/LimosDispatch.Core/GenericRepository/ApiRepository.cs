@@ -93,6 +93,7 @@ public sealed class ApiRepository(HttpClient client, IAccessTokenProvider tokens
             throw new ApiException(response.StatusCode, message){Code=code,RequestId=requestId,CurrentTripStatus=tripStatus,Retryable=retryable,RetryAfter=retryAfter};
         }
         if (response.StatusCode == HttpStatusCode.NoContent) return default!;
+        if (typeof(T) == typeof(byte[])) return (T)(object)await response.Content.ReadAsByteArrayAsync(ct);
         return await response.Content.ReadFromJsonAsync<T>(Json, ct) ?? throw new JsonException("The API returned an empty response.");
     }
 }

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="LimosDispatch.Mobile.Pages.MileageReportPage" BackgroundColor="{DynamicResource Canvas}">
+ <ScrollView><VerticalStackLayout x:Name="Rows" Padding="16" Spacing="12"/></ScrollView>
+</ContentPage>

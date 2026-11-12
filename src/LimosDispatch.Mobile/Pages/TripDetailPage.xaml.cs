@@ -8,6 +8,7 @@ public partial class TripDetailPage : ContentPage
     private string locatedAddress="";
     private bool locating;
     private bool visible;
+    private double lastScrollY;
     private CancellationTokenSource? refreshLifetime;
     private readonly RealtimeService realtime;
     public TripDetailPage(TripDetailViewModel model,GoogleAddresses addresses,RealtimeService realtime)
@@ -17,6 +18,25 @@ public partial class TripDetailPage : ContentPage
         timer = Dispatcher.CreateTimer(); timer.Interval = TimeSpan.FromSeconds(30);
         timer.Tick += async (_, _) => await RefreshInBackground();
     }
+    private void OnStageMapBindingChanged(object? sender, EventArgs e)
+    {
+        if (sender is ImageButton button)
+        {
+            button.IsVisible = model?.CanViewStageLocations == true && button.BindingContext is JourneyEvent { HasLocation: true };
+            SemanticProperties.SetDescription(button, LocalizationService.Text("View on map"));
+        }
+    }
+
+    private async void OnStageMapClicked(object? sender, EventArgs e)
+    {
+        if (!model.CanViewStageLocations ||
+            sender is not ImageButton { BindingContext: JourneyEvent { HasLocation: true, StageLocation: { } location } }) return;
+
+        var coordinates = FormattableString.Invariant($"{location.Latitude},{location.Longitude}");
+        await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(async () =>
+            await Launcher.Default.OpenAsync(new Uri($"https://www.google.com/maps/search/?api=1&query={Uri.EscapeDataString(coordinates)}")));
+    }
+
     protected override async void OnAppearing()
     {
         base.OnAppearing(); visible=true; model.Subscribe();
@@ -25,8 +45,17 @@ public partial class TripDetailPage : ContentPage
         await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(model.LoadAsync);
         if(!visible||expected!=refreshLifetime)return;
         await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(LocatePickup);
+        if (visible && expected == refreshLifetime && lastScrollY > 0 && DetailsScroll.ScrollY == 0)
+            await DetailsScroll.ScrollToAsync(0, lastScrollY, false);
         ScheduleRefresh();
     }
+    private async void OnPullToRefresh(object? sender, EventArgs e)
+    {
+        if (sender is not RefreshView refresh) return;
+        try { await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(model.LoadAsync); }
+        finally { refresh.IsRefreshing = false; }
+    }
+
     private void ResetRefreshLifetime()
     {
         refreshLifetime?.Cancel(); refreshLifetime?.Dispose();
@@ -69,5 +98,5 @@ public partial class TripDetailPage : ContentPage
         } finally {locating=false;}
     }
     protected override void OnDisappearing()
-    { visible=false; timer.Stop(); realtime.ForegroundChanged-=OnForeground; ResetRefreshLifetime(); model.Unsubscribe(); base.OnDisappearing(); }
+    { lastScrollY=DetailsScroll.ScrollY; visible=false; timer.Stop(); realtime.ForegroundChanged-=OnForeground; ResetRefreshLifetime(); model.Unsubscribe(); base.OnDisappearing(); }
 }

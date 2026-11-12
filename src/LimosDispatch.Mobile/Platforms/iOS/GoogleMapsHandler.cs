@@ -22,6 +22,8 @@ public sealed class GoogleMapsHandler : ViewHandler<FleetMapView,MapView>
             var pos=new CLLocationCoordinate2D(p.Latitude,p.Longitude);
             if(!markers.TryGetValue(p.Id,out var marker)) {marker=Marker.FromPosition(pos);marker.Icon=UIImage.FromBundle(p.Kind=="person"?"marker_person.png":"marker_car.png");marker.GroundAnchor=new CoreGraphics.CGPoint(.5,p.Kind=="person"?.85:.5);marker.Map=PlatformView;markers[p.Id]=marker;}
             marker.Position=pos;marker.Title=p.Label;marker.Snippet=p.Detail;
+            marker.Flat = p.Bearing.HasValue;
+            marker.Rotation = p.Rotation;
         }
         if(!ReferenceEquals(renderedRoutes,VirtualView.Routes))
         {

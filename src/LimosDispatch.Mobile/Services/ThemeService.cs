@@ -21,6 +21,7 @@ public sealed class ThemeService
             ["Canvas"] = dark ? "#0D1720" : ocean ? "#ECF3F8" : "#F3F5F7",
             ["Surface"] = dark ? "#192936" : "#FFFFFF",
             ["FieldBackground"] = dark ? "#213541" : "#FFFFFF",
+            ["FieldOutline"] = dark ? "#526C7E" : ocean ? "#A6BBCB" : "#B3BFC9",
             ["SoftSurface"] = dark ? "#243A48" : "#EDF2F5",
             ["Ink"] = dark ? "#EDF3F7" : "#152936",
             ["Muted"] = dark ? "#A9BBC7" : "#687B88",

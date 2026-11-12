@@ -83,6 +83,13 @@ public sealed class CreateRideViewModel : BaseViewModel
     public string Fare { get => fare; set { if (Set(ref fare, value)) Raise(nameof(FareDisplay)); } }
     public string Miles { get => miles; set => Set(ref miles, value); }
     public string Hours { get => hours; set { if (Set(ref hours, value)) UpdateFare(); } }
+    private static readonly string[] PassengerOptions = Enumerable.Range(1, 100)
+        .Select(n => n.ToString(System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+    public IEnumerable<string> PassengerCounts => PassengerOptions.Contains(People)
+        ? PassengerOptions : PassengerOptions.Append(People);
+    public IReadOnlyList<string> ChildSeatCounts { get; } = Enumerable.Range(0, 21)
+        .Select(n => n.ToString(System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+
     public string People { get => people; set => Set(ref people, value); }
     public string Timezone { get => timezone; set => Set(ref timezone, value); }
     public string TripType { get => type; set { if (Set(ref type, value)) { Raise(nameof(IsDistance)); Raise(nameof(IsHourly)); _ = UpdateRoute(); UpdateFare(); } } }

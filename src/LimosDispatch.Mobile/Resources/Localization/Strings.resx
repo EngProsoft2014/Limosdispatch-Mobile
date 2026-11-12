@@ -1688,4 +1688,27 @@
 <data name="Ui_Saved_data_needs_review_Contact_dispatch_578979" xml:space="preserve"><value>Saved data needs review. Contact dispatch.</value></data>
 <data name="Ui_This_journey_has_already_ended_on_this_device_46e7fb" xml:space="preserve"><value>This journey has already ended on this device.</value></data>
 <data name="Ui_Completed_items_disappear_from_this_page_after_24_hours_Pending_journe_88442c" xml:space="preserve"><value>Completed items disappear from this page after 24 hours. Pending journeys and items needing review stay visible.</value></data>
+<data name="Ui_Special_Request_77af28" xml:space="preserve"><value>Special Request</value></data>
+  <data name="Ui_Mileage_check_in_4ddaa5" xml:space="preserve"><value>Mileage check-in</value></data>
+  <data name="Ui_Mileage_check_out_fc9540" xml:space="preserve"><value>Mileage check-out</value></data>
+  <data name="Ui_Odometer_readings_and_mileage_history_a21ed9" xml:space="preserve"><value>Odometer readings and mileage history</value></data>
+  <data name="Ui_Reading_the_odometer_1a8a79" xml:space="preserve"><value>Reading the odometer…</value></data>
+  <data name="Ui_Verify_the_reading_before_saving_d6362b" xml:space="preserve"><value>Verify the reading before saving.</value></data>
+  <data name="Ui_Automatic_reading_is_unavailable_Enter_the_odometer_reading_manually_337c12" xml:space="preserve"><value>Automatic reading is unavailable. Enter the odometer reading manually.</value></data>
+  <data name="Ui_Add_a_photo_of_the_odometer_38af25" xml:space="preserve"><value>Add a photo of the odometer.</value></data>
+  <data name="Ui_Choose_a_vehicle_eb20a6" xml:space="preserve"><value>Choose a vehicle.</value></data>
+  <data name="Ui_Choose_a_vehicle_8841b3" xml:space="preserve"><value>Choose a vehicle</value></data>
+  <data name="Ui_Enter_a_valid_odometer_reading_4b314d" xml:space="preserve"><value>Enter a valid odometer reading.</value></data>
+  <data name="Ui_Odometer_reading_miles_b504e7" xml:space="preserve"><value>Odometer reading (miles)</value></data>
+  <data name="Ui_Choose_the_mileage_workday_fa35ce" xml:space="preserve"><value>Choose the mileage workday</value></data>
+  <data name="Ui_Check_out_0_460402" xml:space="preserve"><value>Check out · {0}</value></data>
+  <data name="Ui_Check_in_0_aca682" xml:space="preserve"><value>Check in · {0}</value></data>
+  <data name="Ui_Total_mileage_0_mi_c047ac" xml:space="preserve"><value>Total mileage · {0} mi</value></data>
+  <data name="Ui_No_mileage_records_in_this_period_0c8c67" xml:space="preserve"><value>No mileage records in this period.</value></data>
+  <data name="Ui_Check_out_pending_5291e4" xml:space="preserve"><value>Check-out pending</value></data>
+  <data name="Ui_View_odometer_photo_f1489a" xml:space="preserve"><value>View odometer photo</value></data>
+  <data name="Ui_Choose_a_valid_date_range_ab9d64" xml:space="preserve"><value>Choose a valid date range.</value></data>
+  <data name="Ui_Allow_camera_access_or_choose_an_odometer_photo_from_your_gallery_5a1fcd" xml:space="preserve"><value>Allow camera access or choose an odometer photo from your gallery.</value></data>
+  <data name="Ui_Choose_a_readable_odometer_photo_under_2_MB_4e4862" xml:space="preserve"><value>Choose a readable odometer photo under 2 MB.</value></data>
+  <data name="Ui_Filters_96e578" xml:space="preserve"><value>Filters</value></data>
 </root>

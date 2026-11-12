@@ -23,11 +23,18 @@ public sealed class DispatchService(IGenericRepository api, AuthService auth)
         var value = json.TryGetProperty("trip", out var nested) ? nested : json;
         return value.Deserialize<Trip>(ApiRepository.Json) ?? throw new JsonException("Missing trip");
     }
-    public async Task ChangeStatusAsync(Trip trip, string next, CancellationToken ct = default)
+    public async Task<MileageReminder?> ChangeStatusAsync(Trip trip, string next, CancellationToken ct = default, GpsPoint? stageLocation = null)
     {
         if (!User.IsDriver || User.DriverId != trip.DriverId) throw new InvalidOperationException("Only the assigned chauffeur can update this journey.");
         TripWorkflow.ValidateTransition(trip, next);
-        await api.PostAsync<JsonElement>(ApiRoutes.Status, new { tripId = trip.Id, status = next }, ct);
+        var request = stageLocation is null
+            ? (object)new { tripId = trip.Id, status = next }
+            : new { tripId = trip.Id, status = next, stageLocation };
+        var response = await api.PostAsync<JsonElement>(ApiRoutes.Status, request, ct);
+        return next == "Completed" && response.ValueKind == JsonValueKind.Object
+            && response.TryGetProperty("mileageReminder", out var reminder) && reminder.ValueKind == JsonValueKind.Object
+            ? reminder.Deserialize<MileageReminder>(ApiRepository.Json)
+            : null;
     }
     public async Task AssignAsync(Trip trip, Driver driver, string vehicle, CancellationToken ct = default)
     {

@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:LimosDispatch.Mobile.ViewModels" xmlns:m="clr-namespace:LimosDispatch.Core.Models" xmlns:controls="clr-namespace:LimosDispatch.Mobile.Controls" x:Class="LimosDispatch.Mobile.Pages.TripDetailPage" x:DataType="vm:TripDetailViewModel" Title="{DynamicResource Ui_Journey_e40c09}" BackgroundColor="{DynamicResource Canvas}">
 <Grid RowDefinitions="*,Auto">
-<RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy,Mode=OneWay}"><ScrollView><VerticalStackLayout Padding="16,12" Spacing="12">
+<RefreshView Refreshing="OnPullToRefresh"><ScrollView x:Name="DetailsScroll"><VerticalStackLayout Padding="16,12" Spacing="12">
 <Border Style="{StaticResource Hero}" Padding="16"><VerticalStackLayout Spacing="8">
 <Label Text="{Binding Trip.Name}" TextColor="White" FontSize="21" FontFamily="{DynamicResource AppFontSemibold}"/>
 <Label Text="{Binding Trip.Id}" FontSize="10" TextColor="#BAC5CD" LineBreakMode="CharacterWrap"/>
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8"><Label Text="{Binding Trip.Schedule}" FontSize="12" TextColor="White"/><Label Grid.Column="1" Text="{Binding Trip.StageLabel,Converter={StaticResource LocalizedText}}" TextColor="{DynamicResource Gold}" FontFamily="{DynamicResource AppFontSemibold}"/></Grid>
-<Label Text="{Binding Trip.DriverName}" TextColor="White" FontSize="13"/><Label Text="{Binding Trip.Vehicle}" TextColor="#BAC5CD" FontSize="12"/>
+<Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+    <VerticalStackLayout Spacing="4" VerticalOptions="Center">
+        <Label Text="{Binding Trip.DriverName}" TextColor="White" FontSize="13"/>
+        <Label Text="{Binding Trip.Vehicle}" TextColor="#BAC5CD" FontSize="12"/>
+    </VerticalStackLayout>
+    <ImageButton Grid.Column="1" Source="view_map.png" WidthRequest="44" HeightRequest="44" Padding="10"
+                 BackgroundColor="#223442" CornerRadius="12" Command="{Binding TrackCommand}" IsVisible="{Binding CanTrackLive}"
+                 SemanticProperties.Description="{DynamicResource Ui_Track_chauffeur_on_map_b1727e}"/>
+    <ImageButton Grid.Column="1" Source="view_map.png" WidthRequest="44" HeightRequest="44" Padding="10"
+                 BackgroundColor="#223442" CornerRadius="12" Command="{Binding RouteHistoryCommand}" IsVisible="{Binding CanViewRouteHistory}"
+                 SemanticProperties.Description="{DynamicResource Ui_View_route_and_timeline_2b5c6e}"/>
+</Grid>
 <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding TripTypeSummary}" TextColor="#BAC5CD" FontSize="12"/><Label Grid.Column="1" Text="{Binding Trip.People,Converter={StaticResource LocalizedText},ConverterParameter='Passengers: {0}'}" TextColor="#BAC5CD" FontSize="12"/></Grid>
 </VerticalStackLayout></Border>
 <Label Text="{Binding LicenseNotice}" IsVisible="{Binding HasLicenseNotice}" TextColor="{DynamicResource AccentText}"/>
@@ -17,9 +28,38 @@
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8"><Button Text="{DynamicResource Ui_Google_Maps_40cd7f}" Command="{Binding OpenMapCommand}" Style="{StaticResource Secondary}"/><Button Grid.Column="1" Text="{DynamicResource Ui_Navigate_to_pickup_a3dbc0}" Command="{Binding PickupNavigateCommand}"/></Grid>
 <VerticalStackLayout Spacing="8" IsVisible="{Binding ShowDropoff}"><BoxView Color="{DynamicResource Line}" HeightRequest="1" Margin="0,4"/><Label Text="{DynamicResource Ui_Drop_off_location_d78449}" Style="{StaticResource Eyebrow}"/><Label Text="{Binding Trip.To}" FontSize="15"/><Button Text="{DynamicResource Ui_Navigate_to_drop_off_0a145a}" Command="{Binding DropoffNavigateCommand}" Style="{StaticResource Secondary}"/></VerticalStackLayout>
 </VerticalStackLayout></Border>
-<Border Padding="12"><VerticalStackLayout Spacing="6"><Label Text="{DynamicResource Ui_Customer_details_8bded5}" Style="{StaticResource Eyebrow}"/><Label Text="{Binding Trip.Name}" FontFamily="{DynamicResource AppFontSemibold}"/><Label Text="{Binding Trip.Phone}" IsVisible="{Binding HasPhone}"/><Label Text="{Binding Trip.CustomerEmail}" IsVisible="{Binding HasEmail}"/><Label Text="{Binding Trip.Service}"/><Label Text="{Binding Trip.Flight,Converter={StaticResource LocalizedText},ConverterParameter='Flight: {0}'}" IsVisible="{Binding HasFlight}"/><Label Text="{Binding ChildSeatsText}"/><VerticalStackLayout IsVisible="{Binding HasNotes}" Spacing="5"><Label Text="{DynamicResource Ui_Special_notes_7a3f09}" Style="{StaticResource Eyebrow}" Margin="0,6,0,0"/><Label Text="{Binding Trip.Notes}"/></VerticalStackLayout></VerticalStackLayout></Border>
+<Border Padding="12">
+    <VerticalStackLayout Spacing="6">
+        <Label Text="{DynamicResource Ui_Special_Request_77af28}" Style="{StaticResource Eyebrow}"/>
+        <Label Text="{Binding Trip.Service}"/>
+        <Label Text="{Binding Trip.Flight,Converter={StaticResource LocalizedText},ConverterParameter='Flight: {0}'}" IsVisible="{Binding HasFlight}"/>
+        <Label Text="{Binding ChildSeatsText}"/>
+        <Label Text="{Binding Trip.Notes}" IsVisible="{Binding HasNotes}"/>
+    </VerticalStackLayout>
+</Border>
 <Border Padding="12"><VerticalStackLayout Spacing="8"><Label Text="{DynamicResource Ui_Journey_status_0086b8}" Style="{StaticResource Eyebrow}"/>
-<VerticalStackLayout BindableLayout.ItemsSource="{Binding Trip.History}" Spacing="10" IsVisible="{Binding HasHistory}"><BindableLayout.ItemTemplate><DataTemplate x:DataType="m:JourneyEvent"><Grid ColumnDefinitions="12,*,Auto" ColumnSpacing="8"><BoxView Color="{DynamicResource Gold}" WidthRequest="7" HeightRequest="7" CornerRadius="4" VerticalOptions="Center"/><Label Grid.Column="1" Text="{Binding StageLabel,Converter={StaticResource LocalizedText}}" FontSize="13"/><Label Grid.Column="2" Text="{Binding LocalTime}" FontSize="11" Style="{StaticResource MutedText}"/></Grid></DataTemplate></BindableLayout.ItemTemplate></VerticalStackLayout>
+<Grid IsVisible="{Binding HasHistory}" ColumnDefinitions="12,*" ColumnSpacing="8">
+    <BoxView Grid.Column="0" WidthRequest="1" Margin="0,22" HorizontalOptions="Center"
+             Color="{DynamicResource Line}" InputTransparent="True"/>
+    <VerticalStackLayout Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Trip.History}" Spacing="2">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="m:JourneyEvent">
+                <Grid ColumnDefinitions="12,*,44" ColumnSpacing="8" MinimumHeightRequest="44">
+                    <BoxView Color="{DynamicResource Gold}" WidthRequest="7" HeightRequest="7"
+                             CornerRadius="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
+                        <Label Text="{Binding StageLabel,Converter={StaticResource LocalizedText}}" FontSize="13"/>
+                        <Label Text="{Binding LocalTime}" FontSize="11" Style="{StaticResource MutedText}"/>
+                    </VerticalStackLayout>
+                    <ImageButton Grid.Column="2" Source="view_map.png" BackgroundColor="Transparent"
+                                 WidthRequest="44" HeightRequest="44" Padding="10" VerticalOptions="Center"
+                                 IsVisible="False" BindingContextChanged="OnStageMapBindingChanged"
+                                 Clicked="OnStageMapClicked"/>
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </VerticalStackLayout>
+</Grid>
 <Label Text="{DynamicResource Ui_Journey_closed_Location_tracking_is_off_1cd090}" IsVisible="{Binding IsClosed}" Style="{StaticResource MutedText}"/>
 <VerticalStackLayout IsVisible="{Binding ShowTracking}" Spacing="6"><Label Text="{Binding TrackingHealth,Converter={StaticResource LocalizedText}}" TextColor="{DynamicResource AccentText}"/><Label Text="{Binding LastLocation}" Style="{StaticResource MutedText}" FontSize="11"/><Button Text="{DynamicResource Ui_Resume_location_sharing_5a4a2f}" Command="{Binding ResumeTrackingCommand}" Style="{StaticResource Secondary}"/></VerticalStackLayout>
 </VerticalStackLayout></Border>
@@ -30,7 +70,6 @@
 </VerticalStackLayout></Border>
 <VerticalStackLayout IsVisible="{Binding CanAssign}" Spacing="8"><Label Text="{DynamicResource Ui_Assign_chauffeur_b90847}" Style="{StaticResource Eyebrow}"/><Border Style="{StaticResource Field}"><controls:ChoicePicker ItemsSource="{Binding Drivers}" DisplayMember="Name" SelectedItem="{Binding SelectedDriver}" Title="{DynamicResource Ui_Choose_chauffeur_578753}"/></Border><Border Style="{StaticResource Field}"><Entry Text="{Binding Vehicle}" Placeholder="{DynamicResource Ui_Vehicle_plate_cccdf9}"/></Border><Button Text="{DynamicResource Ui_Assign_journey_01b0e4}" Command="{Binding AssignCommand}"/></VerticalStackLayout>
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8" IsVisible="{Binding CanEditTrip}"><Button Text="{DynamicResource Ui_Edit_journey_fa99d2}" Command="{Binding EditCommand}"/><Button Grid.Column="1" Text="{DynamicResource Ui_Cancel_journey_d8deca}" Command="{Binding CancelCommand}" Style="{StaticResource Secondary}"/></Grid><Button Text="{DynamicResource Ui_Unassign_chauffeur_dd4815}" Command="{Binding UnassignCommand}" IsVisible="{Binding CanEditTrip}" Style="{StaticResource Secondary}"/><Button Text="{DynamicResource Ui_No_show_75602c}" Command="{Binding NoShowCommand}" IsVisible="{Binding CanEditTrip}" Style="{StaticResource Secondary}"/><VerticalStackLayout IsVisible="{Binding CanSetPayment}" Spacing="8"><Border Style="{StaticResource Field}"><controls:ChoicePicker ItemsSource="{Binding PaymentStates}" SelectedItem="{Binding PaymentState}" Title="{DynamicResource Ui_Payment_record_ed5232}"/></Border><Button Text="{DynamicResource Ui_Payment_record_ed5232}" Command="{Binding PaymentCommand}" Style="{StaticResource Secondary}"/></VerticalStackLayout>
-<Button Text="{DynamicResource Ui_Track_chauffeur_on_map_b1727e}" Command="{Binding TrackCommand}" IsVisible="{Binding CanTrack}"/>
 <controls:ErrorBanner/><ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="{DynamicResource Gold}"/>
 </VerticalStackLayout></ScrollView></RefreshView>
 <Border Grid.Row="1" Padding="16,10" BackgroundColor="{DynamicResource Surface}" IsVisible="{Binding CanAdvance}"><VerticalStackLayout Spacing="6"><Label Text="{Binding StartNotice}" IsVisible="{Binding HasStartNotice}" Style="{StaticResource MutedText}" FontSize="11"/><Button Text="{Binding NextAction,Converter={StaticResource LocalizedText}}" Command="{Binding AdvanceCommand}" IsEnabled="{Binding CanExecuteAdvance}" HeightRequest="44"/></VerticalStackLayout></Border>

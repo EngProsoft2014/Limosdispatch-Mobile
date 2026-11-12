@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Android emulator: Start Pixel 5",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "$ErrorActionPreference = 'Stop'\n$sdk = 'C:/Program Files (x86)/Android/android-sdk'\n$adb = Join-Path $sdk 'platform-tools/adb.exe'\n$emulator = Join-Path $sdk 'emulator/emulator.exe'\n$avd = 'pixel_5_-_api_30_0'\n$serial = 'emulator-5554'\n\n$devices = & $adb devices\nif (-not ($devices -match '^emulator-5554\\s')) {\n    Start-Process -FilePath $emulator -ArgumentList '-avd', $avd, '-port', '5554'\n}\n\n$deadline = (Get-Date).AddMinutes(3)\nwhile ((Get-Date) -lt $deadline) {\n    $devices = & $adb devices\n    if ($devices -match '^emulator-5554\\s+device\\s*$') {\n        $name = & $adb -s $serial emu avd name\n        if ($name -notcontains $avd) {\n            throw \"Port 5554 belongs to another emulator. Close it before running Pixel 5.\"\n        }\n        if ((& $adb -s $serial shell getprop sys.boot_completed) -eq '1') {\n            Write-Output \"Pixel 5 is ready on $serial.\"\n            exit 0\n        }\n    }\n    Start-Sleep -Seconds 2\n}\nthrow 'Pixel 5 did not finish booting within three minutes.'\r\n"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android emulator: Start and build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Android emulator: Start Pixel 5",
+        "maui: Build"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

@@ -54,6 +54,7 @@ public static class MauiProgram
             handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent));
         Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("FieldSurface", (handler, _) =>
             handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent));
+        builder.ConfigureMauiHandlers(handlers => handlers.AddHandler<TimePicker, ReadableTimePickerHandler>());
         Microsoft.Maui.Handlers.TimePickerHandler.Mapper.AppendToMapping("FieldSurface", (handler, _) =>
             handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent));
         Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("FieldSurface", (handler, _) =>
@@ -110,6 +111,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<BookingQuoteService>();
         builder.Services.AddTransient<PassengerSearchViewModel>();
         builder.Services.AddTransient<PassengerSearchPage>();
+        builder.Services.AddSingleton<MileageApi>();
+        builder.Services.AddSingleton<MileagePhotoService>();
+        builder.Services.AddSingleton<MileageWorkflow>();
+        builder.Services.AddTransient<MileageReportPage>();
         builder.Services.AddTransient<MoreMenuPage>();
         builder.Services.AddTransient<NotificationsPage>();
 #if ANDROID

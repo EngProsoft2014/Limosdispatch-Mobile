@@ -13,9 +13,14 @@ public sealed class OfflineCapabilities
     public int MaxSamplesPerTrip{get;set;}=150000;public int HistoryIntervalMs{get;set;}=5000;
     [JsonIgnore]public bool Supported=>Version>=1&&CompletionSync&&LocationHistorySync&&WindowDays is >=1 and <=30&&MaxBatchPoints>0&&MaxRequestBytes>=512;
 }
-public sealed record OfflineCompletionRequest(string RequestId,long CompletedAt,string ClientSessionId,long? LastLocationCapturedAt);
+public sealed record OfflineCompletionRequest(string RequestId,long CompletedAt,string ClientSessionId,long? LastLocationCapturedAt,
+    [property: System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    GpsPoint? StageLocation = null);
+public sealed record MileageReminder(string? Action, string? Message);
+
 public sealed class OfflineCompletionReceipt
 {
+    public MileageReminder? MileageReminder { get; set; }
     public string OperationStatus{get;set;}="";public string RequestId{get;set;}="";public string TripId{get;set;}="";
     public string TripStatus{get;set;}="";public long CompletedAt{get;set;}public long RecordedAt{get;set;}
     public string CompletionReceiptId{get;set;}="";public bool AlreadyApplied{get;set;}public string? ClientSessionId{get;set;}

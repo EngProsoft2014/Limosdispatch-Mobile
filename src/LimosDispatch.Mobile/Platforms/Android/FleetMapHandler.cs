@@ -42,6 +42,8 @@ public sealed class FleetMapHandler : ViewHandler<FleetMapView,AMapView>
             var pos=new LatLng(p.Latitude,p.Longitude);
             if(!markers.TryGetValue(p.Id,out var marker)) { using var options=new MarkerOptions();options.SetPosition(pos).SetTitle(p.Label).SetSnippet(p.Detail).SetIcon(Icon(p.Kind)).Anchor(.5f,p.Kind=="person"?.85f:.5f);marker=map.AddMarker(options);if(marker is null)continue;markers[p.Id]=marker; }
             else {marker.Position=pos;marker.Title=p.Label;marker.Snippet=p.Detail;}
+            marker.Flat = p.Bearing.HasValue;
+            marker.Rotation = (float)p.Rotation;
         }
         if(!ReferenceEquals(renderedRoutes,VirtualView.Routes))
         {

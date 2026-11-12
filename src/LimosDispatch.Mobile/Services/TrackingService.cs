@@ -27,6 +27,25 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         if(fix is null)throw new InvalidOperationException("Location is unavailable. Enable device location and try again.");
         preparedPoint=new(fix.Timestamp.ToUnixTimeMilliseconds(),fix.Latitude,fix.Longitude,fix.Accuracy??0);preparedAt=DateTimeOffset.UtcNow;
     }
+    public async Task<GpsPoint?> CaptureStageLocationAsync()
+    {
+        try
+        {
+            if (await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>() != PermissionStatus.Granted ||
+                !Geolocation.Default.IsEnabled) return null;
+
+            var fix = await Geolocation.Default.GetLocationAsync(
+                new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(8)));
+            if (fix is null || (DateTimeOffset.UtcNow - fix.Timestamp).Duration() > TimeSpan.FromSeconds(15))
+                return null;
+            return new GpsPoint(fix.Timestamp.ToUnixTimeMilliseconds(), fix.Latitude, fix.Longitude, fix.Accuracy ?? 0);
+        }
+        catch (Exception ex) when (ex is FeatureNotEnabledException or FeatureNotSupportedException or PermissionException or OperationCanceledException)
+        {
+            return null;
+        }
+    }
+
     public async Task ResumeAsync(string id)
     {
         if(tripId!=id){await StartAsync(id);return;}await PrepareAsync();platform.Stop();await platform.StartAsync();OnPoint(preparedPoint!);SetHealth("Location sharing active");
@@ -166,7 +185,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         finally{uploadGate.Release();}
     }
     public async Task FlushAsync(){await uploadGate.WaitAsync();try{await FlushCoreAsync(lifetime?.Token??default);}finally{uploadGate.Release();}}
-    public async Task EndLocallyAsync(Trip trip)
+    public async Task EndLocallyAsync(Trip trip, GpsPoint? stageLocation = null)
     {
         if(offline is null)throw new InvalidOperationException("Offline completion is unavailable.");
         await gate.WaitAsync();
@@ -174,7 +193,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         {
             if(tripId is not null&&tripId!=trip.Id)throw new InvalidOperationException("Finish the current journey before starting another.");
             // Atomic durable completion precedes stopping the sensor or canceling uploads.
-            await offline.QueueCompletionAsync(trip);lifetime?.Cancel();platform.Stop();platform.PointCaptured-=OnPoint;tripId=null;
+            await offline.QueueCompletionAsync(trip, stageLocation);lifetime?.Cancel();platform.Stop();platform.PointCaptured-=OnPoint;tripId=null;
         }
         finally{gate.Release();}
         await FinishStopAsync();SetHealth("Journey ended · awaiting synchronization");

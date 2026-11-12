@@ -2,21 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "LimosDispatch - Android Phone",
+      "type": "maui",
+      "request": "launch",
+      "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
+      "configuration": "Debug",
+      "targetFramework": "net10.0-android",
+      "preLaunchTask": "maui: Build",
+      "device": "JVUCRCMNEUAQE6MF"
+    },
+    {
+      "name": "LimosDispatch · Android Emulator",
+      "type": "maui",
+      "request": "launch",
+      "project": "E:\\Projects\\LimosDispatch\\src\\LimosDispatch.Mobile\\LimosDispatch.Mobile.csproj",
+      "configuration": "Debug",
+      "targetFramework": "net10.0-android",
+      "preLaunchTask": "Android emulator: Start and build",
+      "device": "emulator-5554"
+    },
+    {
       "name": "LimosDispatch · iOS Simulator",
       "type": "maui",
       "request": "launch",
       "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
       "configuration": "Debug",
       "targetFramework": "net10.0-ios",
-      "preLaunchTask": "maui: Build"
-    },
-    {
-      "name": "LimosDispatch · Android Emulator",
-      "type": "maui",
-      "request": "launch",
-      "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
-      "configuration": "Debug",
-      "targetFramework": "net10.0-android",
       "preLaunchTask": "maui: Build"
     }
   ]

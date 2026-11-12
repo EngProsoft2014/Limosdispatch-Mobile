@@ -4,7 +4,9 @@ using LimosDispatch.Core.Helpers;
 namespace LimosDispatch.Mobile.ViewModels;
 public sealed class TripDetailViewModel : BaseViewModel
 {
+    private readonly PushApi pushApi;
     private readonly FinanceService finance; private readonly DispatchService dispatch; private readonly AuthService auth; private readonly NavigationService nav; private readonly TrackingService tracking;
+    private readonly MileageWorkflow mileage;
     private readonly OfflineSyncService offline;private readonly OfflineSyncCoordinator synchronization;
     private CancellationTokenSource? backgroundReload;
     private Trip trip = new(); private Driver? driver; private string vehicle = "";
@@ -14,7 +16,7 @@ public sealed class TripDetailViewModel : BaseViewModel
     private TripExtraRequest? pendingExtra;
     public Trip Trip { get => trip; private set { Set(ref trip, value); Notify(); } }
     public ObservableCollection<Driver> Drivers { get; } = [];
-    public Driver? SelectedDriver { get => driver; set { Set(ref driver, value); if (value is not null) Vehicle = value.Vehicle; } }
+    public Driver? SelectedDriver { get => driver; set { if (Set(ref driver, value) && value is not null) Vehicle = value.Vehicle; } }
     public string Vehicle { get => vehicle; set => Set(ref vehicle, value); }
     public bool IsAssignedDriver => auth.User?.IsDriver == true && auth.User.DriverId == Trip.DriverId;
     public bool CanReviewExtras=>auth.User?.Can("Reservations","Edit")==true;
@@ -26,7 +28,9 @@ public sealed class TripDetailViewModel : BaseViewModel
     public bool CanAdvance => IsAssignedDriver && TripWorkflow.Next(Trip.Status) is not null;
     public bool CanExecuteAdvance => CanAdvance && !IsBusy && (Trip.Status != "Confirmed" || journey?.CanStart == true);
     public bool CanAssign => auth.User?.CanAssign == true && !Trip.IsActive && Trip.Status is not ("Completed" or "Cancelled");
-    public bool CanTrack => auth.User?.CanDispatch == true && Trip.IsActive;
+    public bool CanTrackLive => CanViewStageLocations && Trip.IsActive;
+    public bool CanViewRouteHistory => CanViewStageLocations && !Trip.IsActive &&
+        (Trip.Status == "Completed" || Trip.History.Any(stage => stage.Status is "Enroute" or "Arrived" or "Onboard"));
     public bool CanRequestExtra => IsAssignedDriver && Trip.IsActive && journey?.TrackingAllowed == true;
     public bool ShowTracking => IsAssignedDriver && Trip.IsActive;
     public bool ShowDropoff => Trip.TripType != "Hourly";
@@ -38,6 +42,7 @@ public sealed class TripDetailViewModel : BaseViewModel
         ? string.Join(" · ", Trip.ChildSeats.Where(x => x.Quantity > 0).Select(x => $"{LocalizationService.Text(x.Type)} × {x.Quantity}"))
         : LocalizationService.Text(string.IsNullOrWhiteSpace(Trip.ChildSeatSummary) ? "Not required" : Trip.ChildSeatSummary);
     public bool HasExtras => Trip.Extras is { Count: > 0 };
+    public bool CanViewStageLocations => auth.User?.CanDispatch == true;
     public bool HasHistory => Trip.History is { Count: > 0 };
     public bool IsClosed => Trip.Status is "Completed" or "Cancelled" or "No-show";
     public string NextAction => TripWorkflow.ActionLabel(Trip.Status);
@@ -81,6 +86,7 @@ public sealed class TripDetailViewModel : BaseViewModel
     public AsyncCommand AdvanceCommand { get; }
     public AsyncCommand AssignCommand { get; }
     public AsyncCommand TrackCommand { get; }
+    public AsyncCommand RouteHistoryCommand { get; }
     public AsyncCommand NavigateCommand { get; }
     public AsyncCommand PickupNavigateCommand { get; }
     public AsyncCommand DropoffNavigateCommand { get; }
@@ -91,23 +97,26 @@ public sealed class TripDetailViewModel : BaseViewModel
     public AsyncCommand SendExtraCommand { get; }
     public AsyncCommand ResumeTrackingCommand { get; }
     public string LastLocation => tracking.LastLocation;
-    public TripDetailViewModel(DispatchService dispatch, AuthService auth, NavigationService nav, TrackingService tracking,FinanceService finance,OfflineSyncService offline,OfflineSyncCoordinator synchronization)
+    public TripDetailViewModel(DispatchService dispatch, AuthService auth, NavigationService nav, TrackingService tracking,FinanceService finance,OfflineSyncService offline,OfflineSyncCoordinator synchronization, CompanySettingsService companySettings, PushApi pushApi, MileageWorkflow mileage)
     {
+        this.pushApi = pushApi;
         this.offline=offline;this.synchronization=synchronization;this.finance=finance; this.dispatch = dispatch; this.auth = auth; this.nav = nav; this.tracking = tracking;
         EditCommand=new(()=>Run(()=>nav.EditTripAsync(Trip.Id)));
+        this.mileage = mileage;
         CancelCommand=new(()=>Run(async()=>{if(!await nav.ConfirmAsync("Cancel journey",LocalizationService.Text("Cancel this journey? This does not issue a payment refund.")))return;await finance.CancelTripAsync(Trip.Id);await Reload();}));
         PaymentCommand=new(()=>Run(async()=>{if(!CanSetPayment)throw new UnauthorizedAccessException();var records=await finance.RecordsAsync("trips");var row=records.Rows.FirstOrDefault(x=>FinanceService.Id(x)==Trip.Id);var next=PaymentState;if(!PaymentStates.Contains(next))throw new InvalidOperationException("Choose a valid payment state.");if(!await nav.ConfirmAsync("Payment record",LocalizationService.Format("Set the payment record to {0}? No money is collected or refunded.",LocalizationService.Text(next))))return;await finance.UpdateAsync("trips",Trip.Id,row,new(){["paid"]=next},records.Version,"Reservations");await Reload();}));
         UnassignCommand=new(()=>Run(async()=>{if(!CanEditTrip)throw new InvalidOperationException("This journey is locked. Refresh its current status.");var records=await finance.RecordsAsync("trips");var row=records.Rows.FirstOrDefault(x=>FinanceService.Id(x)==Trip.Id);if(!await nav.ConfirmAsync("Unassign chauffeur",LocalizationService.Text("Remove the chauffeur and vehicle assignment from this unstarted journey?")))return;await finance.UpdateAsync("trips",Trip.Id,row,new(){["driverId"]="",["driverName"]="",["driver"]="Unassigned",["vehicle"]="Unassigned",["status"]="Unassigned"},records.Version,"Reservations");await Reload();}));
         NoShowCommand=new(()=>Run(async()=>{if(!CanEditTrip)throw new InvalidOperationException("This journey is locked. Refresh its current status.");var records=await finance.RecordsAsync("trips");var row=records.Rows.FirstOrDefault(x=>FinanceService.Id(x)==Trip.Id);if(!await nav.ConfirmAsync("No-show",LocalizationService.Text("Mark this journey as no-show?")))return;await finance.UpdateAsync("trips",Trip.Id,row,new(){["status"]="No-show"},records.Version,"Reservations");await Reload();}));
         ReviewExtraCommand=new Command<TripExtra>(e=>{if(e is not null&&e.Status=="Pending"&&CanReviewExtras)_=Run(()=>nav.ReviewExtraAsync(Trip.Id,e));});
         AdvanceCommand = new(() => { backgroundReload?.Cancel(); return Run(Advance); }); AssignCommand = new(() => Run(Assign));
-        TrackCommand = new(() => Run(() => nav.OpenTrackingAsync(Trip.Id)));
+        TrackCommand = new(() => Run(() => CanTrackLive ? nav.OpenTrackingAsync(Trip.Id) : Task.CompletedTask));
+        RouteHistoryCommand = new(() => Run(() => CanViewRouteHistory ? nav.OpenRouteHistoryAsync(Trip) : Task.CompletedTask));
         NavigateCommand = new(() => Run(() => OpenMap(Trip.Status == "Onboard" ? Trip.To : Trip.From, true)));
         PickupNavigateCommand = new(() => Run(() => OpenMap(Trip.From, true)));
         DropoffNavigateCommand = new(() => Run(() => OpenMap(Trip.To, true)));
         OpenMapCommand = new(() => Run(() => OpenMap(Trip.From, false)));
         CallCommand = new(() => Run(() => { PhoneDialer.Default.Open(Trip.Phone); return Task.CompletedTask; }));
-        PassengerSignCommand = new(() => Run(async () => await Application.Current!.Windows[0].Page!.Navigation.PushModalAsync(new Pages.PassengerSignPage(Trip.Name))));
+        PassengerSignCommand = new(() => Run(async () => await Application.Current!.Windows[0].Page!.Navigation.PushModalAsync(new Pages.PassengerSignPage(Trip.Name, companySettings.Logo))));
         ToggleExtraCommand = new(() => { ExtraFormVisible = !ExtraFormVisible; return Task.CompletedTask; });
         SendExtraCommand = new(() => Run(SendExtra));
         ResumeTrackingCommand = new(() => Run(async () => { await Reload(); if (ShowTracking && journey?.TrackingAllowed == true) await tracking.ResumeAsync(Trip.Id); }));
@@ -125,7 +134,7 @@ public sealed class TripDetailViewModel : BaseViewModel
     {
         if(await offline.JourneyAsync(Trip.Id) is {EndedLocally:true,Synced:false} local){Trip=OfflineSyncService.Project(local);Notify();return;}
         if (IsAssignedDriver) { var result = await dispatch.DriverJourneyAsync(Trip.Id, ct); ct.ThrowIfCancellationRequested(); journey = result; Trip = result.Trip; }
-        else { var list = await dispatch.TripsAsync(ct: ct); ct.ThrowIfCancellationRequested(); Trip = list.Trips.FirstOrDefault(t => t.Id == Trip.Id) ?? throw new InvalidOperationException("Journey no longer exists."); }
+        else { var detail = await pushApi.TripAsync(Trip.Id); ct.ThrowIfCancellationRequested(); Trip = detail; }
         await offline.RememberAsync(Trip);
         if (tracking.ActiveTripId == Trip.Id && (!Trip.IsActive || journey?.TrackingAllowed == false)) await tracking.StopAsync(discard: true);
         if (IsAssignedDriver && Trip.IsActive && journey?.TrackingAllowed == true && !tracking.IsRunning) await tracking.StartAsync(Trip.Id);
@@ -142,7 +151,24 @@ public sealed class TripDetailViewModel : BaseViewModel
     public override Task LoadAsync() => Run(async () =>
     {
         await Reload();
-        if (CanAssign) { var list = await dispatch.DriversAsync(); Drivers.Clear(); foreach (var d in list.Where(d => !string.IsNullOrEmpty(d.TrackingId))) Drivers.Add(d); }
+        if (CanAssign)
+        {
+            var list = await dispatch.DriversAsync();
+            var savedVehicle = Trip.Vehicle;
+            Drivers.Clear();
+            foreach (var candidate in list.Where(d => !string.IsNullOrWhiteSpace(d.TrackingId)))
+                Drivers.Add(candidate);
+
+            SelectedDriver = string.IsNullOrWhiteSpace(Trip.DriverId) ? null :
+                Drivers.FirstOrDefault(d => string.Equals(d.TrackingId, Trip.DriverId, StringComparison.OrdinalIgnoreCase));
+            if (SelectedDriver is null && !string.IsNullOrWhiteSpace(Trip.DriverId) && !string.IsNullOrWhiteSpace(Trip.DriverName))
+            {
+                var assigned = new Driver { TrackingId = Trip.DriverId, Name = Trip.DriverName, Vehicle = savedVehicle };
+                Drivers.Add(assigned);
+                SelectedDriver = assigned;
+            }
+            Vehicle = savedVehicle;
+        }
     });
     private async Task Advance()
     {
@@ -150,19 +176,24 @@ public sealed class TripDetailViewModel : BaseViewModel
         if(expected=="Onboard"&&(await offline.CapabilitiesAsync())?.Supported==true)
         {
             if(!await nav.ConfirmAsync("Finish journey",LocalizationService.Text("End this journey on this device? It will synchronize when connected.")))return;
-            await tracking.EndLocallyAsync(Trip);await Reload();synchronization.Wake();return;
+            await tracking.EndLocallyAsync(Trip, await tracking.CaptureStageLocationAsync());await Reload();synchronization.Wake();return;
         }
         await Reload();
         if (Trip.Status != expected) throw new InvalidOperationException("The journey changed. Review its current status before continuing.");
         var next = TripWorkflow.Next(Trip.Status) ?? throw new InvalidOperationException("Refresh this journey.");
         if (next == "Enroute" && journey?.CanStart != true) throw new InvalidOperationException(StartNotice);
         if (!await nav.ConfirmAsync(NextAction, LocalizationService.Format("Update this journey to {0}?", LocalizationService.Text(next)))) return;
-        if (next == "Enroute") await tracking.PrepareAsync();
+        if (next == "Enroute")
+        {
+            await tracking.PrepareAsync();
+        }
         // Pending GPS upload must not prevent Finish; the server owns the status transition.
         if (next == "Completed") { try { await tracking.FlushAsync(); } catch { } }
-        await dispatch.ChangeStatusAsync(Trip, next);
+        var scope = offline.Scope;
+        var reminder = await dispatch.ChangeStatusAsync(Trip, next, stageLocation: await tracking.CaptureStageLocationAsync());
         if (next == "Completed") await tracking.StopAsync(discard: true);
         await Reload();
+        await mileage.ShowReminderAsync(reminder, () => scope is not null && scope == offline.Scope);
     }
     private async Task SendExtra()
     {

@@ -79,7 +79,7 @@ internal sealed class ChoicePopup : ContentPage
         var cancel = new Button { Text = LocalizationService.Text("Close"), WidthRequest = 72, BackgroundColor = Colors.Transparent, FontSize = 12 };
         cancel.SetDynamicResource(Button.TextColorProperty, "AccentText"); cancel.Clicked += async (_, _) => await Close(null);
         var top = new Grid { ColumnDefinitions = [new(GridLength.Star), new(GridLength.Auto)] }; top.Add(header); top.Add(cancel, 1);
-        var search = new SearchBar { Placeholder = LocalizationService.Text("Search options"), IsVisible = rows.Count > 6, HeightRequest = 44 };
+        var search = new SearchBar { Placeholder = LocalizationService.Text("Search options"), HeightRequest = 44 };
         var list = new CollectionView
         {
             ItemsSource = visible, SelectionMode = SelectionMode.None,
@@ -101,7 +101,9 @@ internal sealed class ChoicePopup : ContentPage
         search.TextChanged += (_, e) => Filter(e.NewTextValue);
         SizeChanged += (_, _) => list.HeightRequest = Math.Min(Math.Clamp(rows.Count, 1, 7) * 48, Math.Max(48, Height - 220));
         Filter("");
-        var body = new VerticalStackLayout { Spacing = 12, Children = { top, search, list } };
+        var searchField = FieldBorder.Wrap(search);
+        searchField.IsVisible = rows.Count > 6;
+        var body = new VerticalStackLayout { Spacing = 12, Children = { top, searchField, list } };
         var panel = new Border { Content = body, Padding = 18, Margin = 20, StrokeThickness = 0, StrokeShape = new RoundRectangle { CornerRadius = 24 }, VerticalOptions = LayoutOptions.Center, MaximumWidthRequest = 520 };
         panel.SetDynamicResource(BackgroundColorProperty, "Surface");
         Content = new Grid { Children = { panel } };

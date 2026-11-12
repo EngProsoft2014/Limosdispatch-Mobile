@@ -9,11 +9,37 @@ public sealed class ExpensesViewModel:BaseViewModel
     private DateTime from=new(DateTime.Today.Year,DateTime.Today.Month,1),to=DateTime.Today;private string search="",scope="All",vehicle="All vehicles";private decimal total,general,vehicles;private int receiptCount;
     public DateTime From{get=>from;set=>Set(ref from,value);}public DateTime To{get=>to;set=>Set(ref to,value);}public DateTime Today=>DateTime.Today;
     public string Search{get=>search;set{Set(ref search,value);Apply();}}public string ScopeFilter{get=>scope;set{Set(ref scope,value);Apply();}}public string VehicleFilter{get=>vehicle;set{Set(ref vehicle,value);Apply();}}
+    private readonly FinanceService finance;
+
+    public async Task<IReadOnlyList<string>> GetVehicleNamesAsync()
+    {
+        var choices = await finance.ExpenseChoicesAsync();
+        return choices.Vehicles.Select(vehicle => vehicle.Plate + " · " + vehicle.Name)
+            .Concat(Vehicles.Skip(1))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)
+            .Prepend("All vehicles")
+            .ToArray();
+    }
+
+    public string? DriverFilter { get; set; }
+    public async Task<IReadOnlyList<string>> GetDriverNamesAsync()
+    {
+        if (!IsDispatcher) return [];
+        var directory = await dispatch.DriversAsync();
+        return directory.Select(driver => driver.Name)
+            .Concat(all.Select(expense => expense.Driver))
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .Select(name => name.Trim())
+            .Distinct(StringComparer.CurrentCultureIgnoreCase)
+            .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)
+            .ToArray();
+    }
     public IReadOnlyList<string> Scopes{get;}=["All","General","Vehicle"];public ObservableCollection<string> Vehicles{get;}=["All vehicles"];
     public decimal Total{get=>total;private set=>Set(ref total,value);}public decimal GeneralTotal{get=>general;private set=>Set(ref general,value);}public decimal VehicleTotal{get=>vehicles;private set=>Set(ref vehicles,value);}public int ReceiptCount{get=>receiptCount;private set=>Set(ref receiptCount,value);}
     public bool CanAdd=>auth.User?.Can("Expenses","Add")==true;public bool CanManageCategories=>auth.User?.Can("Expense categories")==true;public bool IsDispatcher=>auth.User?.CanDispatch==true;
     public ObservableCollection<ExpenseGroup> Groups{get;}=[];public AsyncCommand AddCommand{get;}public AsyncCommand CategoriesCommand{get;}public ICommand ReceiptCommand{get;}public ICommand OpenCommand{get;}
-    public ExpensesViewModel(DispatchService dispatch,AuthService auth,NavigationService nav){this.dispatch=dispatch;this.auth=auth;this.nav=nav;RefreshCommand=new(LoadAsync);AddCommand=new(()=>Run(()=>nav.PushAsync<AddExpensePage>()));CategoriesCommand=new(()=>Run(()=>nav.PushAsync<ExpenseCategoriesPage>()));ReceiptCommand=new Command<Expense>(e=>{if(e?.Receipt is not null)_=Run(()=>Application.Current!.Windows[0].Page!.Navigation.PushAsync(new ReceiptPage(e.Receipt)));});OpenCommand=new Command<Expense>(e=>{if(e is not null)_=Run(()=>nav.OpenExpenseAsync(e));});}
+    public ExpensesViewModel(DispatchService dispatch,AuthService auth,NavigationService nav, FinanceService finance){this.finance=finance;this.dispatch=dispatch;this.auth=auth;this.nav=nav;RefreshCommand=new(LoadAsync);AddCommand=new(()=>Run(()=>nav.PushAsync<AddExpensePage>()));CategoriesCommand=new(()=>Run(()=>nav.PushAsync<ExpenseCategoriesPage>()));ReceiptCommand=new Command<Expense>(e=>{if(e?.Receipt is not null)_=Run(()=>Application.Current!.Windows[0].Page!.Navigation.PushAsync(new ReceiptPage(e.Receipt)));});OpenCommand=new Command<Expense>(e=>{if(e is not null)_=Run(()=>nav.OpenExpenseAsync(e));});}
     public override Task LoadAsync()=>Run(async()=>{if(From>To)throw new InvalidOperationException("Select a valid date range.");LimosDispatch.Core.Helpers.ScreenRules.ValidateExpenseDate(To,Today);all=(await dispatch.ExpensesAsync()).Rows.Where(e=>auth.User is {} user&&LimosDispatch.Core.Helpers.ExpenseAccess.CanAccess(user,e.Driver)).ToList();Vehicles.Clear();Vehicles.Add("All vehicles");foreach(var v in all.Select(e=>e.Vehicle).Where(v=>!string.IsNullOrWhiteSpace(v)).Distinct())Vehicles.Add(v);Apply();});
-    private void Apply(){var rows=all.Where(e=>DateTime.TryParseExact(e.Date,"yyyy-MM-dd",System.Globalization.CultureInfo.InvariantCulture,System.Globalization.DateTimeStyles.None,out var d)&&d.Date>=From.Date&&d.Date<=To.Date).Where(e=>string.IsNullOrWhiteSpace(Search)||$"{e.Name} {e.Category} {e.Driver} {e.Vehicle} {e.Notes}".Contains(Search,StringComparison.CurrentCultureIgnoreCase)).Where(e=>ScopeFilter=="All"||e.Scope==ScopeFilter).Where(e=>VehicleFilter=="All vehicles"||e.Vehicle==VehicleFilter).ToList();Total=rows.Sum(e=>e.Amount);GeneralTotal=rows.Where(e=>e.Scope!="Vehicle").Sum(e=>e.Amount);VehicleTotal=rows.Where(e=>e.Scope=="Vehicle").Sum(e=>e.Amount);ReceiptCount=rows.Count(e=>e.HasReceipt);Groups.Clear();foreach(var g in rows.OrderByDescending(e=>e.Date).GroupBy(e=>string.IsNullOrWhiteSpace(e.Driver)?LocalizationService.Text("Company expenses"):e.Driver))Groups.Add(new(g.Key,g));}
+    private void Apply(){var rows=all.Where(e=>DateTime.TryParseExact(e.Date,"yyyy-MM-dd",System.Globalization.CultureInfo.InvariantCulture,System.Globalization.DateTimeStyles.None,out var d)&&d.Date>=From.Date&&d.Date<=To.Date).Where(e=>string.IsNullOrWhiteSpace(Search)||$"{e.Name} {e.Category} {e.Driver} {e.Vehicle} {e.Notes}".Contains(Search,StringComparison.CurrentCultureIgnoreCase)).Where(e=>ScopeFilter=="All"||e.Scope==ScopeFilter).Where(e=>VehicleFilter=="All vehicles"||e.Vehicle==VehicleFilter).Where(e=>!IsDispatcher||DriverFilter is null||string.Equals(e.Driver?.Trim(),DriverFilter,StringComparison.CurrentCultureIgnoreCase)).ToList();Total=rows.Sum(e=>e.Amount);GeneralTotal=rows.Where(e=>e.Scope!="Vehicle").Sum(e=>e.Amount);VehicleTotal=rows.Where(e=>e.Scope=="Vehicle").Sum(e=>e.Amount);ReceiptCount=rows.Count(e=>e.HasReceipt);Groups.Clear();foreach(var g in rows.OrderByDescending(e=>e.Date).GroupBy(e=>string.IsNullOrWhiteSpace(e.Driver)?LocalizationService.Text("Company expenses"):e.Driver))Groups.Add(new(g.Key,g));}
 }

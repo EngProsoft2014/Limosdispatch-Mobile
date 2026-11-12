@@ -24,8 +24,8 @@ public partial class RoutePlaybackPage:ContentPage
     }
     private void DrawPosition()
     {
-        if(!model.HasPoints){RouteMap.SetMarkers([]);return;}var p=RoutePlayback.At(model.Points,model.CurrentTimestamp);
-        RouteMap.SetMarkers([new FleetMarker("replay",model.Trip.DriverName,model.CurrentTime,p.Latitude,p.Longitude)]);
+        if(!model.HasPoints){RouteMap.SetMarkers([]);return;}var p=RoutePlayback.At(model.Points,model.CurrentTimestamp, out var bearing);
+        RouteMap.SetMarkers([new FleetMarker("replay",model.Trip.DriverName,model.CurrentTime,p.Latitude,p.Longitude) { Bearing = bearing }]);
         if(model.Follow)RouteMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(p.Latitude,p.Longitude),Distance.FromKilometers(.8)));
     }
     private void Fit()

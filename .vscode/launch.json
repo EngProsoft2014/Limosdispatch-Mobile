@@ -15,6 +15,13 @@
       "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
       "configuration": "Debug",
       "targetFramework": "net10.0-ios"
+    },
+    {
+      "name": "LimosDispatch · Android Physical Device",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .vscode/run-android-device.ps1",
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

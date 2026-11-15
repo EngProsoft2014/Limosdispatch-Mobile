@@ -25,7 +25,7 @@ public partial class TripDetailPage : ContentPage
 
     private async void OnCopyTripText(object? sender, TappedEventArgs e)
     {
-        if (sender is Label { Text: { } value } && !string.IsNullOrWhiteSpace(value))
+        if (sender is Grid row && row.Children.FirstOrDefault() is Label { Text: { } value } && !string.IsNullOrWhiteSpace(value))
             await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(() => Clipboard.Default.SetTextAsync(value));
     }
 

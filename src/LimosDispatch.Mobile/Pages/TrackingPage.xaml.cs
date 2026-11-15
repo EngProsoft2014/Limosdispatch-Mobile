@@ -15,6 +15,7 @@ public partial class TrackingPage : ContentPage
     private bool historyMode;
     public TrackingPage(TrackingViewModel model,TrackingHistoryViewModel history,IServiceProvider services) { InitializeComponent(); this.history=history;this.services=services;HistoryPanel.BindingContext=history; BindingContext = this.model = model; Shell.SetTitleView(this, new Controls.CenteredBrandHeader { Title = LocalizationService.Text("Tracking") });
         FleetMap.Ready += RenderPins;
+        FleetMap.SceneChanged += FollowAnimatedMarker;
         FleetMap.SizeChanged += (_, _) => { if (!centered && model.MapMode) RenderPins(); };
     }
     protected override void OnAppearing() { base.OnAppearing(); visible = true; model.LocationsChanged += RenderPins; model.StatusChanged += RenderStatus; if(!historyMode)model.Start(); }
@@ -62,12 +63,18 @@ public partial class TrackingPage : ContentPage
         if (driver is null) { VehicleStreetCard.IsVisible = false; return; }
         VehicleStreetCard.IsVisible = true;
         FocusedVehicleName.Text = driver.DisplayName;
-        if (lastCameraLocation is null || lastCameraLocation.Latitude != driver.Latitude || lastCameraLocation.Longitude != driver.Longitude)
-        {
-            lastCameraLocation = new Location(driver.Latitude, driver.Longitude);
-            FleetMap.Recenter(lastCameraLocation);
-        }
         _ = UpdateStreetAsync(driver);
+    }
+
+    private void FollowAnimatedMarker()
+    {
+        if (!visible || historyMode || !model.MapMode || !FleetMap.IsReady || followedId is null) return;
+        var marker = FleetMap.Markers.FirstOrDefault(item => item.Id == followedId);
+        if (marker is null || (lastCameraLocation is { } last &&
+            last.Latitude == marker.Latitude && last.Longitude == marker.Longitude)) return;
+
+        lastCameraLocation = new Location(marker.Latitude, marker.Longitude);
+        FleetMap.Recenter(lastCameraLocation);
     }
 
     private void FocusDriver(TrackedDriver driver)

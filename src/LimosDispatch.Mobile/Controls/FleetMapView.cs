@@ -9,6 +9,7 @@ public sealed record FleetMarker(string Id,string Label,string Detail,double Lat
 }
 public sealed class FleetMapView : Microsoft.Maui.Controls.Maps.Map
 {
+    private long? lastLiveUpdate;
     private IReadOnlyList<FleetMarker> destination = [];
     private Dictionary<string,FleetMarker> details = [];
     public MapSpan? LastRegion { get; private set; }
@@ -35,6 +36,14 @@ public sealed class FleetMapView : Microsoft.Maui.Controls.Maps.Map
                 ? marker with { Bearing = TravelBearing(old, marker) }
                 : marker).ToList();
         }
+        uint duration = 1500;
+        if (orientCars)
+        {
+            var now = System.Diagnostics.Stopwatch.GetTimestamp();
+            if (animate && lastLiveUpdate is { } previousUpdate)
+                duration = (uint)Math.Clamp(System.Diagnostics.Stopwatch.GetElapsedTime(previousUpdate, now).TotalMilliseconds, 250, 5000);
+            lastLiveUpdate = now;
+        }
         destination=target;details=target.ToDictionary(m=>m.Id);
         this.AbortAnimation("markers");var before=Markers.ToDictionary(x=>x.Id);
         if(!animate||!IsReady){Markers=target;SceneChanged?.Invoke();return;}
@@ -43,7 +52,7 @@ public sealed class FleetMapView : Microsoft.Maui.Controls.Maps.Map
             Markers = target.Select(marker => Decorate(before.TryGetValue(marker.Id, out var old)
                 ? Interpolate(old, marker, progress) : marker)).ToList();
             SceneChanged?.Invoke();
-        }, 0, 1).Commit(this, "markers", 32, 1500, Easing.Linear, (_, cancelled) =>
+        }, 0, 1).Commit(this, "markers", 32, duration, Easing.Linear, (_, cancelled) =>
         {
             if (cancelled) return;
             Markers = target.Select(Decorate).ToList();

@@ -32,4 +32,6 @@ public sealed class GoogleMapsHandler : ViewHandler<FleetMapView,MapView>
         }
     }
     public void MoveTo(MapSpan region) {var zoom=(float)Math.Clamp(Math.Log2(360/Math.Max(region.LongitudeDegrees,.0001)),2,20);PlatformView.Camera=CameraPosition.FromCamera(region.Center.Latitude,region.Center.Longitude,zoom);}
+    public void Recenter(Location location) => PlatformView.MoveCamera(
+        CameraUpdate.SetTarget(new CLLocationCoordinate2D(location.Latitude, location.Longitude)));
 }

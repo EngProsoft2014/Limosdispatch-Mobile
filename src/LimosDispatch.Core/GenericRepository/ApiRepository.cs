@@ -46,6 +46,13 @@ public sealed class ApiRepository(HttpClient client, IAccessTokenProvider tokens
                 await tokens.RejectTokenAsync(token, requestToken);
             return await Read<T>(retry, requestToken);
         }
+        catch (ApiException ex) when (ex.Status == HttpStatusCode.NotFound)
+        {
+            var route = path.Split('?', 2)[0];
+            route = System.Text.RegularExpressions.Regex.Replace(route, @"(?i)(?<=/)[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}(?=/|$)", "{id}");
+            System.Diagnostics.Debug.WriteLine($"[LimosDispatch API] {method} {route} returned 404.");
+            throw;
+        }
         catch (OperationCanceledException ex) when (!ct.IsCancellationRequested) { throw new TimeoutException("The API request timed out. Refresh and check its result before retrying a write.", ex); }
         catch (JsonException ex) { throw new InvalidDataException("The API returned data in an unexpected format.", ex); }
     }

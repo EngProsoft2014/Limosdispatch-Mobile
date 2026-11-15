@@ -9,23 +9,42 @@ public sealed class TrackingRuntimeOptions
 }
 public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublisher publisher,AuthService auth,TrackingRuntimeOptions? settings=null,IOfflineSyncStore? outbox=null,OfflineSyncService? offline=null)
 {
-    private readonly TrackingRuntimeOptions options=settings??new();
-    private readonly SemaphoreSlim gate=new(1,1),uploadGate=new(1,1),retrySignal=new(0,1);
-    private readonly List<GpsPoint> pending=[];
-    private readonly TrackingPointFilter pointFilter=new();private readonly TrackingUploadBackoff uploadBackoff=new();
-    private CancellationTokenSource? lifetime;private string? tripId,storageKey;private OfflineScope? trackingScope;
-    private DateTimeOffset preparedAt,lastFeedbackAt;private GpsPoint? preparedPoint;
-    public bool IsRunning=>tripId is not null;public string? ActiveTripId=>tripId;
-    public string Health{get;private set;}="Location sharing is off";public string LastLocation{get;private set;}="";
-    public event Action? HealthChanged;public int HistoryIntervalMs{get;private set;}=5000;
+    private readonly System.Collections.Concurrent.ConcurrentDictionary<string, TripTrackingSession> sessions = new(StringComparer.OrdinalIgnoreCase);
+    private readonly SemaphoreSlim lifecycle = new(1,1), fixGate = new(1,1);
+    private GpsPoint? preparedPoint;
+    private DateTimeOffset preparedAt;
+    private GpsPoint? latestFix;
+    private readonly ITrackingPlatform sharedPlatform = platform;
+    private volatile bool sensorRunning;
+    private string idleHealth = "Location sharing is off";
+    public bool IsRunning => !sessions.IsEmpty;
+    public bool IsTracking(string id) => sessions.ContainsKey(id);
+    public string Health => sessions.Values.Select(s => s.Health).FirstOrDefault(h => h != "Location sharing active")
+        ?? (IsRunning ? "Location sharing active" : idleHealth);
+    public string LastLocation => sessions.Values.Select(s => s.LastLocation).FirstOrDefault(s => s.Length > 0) ?? "";
+    public string HealthFor(string id) => sessions.TryGetValue(id, out var session) ? session.Health : idleHealth;
+    public string LastLocationFor(string id) => sessions.TryGetValue(id, out var session) ? session.LastLocation : "";
+    public event Action? HealthChanged;
+
+    private void Notify() => MainThread.BeginInvokeOnMainThread(() => HealthChanged?.Invoke());
+    private void OnFix(GpsPoint point) => System.Threading.Volatile.Write(ref latestFix, point);
+    private GpsPoint? FreshFix() => System.Threading.Volatile.Read(ref latestFix) is { } point &&
+        Math.Abs(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - point.CapturedAt) <= 15000 ? point : null;
+
     public async Task PrepareAsync()
     {
         if(await Permissions.RequestAsync<Permissions.LocationWhenInUse>()!=PermissionStatus.Granted)throw new InvalidOperationException("Allow location access to start this journey.");
         if(!Geolocation.Default.IsEnabled)throw new InvalidOperationException("Turn on device location to start this journey.");
-        if(DateTimeOffset.UtcNow-preparedAt<TimeSpan.FromSeconds(30))return;
+        if (sensorRunning) return;
+        await fixGate.WaitAsync();
+        try
+        {
+        if (sensorRunning || DateTimeOffset.UtcNow-preparedAt<TimeSpan.FromSeconds(30))return;
         var fix=await Geolocation.Default.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best,TimeSpan.FromSeconds(20)));
         if(fix is null)throw new InvalidOperationException("Location is unavailable. Enable device location and try again.");
         preparedPoint=new(fix.Timestamp.ToUnixTimeMilliseconds(),fix.Latitude,fix.Longitude,fix.Accuracy??0);preparedAt=DateTimeOffset.UtcNow;
+        }
+        finally { fixGate.Release(); }
     }
     public async Task<GpsPoint?> CaptureStageLocationAsync()
     {
@@ -34,6 +53,8 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
             if (await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>() != PermissionStatus.Granted ||
                 !Geolocation.Default.IsEnabled) return null;
 
+            if (sensorRunning) return FreshFix();
+            if (preparedPoint is { } seed && DateTimeOffset.UtcNow - preparedAt < TimeSpan.FromSeconds(8)) return seed;
             var fix = await Geolocation.Default.GetLocationAsync(
                 new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(8)));
             if (fix is null || (DateTimeOffset.UtcNow - fix.Timestamp).Duration() > TimeSpan.FromSeconds(15))
@@ -46,15 +67,146 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         }
     }
 
-    public async Task ResumeAsync(string id)
-    {
-        if(tripId!=id){await StartAsync(id);return;}await PrepareAsync();platform.Stop();await platform.StartAsync();OnPoint(preparedPoint!);SetHealth("Location sharing active");
-    }
+
     public async Task StartAsync(string id)
     {
-        if(tripId==id)return;if(tripId is not null)throw new InvalidOperationException("Finish the current journey before starting another.");
+        await lifecycle.WaitAsync();
+        try
+        {
+            if (sessions.ContainsKey(id) || (offline is not null && await offline.EndedAsync(id))) return;
+            await PrepareAsync();
+            var seed = !sensorRunning ? preparedPoint : null;
+            var lease = new SensorLease(this);
+            var session = new TripTrackingSession(lease, publisher, auth, settings, outbox, offline);
+            session.HealthChanged += Notify;
+            try { await session.StartAsync(id); }
+            catch { await StopSensorIfIdleAsync(); throw; }
+            if (!session.IsRunning) return;
+            sessions[id] = session;
+            if (seed is not null) lease.Seed(seed);
+            MainThread.BeginInvokeOnMainThread(() => DeviceDisplay.Current.KeepScreenOn = IsRunning && Preferences.Default.Get("journey-screen-awake",false));
+            Notify();
+        }
+        finally { lifecycle.Release(); }
+    }
+
+    public async Task ResumeAsync(string id)
+    {
+        await StartAsync(id);
+        await lifecycle.WaitAsync();
+        try
+        {
+            if (!IsTracking(id)) return;
+            await PrepareAsync();
+            // Restart the one shared sensor, keeping every session and its queue attached.
+            if (sensorRunning) sharedPlatform.Stop();
+            sensorRunning = false;
+            await EnsureSensorAsync();
+        }
+        finally { lifecycle.Release(); }
+    }
+
+    public Task FlushAsync(string id) => sessions.TryGetValue(id, out var session) ? session.FlushAsync() : Task.CompletedTask;
+    public Task FlushAsync() => Task.WhenAll(sessions.Values.Select(s => s.FlushAsync()));
+
+    public async Task EndLocallyAsync(Trip trip, GpsPoint? stageLocation = null)
+    {
+        await lifecycle.WaitAsync();
+        try
+        {
+            if (offline is null) throw new InvalidOperationException("Offline completion is unavailable.");
+            if (sessions.TryGetValue(trip.Id, out var session))
+            {
+                await session.EndLocallyAsync(trip, stageLocation);
+                sessions.TryRemove(trip.Id, out _);
+            }
+            else await offline.QueueCompletionAsync(trip, stageLocation);
+            idleHealth = "Journey ended · awaiting synchronization";
+            await StopSensorIfIdleAsync(); Notify();
+        }
+        finally { lifecycle.Release(); }
+    }
+
+    public async Task StopAsync(string id, bool discard = false)
+    {
+        await lifecycle.WaitAsync();
+        try
+        {
+            if (!sessions.TryGetValue(id, out var session)) return;
+            await session.StopAsync(discard);
+            sessions.TryRemove(id, out _);
+            idleHealth = "Location sharing is off";
+            await StopSensorIfIdleAsync(); Notify();
+        }
+        finally { lifecycle.Release(); }
+    }
+
+    public async Task StopAsync(bool discard = false)
+    {
+        await lifecycle.WaitAsync();
+        try
+        {
+            foreach (var pair in sessions.ToArray())
+            {
+                await pair.Value.StopAsync(discard);
+                sessions.TryRemove(pair.Key, out _);
+            }
+            idleHealth = "Location sharing is off";
+            await StopSensorIfIdleAsync(); Notify();
+        }
+        finally { lifecycle.Release(); }
+    }
+
+    private async Task EnsureSensorAsync()
+    {
+        if (sensorRunning) return;
+        sharedPlatform.PointCaptured -= OnFix;
+        sharedPlatform.PointCaptured += OnFix;
+        try { await sharedPlatform.StartAsync(); sensorRunning = true; }
+        catch { sharedPlatform.PointCaptured -= OnFix; throw; }
+    }
+
+    private async Task StopSensorIfIdleAsync()
+    {
+        if (IsRunning) return;
+        sharedPlatform.PointCaptured -= OnFix;
+        if (sensorRunning) sharedPlatform.Stop();
+        sensorRunning = false;
+        latestFix = preparedPoint = null;
+        preparedAt = default;
+        MainThread.BeginInvokeOnMainThread(() => DeviceDisplay.Current.KeepScreenOn = IsRunning && Preferences.Default.Get("journey-screen-awake",false));
+        await publisher.StopAsync();
+    }
+
+    private sealed class SensorLease(TrackingService owner) : ITrackingPlatform
+    {
+        public event Action<GpsPoint>? PointCaptured
+        {
+            add { listeners += value; owner.sharedPlatform.PointCaptured += value; }
+            remove { listeners -= value; owner.sharedPlatform.PointCaptured -= value; }
+        }
+        private Action<GpsPoint>? listeners;
+        public Task StartAsync() => owner.EnsureSensorAsync();
+        public void Stop() { }
+        public void Seed(GpsPoint point) => listeners?.Invoke(point);
+    }
+}
+internal sealed class TripTrackingSession(ITrackingPlatform platform,ITrackingPublisher publisher,AuthService auth,TrackingRuntimeOptions? settings=null,IOfflineSyncStore? outbox=null,OfflineSyncService? offline=null)
+{
+    private readonly TrackingRuntimeOptions options=settings??new();
+    private readonly SemaphoreSlim gate=new(1,1),uploadGate=new(1,1),retrySignal=new(0,1);
+    private readonly List<GpsPoint> pending=[];
+    private readonly TrackingPointFilter pointFilter=new();private readonly TrackingUploadBackoff uploadBackoff=new();
+    private CancellationTokenSource? lifetime;private string? tripId,storageKey;private OfflineScope? trackingScope;
+    private DateTimeOffset lastFeedbackAt;
+    public bool IsRunning=>tripId is not null;
+    public string Health{get;private set;}="Location sharing is off";public string LastLocation{get;private set;}="";
+    public event Action? HealthChanged;public int HistoryIntervalMs{get;private set;}=5000;
+    public async Task StartAsync(string id)
+    {
+        if(tripId==id)return;
         if(offline is not null&&await offline.EndedAsync(id))return;
-        await PrepareAsync();var scope=OfflineScope.From(auth.User);
+        var scope=OfflineScope.From(auth.User);
         if(outbox is not null&&scope is null)throw new UnauthorizedAccessException();
         var key=$"gps:{auth.User!.Company}:{auth.User.Id}:{id}";
         var saved=await SecureStorage.Default.GetAsync(key);var state=new TrackingQueueState();
@@ -80,12 +232,12 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
             platform.PointCaptured+=OnPoint;
             try{await platform.StartAsync();}catch{platform.PointCaptured-=OnPoint;tripId=null;trackingScope=null;lifetime.Dispose();lifetime=null;throw;}
             _=RetryPendingAsync(id,lifetime.Token);_=HeartbeatLoopAsync(id,lifetime.Token);
-            MainThread.BeginInvokeOnMainThread(()=>DeviceDisplay.Current.KeepScreenOn=Preferences.Default.Get("journey-screen-awake",false));SetHealth("Location sharing active");
+            SetHealth("Location sharing active");
         }
         finally{gate.Release();}
-        if(preparedPoint is not null)OnPoint(preparedPoint);if(pending.Count>0)SignalRetry();
+        if(pending.Count>0)SignalRetry();
     }
-    private void SignalRetry(){if(retrySignal.CurrentCount==0)retrySignal.Release();}
+    private void SignalRetry(){try{retrySignal.Release();}catch(SemaphoreFullException){}}
     private async void OnPoint(GpsPoint point)
     {
         var expected=tripId;if(point is null||expected is null)return;
@@ -98,7 +250,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
                 var previous=pointFilter.LastAccepted;if(!pointFilter.Accept(point))return;
                 try{if(outbox is not null&&trackingScope is {} scope)await outbox.CaptureAsync(scope,expected,point);}
                 catch{pointFilter.Reset(previous);throw;}
-                LastLocation=$"±{point.Accuracy:0} m · {DateTimeOffset.FromUnixTimeMilliseconds(point.CapturedAt).ToLocalTime():g}";
+                LastLocation=$"آ±{point.Accuracy:0} m آ· {DateTimeOffset.FromUnixTimeMilliseconds(point.CapturedAt).ToLocalTime():g}";
                 pending.Add(point);TrimMemory();await PersistLegacyAsync();
             }
             finally{gate.Release();}
@@ -108,7 +260,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         catch(Exception ex)
         {
             if(tripId!=expected)return;
-            SetHealth("Location upload pending · check connection and permissions");
+            SetHealth("Location upload pending آ· check connection and permissions");
             if(DateTimeOffset.UtcNow-lastFeedbackAt>TimeSpan.FromSeconds(30)){lastFeedbackAt=DateTimeOffset.UtcNow;await UserFeedback.ReportAsync(ex);}
         }
     }
@@ -118,11 +270,11 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         {
             while(true)
             {
-                await Task.Delay(options.HeartbeatInterval,ct);if(tripId!=expected)return;
+                await Task.Delay(options.HeartbeatInterval,ct);if(tripId!=expected || trackingScope is {} scope && OfflineScope.From(auth.User)!=scope)return;
                 string motion;await gate.WaitAsync(ct);try{motion=pointFilter.IsMoving(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())?"moving":"stationary";}finally{gate.Release();}
                 try{await publisher.HeartbeatAsync(expected,motion,ct);if(pending.Count==0)SetHealth("Location sharing active");}
                 catch(OperationCanceledException)when(ct.IsCancellationRequested){return;}
-                catch(Exception){SetHealth("Live connection interrupted · retrying");}
+                catch(Exception){SetHealth("Live connection interrupted آ· retrying");}
             }
         }
         catch(OperationCanceledException)when(ct.IsCancellationRequested){}
@@ -138,7 +290,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
                 {
                     await Task.Delay(options.RetryInterval,ct);if(tripId!=expected||pending.Count==0)break;
                     if(!uploadBackoff.CanAttempt(DateTimeOffset.UtcNow))continue;
-                    try{await TryFlushAsync();}catch(OperationCanceledException)when(ct.IsCancellationRequested){return;}catch(Exception){SetHealth("Location upload pending · check connection and permissions");}
+                    try{await TryFlushAsync();}catch(OperationCanceledException)when(ct.IsCancellationRequested){return;}catch(Exception){SetHealth("Location upload pending آ· check connection and permissions");}
                 }
             }
         }
@@ -159,7 +311,7 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
             await gate.WaitAsync(ct);
             try
             {
-                expected=tripId;scope=trackingScope;if(expected is null)return;TrimMemory();
+                expected=tripId;scope=trackingScope;if(expected is null || scope is {} owner && OfflineScope.From(auth.User)!=owner)return;TrimMemory();
                 if(pending.Count==0&&outbox is not null&&scope is not null)pending.AddRange(await outbox.PointsAsync(scope,expected,60,DateTimeOffset.UtcNow.AddMinutes(-59).ToUnixTimeMilliseconds()));
                 sent=pending.Take(60).ToList();if(sent.Count==0)return;
             }
@@ -191,12 +343,12 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         await gate.WaitAsync();
         try
         {
-            if(tripId is not null&&tripId!=trip.Id)throw new InvalidOperationException("Finish the current journey before starting another.");
+
             // Atomic durable completion precedes stopping the sensor or canceling uploads.
             await offline.QueueCompletionAsync(trip, stageLocation);lifetime?.Cancel();platform.Stop();platform.PointCaptured-=OnPoint;tripId=null;
         }
         finally{gate.Release();}
-        await FinishStopAsync();SetHealth("Journey ended · awaiting synchronization");
+        await FinishStopAsync();SetHealth("Journey ended آ· awaiting synchronization");
     }
     public async Task StopAsync(bool discard=false)
     {
@@ -209,14 +361,14 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
         await uploadGate.WaitAsync();
         try
         {
-            await publisher.StopAsync();await gate.WaitAsync();
+            await gate.WaitAsync();
             try
             {
                 // Never delete durable unacknowledged GPS on logout, account switch or local Finish.
-                if(outbox is null&&storageKey is not null)SecureStorage.Default.Remove(storageKey);
+
                 storageKey=null;trackingScope=null;pending.Clear();pointFilter.Reset();uploadBackoff.Succeeded();
-                lifetime?.Dispose();lifetime=null;preparedAt=default;preparedPoint=null;LastLocation="";
-                MainThread.BeginInvokeOnMainThread(()=>DeviceDisplay.Current.KeepScreenOn=false);
+                lifetime?.Dispose();lifetime=null;LastLocation="";
+
             }
             finally{gate.Release();}
         }

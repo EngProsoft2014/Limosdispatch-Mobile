@@ -26,7 +26,7 @@ public partial class RoutePlaybackPage:ContentPage
     {
         if(!model.HasPoints){RouteMap.SetMarkers([]);return;}var p=RoutePlayback.At(model.Points,model.CurrentTimestamp, out var bearing);
         RouteMap.SetMarkers([new FleetMarker("replay",model.Trip.DriverName,model.CurrentTime,p.Latitude,p.Longitude) { Bearing = bearing }]);
-        if(model.Follow)RouteMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(p.Latitude,p.Longitude),Distance.FromKilometers(.8)));
+        if(model.Follow)RouteMap.Recenter(new Location(p.Latitude,p.Longitude));
     }
     private void Fit()
     {

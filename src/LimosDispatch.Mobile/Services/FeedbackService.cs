@@ -20,6 +20,11 @@ public static class FeedbackService
         lastMessage = message; lastShown = DateTimeOffset.UtcNow;
         await Snackbar.Make(LocalizationService.Text(message), actionButtonText: LocalizationService.Text("OK"), duration: TimeSpan.FromSeconds(6), visualOptions: Options()).Show();
     });
+    public static Task ShowNotificationSettingsAsync(Func<Task> onAction) => MainThread.InvokeOnMainThreadAsync(() =>
+        Snackbar.Make(LocalizationService.Text("Notifications are disabled in your phone settings."),
+            () => _ = UserFeedback.RunAsync(onAction), LocalizationService.Text("Enable notifications"),
+            TimeSpan.FromSeconds(8), Options()).Show());
+
     public static Task<bool> ConfirmAsync(string message, string actionText, Func<bool>? stillValid = null) => MainThread.InvokeOnMainThreadAsync(async () =>
     {
         if (!await confirmation.WaitAsync(0)) return false;

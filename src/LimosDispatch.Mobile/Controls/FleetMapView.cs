@@ -92,5 +92,13 @@ public sealed class FleetMapView : Microsoft.Maui.Controls.Maps.Map
         if(Handler is Platforms.Android.FleetMapHandler h)h.MoveTo(span);
 #endif
     }
+    public void Recenter(Location location)
+    {
+#if IOS
+        if(Handler is Platforms.iOS.GoogleMapsHandler ios) ios.Recenter(location);
+#elif ANDROID
+        if(Handler is Platforms.Android.FleetMapHandler android) android.Recenter(location);
+#endif
+    }
     protected override void OnHandlerChanging(HandlerChangingEventArgs args) { this.AbortAnimation("markers");IsReady=false;base.OnHandlerChanging(args); }
 }

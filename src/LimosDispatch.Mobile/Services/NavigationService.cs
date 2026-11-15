@@ -27,9 +27,6 @@ public sealed class NavigationService(IServiceProvider services)
     }
     public async Task OpenTripAsync(Trip trip)
     {
-        var tracking = services.GetRequiredService<TrackingService>();
-        if (tracking.ActiveTripId is { } active && active != trip.Id)
-            throw new InvalidOperationException("Finish the current journey before opening another trip. Location sharing is still running.");
         var page = services.GetRequiredService<TripDetailPage>();
         ((TripDetailViewModel)page.BindingContext).SetTrip(trip);
         await Root.Navigation.PushAsync(page);

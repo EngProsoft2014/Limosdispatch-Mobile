@@ -25,7 +25,7 @@ public sealed class RidesViewModel : BaseViewModel
     public bool Personal { get => personal; set { if (Set(ref personal, value)) _ = LoadAsync(); } }
     public string Heading => IsDispatcher ? "Dispatch overview" : "My rides";
     public string Name => auth.User?.Name ?? "";
-    public string Summary => $"{all.Count(t => t.IsActive)} active · {all.Count(t => t.Status == "Unassigned")} unassigned";
+    public string Summary => $"{all.Count(t => t.IsActive)} active آ· {all.Count(t => t.Status == "Unassigned")} unassigned";
     public ICommand OpenTripCommand { get; }
     public AsyncCommand NewTripCommand { get; }
     public AsyncCommand AccountCommand { get; }
@@ -45,9 +45,15 @@ public sealed class RidesViewModel : BaseViewModel
         await offline.OverlayAsync(all);Apply();
         var response = await dispatch.TripsAsync(Personal); all = response.Trips;await offline.OverlayAsync(all);
         Apply(); Raise(nameof(Summary));
-        // Resume location only for this user's active assigned trip after app restart.
-        var active = all.FirstOrDefault(t => t.IsActive && t.DriverId == auth.User?.DriverId);
-        if (active is not null && !tracking.IsRunning && !await offline.EndedAsync(active.Id)) await tracking.StartAsync(active.Id);
+        var driverId = auth.User?.IsDriver == true ? auth.User.DriverId : null;
+        if (!string.IsNullOrWhiteSpace(driverId))
+            foreach (var trip in all)
+            {
+                if (trip.DriverId == driverId && trip.IsActive && !tracking.IsTracking(trip.Id) && !await offline.EndedAsync(trip.Id))
+                    await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(() => tracking.StartAsync(trip.Id));
+                else if ((trip.DriverId != driverId || !trip.IsActive) && tracking.IsTracking(trip.Id))
+                    await tracking.StopAsync(trip.Id, discard: true);
+            }
     });
     private void Apply()
     {

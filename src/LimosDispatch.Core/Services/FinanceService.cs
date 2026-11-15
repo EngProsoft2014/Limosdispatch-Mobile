@@ -87,6 +87,12 @@ public sealed class FinanceService(IGenericRepository api,AuthService auth)
         if(response.Trip?.Extras.Any(e=>e.Id==review.ExtraId&&e.Status=="Pending")!=true)throw new InvalidOperationException("This extra has already been reviewed. Refresh the journey.");
         await api.PostAsync<JsonElement>("api/trips/extras/review",review.Decision=="Rejected"?review with{Amount=0,CustomerConfirmed=false}:review);
     }
+    public Task<Trip> AdjustFareAsync(string tripId, decimal fare)
+    {
+        Demand("Reservations", "Edit");
+        return api.PutAsync<Trip>($"api/reservations/{Uri.EscapeDataString(tripId)}/fare", new { fare });
+    }
+
     public async Task CancelTripAsync(string id)
     {
         Demand("Reservations","Edit");var t=(await api.GetAsync<PushApi.TripResponse>("api/trips/"+Uri.EscapeDataString(id))).Trip??throw new InvalidOperationException("Journey no longer exists.");

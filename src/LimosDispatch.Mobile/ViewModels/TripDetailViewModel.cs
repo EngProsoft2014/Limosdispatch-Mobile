@@ -20,6 +20,20 @@ public sealed class TripDetailViewModel : BaseViewModel
     public string Vehicle { get => vehicle; set => Set(ref vehicle, value); }
     public bool IsAssignedDriver => auth.User?.IsDriver == true && auth.User.DriverId == Trip.DriverId;
     public bool CanReviewExtras=>auth.User?.Can("Reservations","Edit")==true;
+    public bool CanAdjustFare => CanReviewExtras && !IsClosed && Trip.Paid is not ("Paid" or "Refunded");
+    public Task AdjustFareAsync() => Run(async () =>
+    {
+        if (!CanAdjustFare || Shell.Current?.CurrentPage is not { } page) return;
+        var value = await page.DisplayPromptAsync(LocalizationService.Text("Adjust"), LocalizationService.Text("Base fare"),
+            accept: LocalizationService.Text("Save"), cancel: LocalizationService.Text("Cancel"),
+            keyboard: Keyboard.Numeric, initialValue: Trip.FareBeforeDiscount.ToString("0.00", LocalizationService.Culture));
+        if (value is null) return;
+        if (!InputValidation.TryDecimal(value, LocalizationService.Culture, out var fare) || fare <= 0)
+            throw new InvalidOperationException("Enter a valid amount.");
+        Trip = await finance.AdjustFareAsync(Trip.Id, fare);
+        Notify();
+    });
+
     public bool CanEditTrip=>CanReviewExtras&&!Trip.IsActive&&!IsClosed;
     public bool CanSetPayment=>CanReviewExtras&&!Trip.PaymentMethod.Equals("Credit Card",StringComparison.OrdinalIgnoreCase);
     public System.Windows.Input.ICommand ReviewExtraCommand{get;}
@@ -42,11 +56,12 @@ public sealed class TripDetailViewModel : BaseViewModel
         ? string.Join(" · ", Trip.ChildSeats.Where(x => x.Quantity > 0).Select(x => $"{LocalizationService.Text(x.Type)} × {x.Quantity}"))
         : LocalizationService.Text(string.IsNullOrWhiteSpace(Trip.ChildSeatSummary) ? "Not required" : Trip.ChildSeatSummary);
     public bool HasExtras => Trip.Extras is { Count: > 0 };
+    public bool ShouldRemindAboutNotifications => IsAssignedDriver || auth.User?.CanDispatch == true;
     public bool CanViewStageLocations => auth.User?.CanDispatch == true;
     public bool HasHistory => Trip.History is { Count: > 0 };
     public bool IsClosed => Trip.Status is "Completed" or "Cancelled" or "No-show";
     public string NextAction => TripWorkflow.ActionLabel(Trip.Status);
-    public string TrackingHealth => tracking.Health;
+    public string TrackingHealth => tracking.HealthFor(Trip.Id);
     private string mapAddress = "";
     private WebViewSource? mapSource;
     public WebViewSource PickupMap
@@ -96,7 +111,7 @@ public sealed class TripDetailViewModel : BaseViewModel
     public AsyncCommand ToggleExtraCommand { get; }
     public AsyncCommand SendExtraCommand { get; }
     public AsyncCommand ResumeTrackingCommand { get; }
-    public string LastLocation => tracking.LastLocation;
+    public string LastLocation => tracking.LastLocationFor(Trip.Id);
     public TripDetailViewModel(DispatchService dispatch, AuthService auth, NavigationService nav, TrackingService tracking,FinanceService finance,OfflineSyncService offline,OfflineSyncCoordinator synchronization, CompanySettingsService companySettings, PushApi pushApi, MileageWorkflow mileage)
     {
         this.pushApi = pushApi;
@@ -123,7 +138,28 @@ public sealed class TripDetailViewModel : BaseViewModel
         RefreshCommand = new(LoadAsync);
         PropertyChanged += (_, e) => { if (e.PropertyName == nameof(IsBusy)) Raise(nameof(CanExecuteAdvance)); };
     }
-    private static async Task OpenMap(string address, bool navigate) => await Launcher.Default.OpenAsync(new Uri("https://www.google.com/maps/" + (navigate ? "dir/?api=1&destination=" : "search/?api=1&query=") + Uri.EscapeDataString(address)));
+    private static async Task OpenMap(string address, bool navigate)
+    {
+        if (string.IsNullOrWhiteSpace(address)) return;
+        var destination = Uri.EscapeDataString(address);
+#if IOS
+        if (navigate && Shell.Current?.CurrentPage is { } page)
+        {
+            const string apple = "Apple Maps";
+            const string google = "Google Maps";
+            var selection = await page.DisplayActionSheetAsync(
+                LocalizationService.Text("Navigate"), LocalizationService.Text("Cancel"), null, google, apple);
+            if (selection == apple)
+            {
+                await Launcher.Default.OpenAsync(new Uri("https://maps.apple.com/?dirflg=d&daddr=" + destination));
+                return;
+            }
+            if (selection != google) return;
+        }
+#endif
+        var path = navigate ? "dir/?api=1&destination=" : "search/?api=1&query=";
+        await Launcher.Default.OpenAsync(new Uri("https://www.google.com/maps/" + path + destination));
+    }
     public void Subscribe() { tracking.HealthChanged += Notify;offline.Changed+=OnSynchronized; }
     public void Unsubscribe() { tracking.HealthChanged -= Notify;offline.Changed-=OnSynchronized; }
     private void OnSynchronized()=>MainThread.BeginInvokeOnMainThread(()=>{if(!string.IsNullOrEmpty(Trip.LocalSyncStatus))_=Run(Reload,showBusy:false);});
@@ -136,8 +172,8 @@ public sealed class TripDetailViewModel : BaseViewModel
         if (IsAssignedDriver) { var result = await dispatch.DriverJourneyAsync(Trip.Id, ct); ct.ThrowIfCancellationRequested(); journey = result; Trip = result.Trip; }
         else { var detail = await pushApi.TripAsync(Trip.Id); ct.ThrowIfCancellationRequested(); Trip = detail; }
         await offline.RememberAsync(Trip);
-        if (tracking.ActiveTripId == Trip.Id && (!Trip.IsActive || journey?.TrackingAllowed == false)) await tracking.StopAsync(discard: true);
-        if (IsAssignedDriver && Trip.IsActive && journey?.TrackingAllowed == true && !tracking.IsRunning) await tracking.StartAsync(Trip.Id);
+        if (tracking.IsTracking(Trip.Id) && (!Trip.IsActive || journey?.TrackingAllowed == false)) await tracking.StopAsync(Trip.Id, discard: true);
+        if (IsAssignedDriver && Trip.IsActive && journey?.TrackingAllowed == true && !tracking.IsTracking(Trip.Id)) await tracking.StartAsync(Trip.Id);
         PaymentState=Trip.Paid;Notify();
     }
     public Task RefreshInBackgroundAsync(CancellationToken ct) => Run(async () =>
@@ -188,10 +224,10 @@ public sealed class TripDetailViewModel : BaseViewModel
             await tracking.PrepareAsync();
         }
         // Pending GPS upload must not prevent Finish; the server owns the status transition.
-        if (next == "Completed") { try { await tracking.FlushAsync(); } catch { } }
+        if (next == "Completed") { try { await tracking.FlushAsync(Trip.Id); } catch { } }
         var scope = offline.Scope;
         var reminder = await dispatch.ChangeStatusAsync(Trip, next, stageLocation: await tracking.CaptureStageLocationAsync());
-        if (next == "Completed") await tracking.StopAsync(discard: true);
+        if (next == "Completed") await tracking.StopAsync(Trip.Id, discard: true);
         await Reload();
         await mileage.ShowReminderAsync(reminder, () => scope is not null && scope == offline.Scope);
     }

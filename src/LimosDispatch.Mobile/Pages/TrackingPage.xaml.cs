@@ -5,7 +5,11 @@ namespace LimosDispatch.Mobile.Pages;
 public partial class TrackingPage : ContentPage
 {
     private readonly TrackingViewModel model;
-    private bool centered;
+    private bool centered, visible, lookingUpStreet;
+    private string? followedId;
+    private Location? lastStreetLocation, lastCameraLocation;
+    private DateTimeOffset lastStreetLookup;
+
     private readonly TrackingHistoryViewModel history;
     private readonly IServiceProvider services;
     private bool historyMode;
@@ -13,8 +17,8 @@ public partial class TrackingPage : ContentPage
         FleetMap.Ready += RenderPins;
         FleetMap.SizeChanged += (_, _) => { if (!centered && model.MapMode) RenderPins(); };
     }
-    protected override void OnAppearing() { base.OnAppearing(); model.LocationsChanged += RenderPins; model.StatusChanged += RenderStatus; if(!historyMode)model.Start(); }
-    protected override void OnDisappearing() { model.Stop(); model.LocationsChanged -= RenderPins; model.StatusChanged -= RenderStatus; base.OnDisappearing(); }
+    protected override void OnAppearing() { base.OnAppearing(); visible = true; model.LocationsChanged += RenderPins; model.StatusChanged += RenderStatus; if(!historyMode)model.Start(); }
+    protected override void OnDisappearing() { visible = false; model.Stop(); model.LocationsChanged -= RenderPins; model.StatusChanged -= RenderStatus; base.OnDisappearing(); }
     private void OnLiveTab(object? sender,EventArgs e){historyMode=false;HistoryPanel.IsVisible=false;LivePanel.IsVisible=true;LiveTab.Style=(Style)Application.Current!.Resources["BaseButton"];HistoryTab.Style=(Style)Application.Current.Resources["Secondary"];model.Start();}
     private async void OnHistoryTab(object? sender,EventArgs e){historyMode=true;model.Stop();model.FullScreen=false;ApplyFullScreen();LivePanel.IsVisible=false;HistoryPanel.IsVisible=true;HistoryTab.Style=(Style)Application.Current!.Resources["BaseButton"];LiveTab.Style=(Style)Application.Current.Resources["Secondary"];await history.LoadAsync();}
     private async void OnHistoryDriverTapped(object? sender,TappedEventArgs e)
@@ -42,13 +46,72 @@ public partial class TrackingPage : ContentPage
     private void RenderPins(bool animate)
     {
         FleetMap.SetMarkers(model.Drivers.Select(d => new Controls.FleetMarker(d.Id,d.DisplayName,LocalizationService.Text(d.Freshness),d.Latitude,d.Longitude)).ToList(), animate, orientCars: true);
-        if (!centered && model.MapMode && FleetMap.IsReady && model.Drivers.Count > 0)
-        { var first = model.Drivers[0]; centered = true; FleetMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(first.Latitude, first.Longitude), Distance.FromKilometers(15))); }
+        if (!model.MapMode || !FleetMap.IsReady || model.Drivers.Count == 0)
+        {
+            VehicleStreetCard.IsVisible = false;
+            return;
+        }
+        if (!centered)
+        {
+            var first = model.Drivers[0];
+            centered = true;
+            if (!string.IsNullOrWhiteSpace(model.TripId)) FocusDriver(first);
+            else FleetMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(first.Latitude, first.Longitude), Distance.FromKilometers(15)));
+        }
+        var driver = model.Drivers.FirstOrDefault(d => d.Id == followedId);
+        if (driver is null) { VehicleStreetCard.IsVisible = false; return; }
+        VehicleStreetCard.IsVisible = true;
+        FocusedVehicleName.Text = driver.DisplayName;
+        if (lastCameraLocation is null || lastCameraLocation.Latitude != driver.Latitude || lastCameraLocation.Longitude != driver.Longitude)
+        {
+            lastCameraLocation = new Location(driver.Latitude, driver.Longitude);
+            FleetMap.Recenter(lastCameraLocation);
+        }
+        _ = UpdateStreetAsync(driver);
     }
+
+    private void FocusDriver(TrackedDriver driver)
+    {
+        if (followedId != driver.Id)
+        {
+            followedId = driver.Id;
+            lastStreetLocation = null;
+            lastStreetLookup = default;
+            FocusedStreet.IsVisible = false;
+            lastCameraLocation = new Location(driver.Latitude, driver.Longitude);
+            FleetMap.MoveToRegion(MapSpan.FromCenterAndRadius(lastCameraLocation, Distance.FromMeters(200)));
+        }
+    }
+
+    private async Task UpdateStreetAsync(TrackedDriver driver)
+    {
+        if (!visible || lookingUpStreet || DateTimeOffset.UtcNow - lastStreetLookup < TimeSpan.FromSeconds(20)) return;
+        if (lastStreetLocation is { } last && LimosDispatch.Core.Helpers.TrackingPointFilter.DistanceMeters(
+            last.Latitude, last.Longitude, driver.Latitude, driver.Longitude) < 60) return;
+        lookingUpStreet = true;
+        lastStreetLookup = DateTimeOffset.UtcNow;
+        var location = new Location(driver.Latitude, driver.Longitude);
+        try
+        {
+            var matches = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
+            if (!visible || followedId != driver.Id || !model.MapMode) return;
+            var place = matches?.FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.Thoroughfare));
+            lastStreetLocation = place is null ? null : location;
+            FocusedStreet.Text = place is null ? "" : string.Join(", ", new[] { place.Thoroughfare, place.Locality }.Where(s => !string.IsNullOrWhiteSpace(s)));
+            FocusedStreet.IsVisible = place is not null;
+        }
+        catch (Exception) { if (visible && followedId == driver.Id) FocusedStreet.IsVisible = false; }
+        finally { lookingUpStreet = false; }
+    }
+
     private void OnDriverTapped(object? sender, TappedEventArgs e)
     {
         if (sender is BindableObject { BindingContext: TrackedDriver driver })
-        { model.MapMode = true; centered=true; FleetMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(driver.Latitude, driver.Longitude), Distance.FromKilometers(2))); }
+        {
+            model.MapMode = true;
+            centered = true;
+            FocusDriver(driver);
+            RenderPins(false);
+        }
     }
 }
-

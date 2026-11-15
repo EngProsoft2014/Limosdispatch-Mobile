@@ -4,7 +4,7 @@ global using TrackingChecks;
 namespace TrackingChecks;
 // Device adapters only: the production TrackingService and Core repository execute unchanged.
 public enum PermissionStatus { Granted }
-public static class Permissions { public sealed class LocationWhenInUse {} public static Task<PermissionStatus> RequestAsync<T>() => Task.FromResult(PermissionStatus.Granted); }
+public static class Permissions { public sealed class LocationWhenInUse {} public static Task<PermissionStatus> CheckStatusAsync<T>() => RequestAsync<T>(); public static Task<PermissionStatus> RequestAsync<T>() => Task.FromResult(PermissionStatus.Granted); }
 public enum GeolocationAccuracy { Best }
 public sealed record GeolocationRequest(GeolocationAccuracy Accuracy, TimeSpan Timeout);
 public sealed class Geolocation { public static Geolocation Default { get; }=new(); public bool IsEnabled=>true; public TestLocation Fix {get;set;}=new(); public Task<TestLocation?> GetLocationAsync(GeolocationRequest request)=>Task.FromResult<TestLocation?>(Fix); }
@@ -14,3 +14,7 @@ public static class MainThread { public static void BeginInvokeOnMainThread(Acti
 public static class DeviceDisplay { public static Display Current { get; }=new(); public sealed class Display { public bool KeepScreenOn { get;set; } } }
 
 public sealed class TestLocation { public DateTimeOffset Timestamp {get;set;}=DateTimeOffset.UtcNow.AddSeconds(-10);public double Latitude {get;set;}=29.98;public double Longitude {get;set;}=-95.34;public double? Accuracy {get;set;}=5; }
+
+public sealed class FeatureNotEnabledException : Exception {}
+public sealed class FeatureNotSupportedException : Exception {}
+public sealed class PermissionException : Exception {}

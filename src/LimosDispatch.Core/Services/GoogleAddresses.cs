@@ -8,7 +8,7 @@ public sealed record AddressSuggestion(string PlaceId, string Description)
     public string SecondaryText => Description.Contains(',') ? Description.Split(',', 2)[1].Trim() : "";
 }
 public sealed record GoogleAddress(string PlaceId, string Address);
-public sealed record RoadRoute(double Meters)
+public sealed record RoadRoute(double Meters, double DurationSeconds = 0)
 {
     public double Miles => Meters / 1609.344;
 }
@@ -49,13 +49,17 @@ public sealed class GoogleAddresses(HttpClient client, string apiKey)
     }
     public async Task<RoadRoute> RouteAsync(string from, string to, CancellationToken ct = default)
     {
-        var json = await Request("https://routes.googleapis.com/directions/v2:computeRoutes", new { origin = new { address = from }, destination = new { address = to }, travelMode = "DRIVE", computeAlternativeRoutes = false, languageCode = "en-US" }, "routes.distanceMeters,geocodingResults.origin.partialMatch,geocodingResults.destination.partialMatch", ct);
+        var json = await Request("https://routes.googleapis.com/directions/v2:computeRoutes", new { origin = new { address = from }, destination = new { address = to }, travelMode = "DRIVE", computeAlternativeRoutes = false, languageCode = "en-US" }, "routes.distanceMeters,routes.duration,geocodingResults.origin.partialMatch,geocodingResults.destination.partialMatch", ct);
         if (json.TryGetProperty("geocodingResults", out var geocoding))
             foreach (var end in new[] { "origin", "destination" })
                 if (geocoding.TryGetProperty(end, out var place) && place.TryGetProperty("partialMatch", out var partial) && partial.ValueKind == JsonValueKind.True)
                     throw new InvalidOperationException("Google only partially matched an address. Please select a more precise address.");
         if (!json.TryGetProperty("routes", out var routes) || routes.GetArrayLength() == 0 || !routes[0].TryGetProperty("distanceMeters", out var distance) || !distance.TryGetDouble(out var meters) || !double.IsFinite(meters) || meters <= 0)
             throw new InvalidOperationException("No driving route was found between these addresses.");
-        return new RoadRoute(meters);
+        var seconds = routes[0].TryGetProperty("duration", out var duration)
+            && duration.ValueKind == JsonValueKind.String
+            && double.TryParse(duration.GetString()?.TrimEnd('s'), System.Globalization.NumberStyles.Float,
+                System.Globalization.CultureInfo.InvariantCulture, out var parsed) && double.IsFinite(parsed) ? parsed : 0;
+        return new RoadRoute(meters, seconds);
     }
 }

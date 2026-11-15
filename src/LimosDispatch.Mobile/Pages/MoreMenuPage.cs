@@ -5,12 +5,14 @@ public sealed partial class MoreMenuPage : ContentPage
 {
     private readonly NavigationService navigation;
     private readonly ViewModels.MoreViewModel viewModel;
-    public MoreMenuPage(NavigationService nav, ViewModels.MoreViewModel model, MileageWorkflow mileage)
+    public MoreMenuPage(NavigationService nav, ViewModels.MoreViewModel model, MileageWorkflow mileage, FinanceService finance, LimosDispatch.Core.GenericRepository.IGenericRepository api)
     {
         InitializeComponent();
-        navigation = nav; viewModel = model; this.mileage = mileage; BuildMenu();
+        navigation = nav; viewModel = model; this.mileage = mileage; this.finance = finance; this.api = api; BuildMenu();
     }
     private readonly MileageWorkflow mileage;
+    private readonly FinanceService finance;
+    private readonly LimosDispatch.Core.GenericRepository.IGenericRepository api;
     private void BuildMenu()
     {
         var nav = navigation; var model = viewModel; MenuRows.Clear();
@@ -30,6 +32,11 @@ public sealed partial class MoreMenuPage : ContentPage
         if(model.HasDriverSettings)AddRow("sync_menu.png", "Synchronization", "Pending journeys and location uploads", () => nav.PushAsync<SynchronizationPage>());
         if (model.User is { } user && (user.CanDispatch || user.IsDriver))
             AddRow("mileage_menu.png", "Mileage", "Odometer readings and mileage history", () => nav.PushAsync<MileageReportPage>());
+        if (model.User?.IsAdmin == true)
+        {
+            AddRow("vehicles_menu.png", "Vehicles", "View, add and edit vehicles", () => Navigation.PushAsync(new FleetDirectoryPage(finance, api, true)));
+            AddRow("chauffeurs_menu.png", "Chauffeurs", "View, add and edit chauffeurs", () => Navigation.PushAsync(new FleetDirectoryPage(finance, api, false)));
+        }
         if (model.HasDriverSettings)
         {
             var actions = new Grid { ColumnDefinitions = [new(GridLength.Star), new(GridLength.Star)], ColumnSpacing = 8 };

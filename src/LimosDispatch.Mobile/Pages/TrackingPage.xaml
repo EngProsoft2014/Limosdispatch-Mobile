@@ -18,6 +18,15 @@
   </RefreshView>
   <Grid Grid.Row="1" IsVisible="{Binding MapMode}">
    <c:FleetMapView x:Name="FleetMap" IsShowingUser="False" MapType="Street"/>
+   <Border x:Name="VehicleStreetCard" IsVisible="False" Margin="12,0,12,40" Padding="12,8" VerticalOptions="End" HorizontalOptions="Center" MaximumWidthRequest="420" BackgroundColor="{DynamicResource Surface}" InputTransparent="True">
+    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+     <Image Source="tracking.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
+     <VerticalStackLayout Grid.Column="1" Spacing="2">
+      <Label x:Name="FocusedVehicleName" FontFamily="{DynamicResource AppFontSemibold}" FontSize="13"/>
+      <Label x:Name="FocusedStreet" Style="{StaticResource MutedText}" FontSize="12" IsVisible="False"/>
+     </VerticalStackLayout>
+    </Grid>
+   </Border>
    <ImageButton x:Name="ExpandButton" Source="expand.png" WidthRequest="44" HeightRequest="44" Padding="10" BackgroundColor="{DynamicResource Surface}" CornerRadius="12" Margin="12" HorizontalOptions="End" VerticalOptions="Start" Clicked="OnExpandClicked" SemanticProperties.Description="{DynamicResource Ui_Full_screen_map_a50ec0}"/>
   </Grid>
  </Grid>

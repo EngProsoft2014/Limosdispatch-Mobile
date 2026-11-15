@@ -57,4 +57,6 @@ public sealed class FleetMapHandler : ViewHandler<FleetMapView,AMapView>
         var zoom=(float)Math.Clamp(Math.Log2(360/Math.Max(region.LongitudeDegrees,.0001)),2,20);
         map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(region.Center.Latitude,region.Center.Longitude),zoom));
     }
+    public void Recenter(Location location) =>
+        map?.MoveCamera(CameraUpdateFactory.NewLatLng(new LatLng(location.Latitude,location.Longitude)));
 }

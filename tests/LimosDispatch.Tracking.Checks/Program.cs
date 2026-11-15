@@ -22,16 +22,40 @@ publisher.FailNext=true;publisher.Recovered=new(TaskCreationOptions.RunContinuat
 Check(service.Health.Contains("pending",StringComparison.OrdinalIgnoreCase),"Offline initial publish is queued safely");
 await publisher.Recovered.Task.WaitAsync(TimeSpan.FromSeconds(22));await service.FlushAsync();Check(publisher.Calls==6,"Pending point recovers without a new GPS callback");
 await service.StopAsync(true);Check(!service.IsRunning&&publisher.Stops==2,"Second journey cleanup closes its transport");
+var starts = platform.Starts;
+var stops = publisher.Stops;
+await service.StartAsync("qa-a");
+await service.StartAsync("qa-b");
+await service.FlushAsync();
+Check(platform.Starts == starts + 1 && service.IsTracking("qa-a") && service.IsTracking("qa-b"), "Two journeys share one platform sensor");
+var sharedFix = point with { CapturedAt = point.CapturedAt + 80000, Latitude = 29.99 };
+publisher.OmitFor = "qa-b";
+platform.Emit(sharedFix);
+await Task.Delay(80);
+Check(publisher.Frames.Contains(("qa-a", sharedFix.CapturedAt)) && publisher.Frames.Contains(("qa-b", sharedFix.CapturedAt)), "One GPS callback fans out to both trips");
+Check(Pending("qa-a") == 0 && Pending("qa-b") == 1, "Acknowledgement from one trip cannot clear the other trip's queue");
+int Pending(string tripId) => JsonDocument.Parse(SecureStorage.Default.Values.Single(kv => kv.Key.EndsWith(":" + tripId)).Value).RootElement.GetProperty("Pending").GetArrayLength();
+publisher.OmitFor = null;
+await service.FlushAsync("qa-b");
+Check(Pending("qa-b") == 0, "Second trip independently retries and clears its own queue");
+await service.StopAsync("qa-a", true);
+Check(!service.IsTracking("qa-a") && service.IsTracking("qa-b") && publisher.Stops == stops, "Finishing one trip leaves shared transport active");
+var followingFix = sharedFix with { CapturedAt = sharedFix.CapturedAt + 2000, Latitude = 30 };
+platform.Emit(followingFix);
+await service.FlushAsync("qa-b");
+Check(publisher.Frames.Contains(("qa-b", followingFix.CapturedAt)) && !publisher.Frames.Contains(("qa-a", followingFix.CapturedAt)), "Only remaining trip receives new fixes");
+await service.StopAsync("qa-b", true);
+Check(!service.IsRunning && publisher.Stops == stops + 1, "Last trip releases transport");
 Console.WriteLine(checks+" live tracking runtime checks passed (mock publisher/device adapters).");
-sealed class Platform:ITrackingPlatform{public event Action<GpsPoint>? PointCaptured;public Task StartAsync()=>Task.CompletedTask;public void Stop(){}public void Emit(GpsPoint point)=>PointCaptured?.Invoke(point);}
+sealed class Platform:ITrackingPlatform{public event Action<GpsPoint>? PointCaptured;public int Starts; public Task StartAsync(){Starts++;return Task.CompletedTask;}public void Stop(){}public void Emit(GpsPoint point)=>PointCaptured?.Invoke(point);}
 sealed class Session:ISessionStore{public Task<TokenPair?> LoadAsync()=>Task.FromResult<TokenPair?>(new(){AccessToken="mock-access",RefreshToken="mock-refresh",Company="lux",ExpiresAt=DateTimeOffset.UtcNow.AddHours(1)});public Task SaveAsync(TokenPair value)=>Task.CompletedTask;public Task ClearAsync()=>Task.CompletedTask;}
 sealed class Publisher:ITrackingPublisher
 {
- public int Calls,Heartbeats,Stops;public bool FailNext,OmitAck,SawFailure;public System.Collections.Concurrent.ConcurrentQueue<string>Motions=new();public TaskCompletionSource Recovered=new(TaskCreationOptions.RunContinuationsAsynchronously);
+ public string? OmitFor; public System.Collections.Concurrent.ConcurrentQueue<(string,long)> Frames=new(); public int Calls,Heartbeats,Stops;public bool FailNext,OmitAck,SawFailure;public System.Collections.Concurrent.ConcurrentQueue<string>Motions=new();public TaskCompletionSource Recovered=new(TaskCreationOptions.RunContinuationsAsynchronously);
  public Task<LocationAck> PublishAsync(string tripId,List<GpsPoint> points,CancellationToken ct=default)
  {
-  Calls++;if(FailNext){FailNext=false;SawFailure=true;throw new HttpRequestException("Synthetic offline failure");}
-  if(SawFailure)Recovered.TrySetResult();return Task.FromResult(new LocationAck{Inserted=0,HistoryIntervalMs=15000,AcknowledgedCapturedAt=OmitAck?[]:points.Select(p=>p.CapturedAt).ToList()});
+  Interlocked.Increment(ref Calls);foreach(var point in points)Frames.Enqueue((tripId,point.CapturedAt));if(FailNext){FailNext=false;SawFailure=true;throw new HttpRequestException("Synthetic offline failure");}
+  if(SawFailure)Recovered.TrySetResult();return Task.FromResult(new LocationAck{Inserted=0,HistoryIntervalMs=15000,AcknowledgedCapturedAt=OmitAck||OmitFor==tripId?[]:points.Select(p=>p.CapturedAt).ToList()});
  }
  public Task HeartbeatAsync(string tripId,string motion,CancellationToken ct=default){Heartbeats++;Motions.Enqueue(motion);return Task.CompletedTask;}
  public Task StopAsync(){Stops++;return Task.CompletedTask;}

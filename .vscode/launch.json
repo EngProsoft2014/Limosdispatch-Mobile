@@ -2,24 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "LimosDispatch - Android Phone",
-      "type": "maui",
-      "request": "launch",
-      "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
-      "configuration": "Debug",
-      "targetFramework": "net10.0-android",
-      "preLaunchTask": "maui: Build",
-      "device": "JVUCRCMNEUAQE6MF"
-    },
-    {
       "name": "LimosDispatch · Android Emulator",
-      "type": "maui",
+      "type": "node-terminal",
       "request": "launch",
-      "project": "E:\\Projects\\LimosDispatch\\src\\LimosDispatch.Mobile\\LimosDispatch.Mobile.csproj",
-      "configuration": "Debug",
-      "targetFramework": "net10.0-android",
-      "preLaunchTask": "Android emulator: Start and build",
-      "device": "emulator-5554"
+      "command": "C:/Users/ADMIN/AppData/Local/Python/bin/python.exe .vscode/run-android-emulator.py Driver",
+      "cwd": "${workspaceFolder}"
     },
     {
       "name": "LimosDispatch · iOS Simulator",
@@ -27,8 +14,7 @@
       "request": "launch",
       "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
       "configuration": "Debug",
-      "targetFramework": "net10.0-ios",
-      "preLaunchTask": "maui: Build"
+      "targetFramework": "net10.0-ios"
     }
   ]
 }

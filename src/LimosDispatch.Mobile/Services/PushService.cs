@@ -75,6 +75,9 @@ public sealed class PushService(AuthService auth, PushApi api, RideNotifications
             var user = auth.User;
             SetStatus("Setting up device notifications…");
             if (!await CanNotifyAsync(requestPermission)) { SetStatus("Notifications are disabled in your phone settings."); return; }
+#if IOS
+            UIKit.UIApplication.SharedApplication.RegisterForRemoteNotifications();
+#endif
             var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync().WaitAsync(TimeSpan.FromSeconds(25));
             if (auth.User != user || user is null) return;
             await api.RegisterAsync(new(InstallationId, DeviceInfo.Platform == DevicePlatform.iOS ? "ios" : "android", token, AppInfo.Current.VersionString));
@@ -84,7 +87,7 @@ public sealed class PushService(AuthService auth, PushApi api, RideNotifications
         { SetStatus("Device notifications are unavailable. Tap Enable notifications to retry."); throw new InvalidOperationException("Push notifications could not be registered. Check your connection and notification permissions."); }
         finally { gate.Release(); }
     }
-    private static async Task<bool> CanNotifyAsync(bool requestPermission)
+    internal static async Task<bool> CanNotifyAsync(bool requestPermission)
     {
 #if ANDROID
         if (OperatingSystem.IsAndroidVersionAtLeast(33))
@@ -101,7 +104,7 @@ public sealed class PushService(AuthService auth, PushApi api, RideNotifications
         }
         var settings = await UserNotifications.UNUserNotificationCenter.Current.GetNotificationSettingsAsync();
         if (settings.AuthorizationStatus is not (UserNotifications.UNAuthorizationStatus.Authorized or UserNotifications.UNAuthorizationStatus.Provisional or UserNotifications.UNAuthorizationStatus.Ephemeral)) return false;
-        UIKit.UIApplication.SharedApplication.RegisterForRemoteNotifications();
+        if (requestPermission) UIKit.UIApplication.SharedApplication.RegisterForRemoteNotifications();
         return true;
 #else
         return await Task.FromResult(false);

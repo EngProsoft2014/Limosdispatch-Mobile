@@ -1711,4 +1711,13 @@
   <data name="Ui_Allow_camera_access_or_choose_an_odometer_photo_from_your_gallery_5a1fcd" xml:space="preserve"><value>اسمح بالوصول إلى الكاميرا أو اختر صورة العداد من المعرض.</value></data>
   <data name="Ui_Choose_a_readable_odometer_photo_under_2_MB_4e4862" xml:space="preserve"><value>اختر صورة واضحة للعداد بحجم أقل من 2 ميغابايت.</value></data>
   <data name="Ui_Filters_96e578" xml:space="preserve"><value>الفلاتر</value></data>
+  <data name="Ui_Estimated_route_0_d7ea8f" xml:space="preserve"><value>المسار المتوقع: {0}</value></data>
+  <data name="Ui_0_mi_af09c2" xml:space="preserve"><value>{0} ميل</value></data>
+  <data name="Ui_0_min_e802d4" xml:space="preserve"><value>{0} دقيقة</value></data>
+  <data name="Ui_Chauffeurs_346b81" xml:space="preserve"><value>السائقون</value></data>
+  <data name="Ui_Vehicles_60261e" xml:space="preserve"><value>المركبات</value></data>
+  <data name="Ui_View_add_and_edit_vehicles_d46f6f" xml:space="preserve"><value>عرض المركبات وإضافتها وتعديلها</value></data>
+  <data name="Ui_View_add_and_edit_chauffeurs_2d6704" xml:space="preserve"><value>عرض السائقين وإضافتهم وتعديلهم</value></data>
+  <data name="Ui_License_plate_bf59a7" xml:space="preserve"><value>لوحة المركبة</value></data>
+  <data name="Ui_Enter_a_name_86c810" xml:space="preserve"><value>أدخل الاسم.</value></data>
 </root>

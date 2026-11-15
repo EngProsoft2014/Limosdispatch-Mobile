@@ -3,9 +3,7 @@
 <Grid RowDefinitions="*,Auto">
 <RefreshView IsEnabled="{Binding IsBusy,Converter={StaticResource Inverse}}" Refreshing="OnPullToRefresh"><ScrollView x:Name="DetailsScroll"><VerticalStackLayout Padding="16,12" Spacing="12">
 <Border Style="{StaticResource Hero}" Padding="16"><VerticalStackLayout Spacing="8">
-<Grid><Grid.GestureRecognizers>
-    <TapGestureRecognizer Tapped="OnCopyTripText"/>
-</Grid.GestureRecognizers><Label Text="{Binding Trip.Name}" TextColor="White" FontSize="21" FontFamily="{DynamicResource AppFontSemibold}" InputTransparent="True"/></Grid>
+<Label x:Name="PassengerCopyLabel" Text="{Binding Trip.Name}" TextColor="White" FontSize="21" FontFamily="{DynamicResource AppFontSemibold}"/>
 <Label Text="{Binding Trip.Id}" FontSize="10" TextColor="#BAC5CD" LineBreakMode="CharacterWrap"/>
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8"><Label Text="{Binding Trip.Schedule}" FontSize="12" TextColor="White"/><Label Grid.Column="1" Text="{Binding Trip.StageLabel,Converter={StaticResource LocalizedText}}" TextColor="{DynamicResource Gold}" FontFamily="{DynamicResource AppFontSemibold}"/></Grid>
 <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
@@ -26,14 +24,10 @@
 <Label Text="{Binding LicenseNotice}" IsVisible="{Binding HasLicenseNotice}" TextColor="{DynamicResource AccentText}"/>
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8"><Button Text="{DynamicResource Ui_Call_passenger_92207a}" Command="{Binding CallCommand}" IsEnabled="{Binding HasPhone}" Style="{StaticResource Secondary}"/><Button Grid.Column="1" Text="{DynamicResource Ui_Passenger_sign_7e893d}" Command="{Binding PassengerSignCommand}" Style="{StaticResource Secondary}"/></Grid>
 <Border Padding="12"><VerticalStackLayout Spacing="8">
-<Label Text="{DynamicResource Ui_Pickup_location_19c618}" Style="{StaticResource Eyebrow}"/><Grid><Grid.GestureRecognizers>
-    <TapGestureRecognizer Tapped="OnCopyTripText"/>
-</Grid.GestureRecognizers><Label Text="{Binding Trip.From}" FontSize="15" InputTransparent="True"/></Grid>
+<Label Text="{DynamicResource Ui_Pickup_location_19c618}" Style="{StaticResource Eyebrow}"/><Label x:Name="PickupCopyLabel" Text="{Binding Trip.From}" FontSize="15"/>
 <Border Padding="0" StrokeThickness="0"><controls:FleetMapView x:Name="PickupLocationMap" HeightRequest="180" IsShowingUser="False"/></Border>
 <Grid ColumnDefinitions="*,*" ColumnSpacing="8"><Button Text="{DynamicResource Ui_Google_Maps_40cd7f}" Command="{Binding OpenMapCommand}" Style="{StaticResource Secondary}"/><Button Grid.Column="1" Text="{DynamicResource Ui_Navigate_to_pickup_a3dbc0}" Command="{Binding PickupNavigateCommand}"/></Grid>
-<VerticalStackLayout Spacing="8" IsVisible="{Binding ShowDropoff}"><BoxView Color="{DynamicResource Line}" HeightRequest="1" Margin="0,4"/><Label Text="{DynamicResource Ui_Drop_off_location_d78449}" Style="{StaticResource Eyebrow}"/><Grid><Grid.GestureRecognizers>
-    <TapGestureRecognizer Tapped="OnCopyTripText"/>
-</Grid.GestureRecognizers><Label Text="{Binding Trip.To}" FontSize="15" InputTransparent="True"/></Grid><Button Text="{DynamicResource Ui_Navigate_to_drop_off_0a145a}" Command="{Binding DropoffNavigateCommand}" Style="{StaticResource Secondary}"/></VerticalStackLayout>
+<VerticalStackLayout Spacing="8" IsVisible="{Binding ShowDropoff}"><BoxView Color="{DynamicResource Line}" HeightRequest="1" Margin="0,4"/><Label Text="{DynamicResource Ui_Drop_off_location_d78449}" Style="{StaticResource Eyebrow}"/><Label x:Name="DropoffCopyLabel" Text="{Binding Trip.To}" FontSize="15"/><Button Text="{DynamicResource Ui_Navigate_to_drop_off_0a145a}" Command="{Binding DropoffNavigateCommand}" Style="{StaticResource Secondary}"/></VerticalStackLayout>
 </VerticalStackLayout></Border>
 <Border Padding="12">
     <VerticalStackLayout Spacing="6">

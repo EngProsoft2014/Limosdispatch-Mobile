@@ -1720,4 +1720,5 @@
   <data name="Ui_View_add_and_edit_chauffeurs_2d6704" xml:space="preserve"><value>عرض السائقين وإضافتهم وتعديلهم</value></data>
   <data name="Ui_License_plate_bf59a7" xml:space="preserve"><value>لوحة المركبة</value></data>
   <data name="Ui_Enter_a_name_86c810" xml:space="preserve"><value>أدخل الاسم.</value></data>
+  <data name="Ui_Copied_8e3df4" xml:space="preserve"><value>تم النسخ</value></data>
 </root>

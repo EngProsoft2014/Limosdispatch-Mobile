@@ -2,6 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "LimosDispatch · iPhone (USB)",
+      "type": "maui",
+      "request": "launch",
+      "project": "${workspaceFolder}/src/LimosDispatch.Mobile/LimosDispatch.Mobile.csproj",
+      "configuration": "Debug",
+      "targetFramework": "net10.0-ios",
+      "device": "00008020-000A2D383AC1402E",
+      "connectionType": "usb",
+      "preLaunchTask": "iPhone: Build"
+    },
+    {
       "name": "LimosDispatch · Android Emulator",
       "type": "node-terminal",
       "request": "launch",

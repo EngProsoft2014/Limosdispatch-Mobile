@@ -17,16 +17,33 @@ public partial class TripDetailPage : ContentPage
     public TripDetailPage(TripDetailViewModel model,GoogleAddresses addresses,RealtimeService realtime, PushService push)
     {
         InitializeComponent(); BindingContext = this.model = model; this.addresses=addresses; this.realtime=realtime; this.push=push;
+        EnableCopy(PassengerCopyLabel);
+        EnableCopy(PickupCopyLabel);
+        EnableCopy(DropoffCopyLabel);
         model.PropertyChanged+=(_,e)=>{if(e.PropertyName==nameof(model.ExtraFormVisible)&&!model.ExtraFormVisible)HideExtraKeyboard();};
         timer = Dispatcher.CreateTimer(); timer.Interval = TimeSpan.FromSeconds(30);
         timer.Tick += async (_, _) => await RefreshInBackground();
     }
     private async void OnAdjustFare(object? sender, EventArgs e) => await model.AdjustFareAsync();
 
-    private async void OnCopyTripText(object? sender, TappedEventArgs e)
+    private static void EnableCopy(Label label)
     {
-        if (sender is Grid row && row.Children.FirstOrDefault() is Label { Text: { } value } && !string.IsNullOrWhiteSpace(value))
-            await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(() => Clipboard.Default.SetTextAsync(value));
+        var copy = new Command(async () =>
+        {
+            var value = label.Text;
+            if (string.IsNullOrWhiteSpace(value)) return;
+            await LimosDispatch.Core.Helpers.UserFeedback.RunAsync(async () =>
+            {
+                await Clipboard.Default.SetTextAsync(value);
+                await FeedbackService.ShowCopiedAsync();
+            });
+        });
+        label.Behaviors.Add(new CommunityToolkit.Maui.Behaviors.TouchBehavior
+        {
+            Command = copy,
+            LongPressCommand = copy,
+            LongPressDuration = 500
+        });
     }
 
     private void OnStageMapBindingChanged(object? sender, EventArgs e)

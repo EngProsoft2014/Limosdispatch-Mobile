@@ -244,6 +244,11 @@ public sealed class CreateRideViewModel : BaseViewModel
         catch (ApiException ex) when ((int)ex.Status == 409) { version = (await dispatch.TripRecordsAsync()).Version; throw; }
         created = savedTrip; Raise(nameof(CanEdit)); Raise(nameof(SaveLabel));
         await FinishAssignment();
+        if (created is { } persisted && persisted.Price != trip.Price && Shell.Current?.CurrentPage is { } page)
+        {
+            var message = LocalizationService.Format("The journey was saved, but the server returned {0} instead of the confirmed total {1}. Check the journey price in the web portal.", Money(persisted.Price), Money(trip.Price));
+            await page.DisplayAlertAsync(LocalizationService.Text("Trip fare"), message, LocalizationService.Text("OK"));
+        }
     }
     private async Task FinishAssignment()
     {

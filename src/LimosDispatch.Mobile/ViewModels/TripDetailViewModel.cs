@@ -35,7 +35,7 @@ public sealed class TripDetailViewModel : BaseViewModel
     });
 
     public bool CanEditTrip=>CanReviewExtras&&!Trip.IsActive&&!IsClosed;
-    public bool CanSetPayment=>CanReviewExtras&&!Trip.PaymentMethod.Equals("Credit Card",StringComparison.OrdinalIgnoreCase);
+    public bool CanSetPayment=>auth.User?.IsAdmin==true&&CanReviewExtras&&!Trip.PaymentMethod.Equals("Credit Card",StringComparison.OrdinalIgnoreCase);
     public System.Windows.Input.ICommand ReviewExtraCommand{get;}
     public AsyncCommand EditCommand{get;}public AsyncCommand CancelCommand{get;}public AsyncCommand PaymentCommand{get;}public AsyncCommand NoShowCommand{get;}public AsyncCommand UnassignCommand{get;}
     public IReadOnlyList<string> PaymentStates{get;}=["Pending","Paid","Refunded"];private string paymentState="Pending";public string PaymentState{get=>paymentState;set=>Set(ref paymentState,value);}

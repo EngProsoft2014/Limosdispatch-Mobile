@@ -33,7 +33,23 @@ public sealed class TrackingService(ITrackingPlatform platform,ITrackingPublishe
 
     public async Task PrepareAsync()
     {
-        if(await Permissions.RequestAsync<Permissions.LocationWhenInUse>()!=PermissionStatus.Granted)throw new InvalidOperationException("Allow location access to start this journey.");
+        if (await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>() != PermissionStatus.Granted)
+        {
+            var granted = await MainThread.InvokeOnMainThreadAsync(async () =>
+            {
+                if (Shell.Current?.CurrentPage is not Page page) return false;
+                var arabic = LocalizationService.Instance.Code == "ar";
+                var accepted = await page.DisplayAlertAsync(
+                    arabic ? "مشاركة الموقع أثناء الرحلة" : "Share location during your trip",
+                    arabic
+                        ? "يجمع LimosDispatch موقعك عبر GPS أثناء الرحلات النشطة، حتى في الخلفية عند قفل الشاشة أو فتح تطبيق آخر. يستطيع مسؤولو الشركة المخوّلون متابعة الرحلة مباشرة ومراجعة مسارها المسجّل. تتوقف مشاركة الموقع لهذه الرحلة عند انتهائها."
+                        : "LimosDispatch collects your GPS location during active trips, including in the background when your screen is locked or another app is open. Authorized company dispatchers and administrators can follow your trip live and review its recorded route. Location sharing for this trip stops when it ends.",
+                    arabic ? "متابعة" : "Continue",
+                    arabic ? "إلغاء" : "Cancel");
+                return accepted && await Permissions.RequestAsync<Permissions.LocationWhenInUse>() == PermissionStatus.Granted;
+            });
+            if (!granted) throw new InvalidOperationException("Allow location access to start this journey.");
+        }
         if(!Geolocation.Default.IsEnabled)throw new InvalidOperationException("Turn on device location to start this journey.");
         if (sensorRunning) return;
         await fixGate.WaitAsync();

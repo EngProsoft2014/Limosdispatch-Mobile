@@ -7,8 +7,8 @@
  <key>CFBundleDevelopmentRegion</key><string>en</string>
  <key>CFBundleLocalizations</key><array><string>en</string><string>ar</string><string>es</string></array>
  <key>CFBundleURLTypes</key><array><dict><key>CFBundleURLName</key><string>com.limosdispatch.mobile.ride</string><key>CFBundleURLSchemes</key><array><string>limosdispatch</string></array></dict></array>
- <key>NSLocationWhenInUseUsageDescription</key><string>Your location is shared with company dispatch during an active journey.</string>
- <key>NSLocationAlwaysAndWhenInUseUsageDescription</key><string>Keep dispatch updated during your active journey while the app is in the background.</string>
+ <key>NSLocationWhenInUseUsageDescription</key><string>LimosDispatch uses your GPS location during active trips so authorized company dispatchers can track your trip live and review its recorded route.</string>
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key><string>LimosDispatch uses your GPS location in the background during active trips, including when you lock the screen or switch apps, to keep authorized company dispatchers updated.</string>
  <key>NSCameraUsageDescription</key><string>Photograph an expense receipt or a vehicle odometer.</string>
  <key>NSPhotoLibraryAddUsageDescription</key><string>Save captured expense receipts when requested.</string>
  <key>NSPhotoLibraryUsageDescription</key><string>Select an expense receipt or a vehicle odometer photo.</string>
